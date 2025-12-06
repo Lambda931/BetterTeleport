@@ -1,5 +1,3 @@
-using BetterTeleportPlugin.Windows;
-using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Textures.TextureWraps;
 using System.Linq;
 using System.Numerics;

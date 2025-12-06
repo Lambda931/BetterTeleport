@@ -1,29 +1,12 @@
-using BetterTeleportPlugin;
 using Dalamud.Bindings.ImGui;
-using Dalamud.Game.Inventory;
 using Dalamud.Game.Text;
-using Dalamud.Interface.Textures;
 using Dalamud.Interface.Textures.TextureWraps;
-using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
-using Dalamud.IoC;
-using Dalamud.Plugin.Services;
-using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using FFXIVClientStructs.FFXIV.Client.System.Framework;
-using Lumina.Excel.Sheets;
-using Lumina.Excel.Sheets.Experimental;
-using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using static FFXIVClientStructs.FFXIV.Client.Game.UI.ContentFinderConditionInterface.Delegates;
-using static FFXIVClientStructs.FFXIV.Component.GUI.AtkTimer.Delegates;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using HousingAethernet = Lumina.Excel.Sheets.HousingAethernet;
 
 namespace BetterTeleportPlugin.Windows;
 
@@ -363,7 +346,6 @@ public partial class MainWindow : Window, IDisposable
         // Region column
         ImGui.TableSetColumnIndex(3);
         ImGui.Text(Aetheryte.AetheryteRegion((uint)info.AetheryteId).ToString());
-        BetterTeleport.Log.Information($"Estate location is: {info.AetheryteId.ToString()} - {Aetheryte.AetheryteRegion((uint)info.AetheryteId).ToString()}");
 
         // Estate type column
         ImGui.TableSetColumnIndex(4);

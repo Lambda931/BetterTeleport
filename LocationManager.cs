@@ -1,16 +1,4 @@
-using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Interface.Textures.TextureWraps;
-using Dalamud.Plugin.Services;
-using FFXIVClientStructs.FFXIV.Client.Game;
-using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Lumina;
-using Lumina.Excel.Sheets;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks.Sources;
-using AetheryteRow = Lumina.Excel.Sheets.Aetheryte;
 
 namespace BetterTeleportPlugin;
 

@@ -1,28 +1,11 @@
-using BetterTeleportPlugin;
 using BetterTeleportPlugin.Windows;
-using Dalamud.Game.Addon.Events;
-using Dalamud.Game.Addon.Lifecycle;
-using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.Command;
-using Dalamud.Game.Gui;
 using Dalamud.Interface.Textures;
-using Dalamud.Interface.Textures.TextureWraps;
 using Dalamud.Interface.Windowing;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
-using FFXIVClientStructs.FFXIV.Client.Game.Object;
-using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using FFXIVClientStructs.FFXIV.Client.UI;
-using FFXIVClientStructs.FFXIV.Component.GUI;
-using Lumina.Excel.Sheets;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using static BetterTeleportPlugin.Windows.MainWindow;
-using FFXIVClientStructs.FFXIV.Client.System.Framework;
-using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 
 namespace BetterTeleportPlugin;
 

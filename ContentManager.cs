@@ -1,4 +1,3 @@
-using Lumina.Data;
 using System.Collections.Generic;
 using System.Numerics;
 using static BetterTeleportPlugin.ContentInfo;
