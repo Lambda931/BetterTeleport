@@ -12,7 +12,6 @@ public class IconData
         LaNosceaTabIcon = new ULDLibraryData { X = 3, Y = 45, Width = 28, Height = 26 },
         BlackShroudTabIcon = new ULDLibraryData { X = 37, Y = 45, Width = 28, Height = 26 },
         ThanalanTabIcon = new ULDLibraryData { X = 71, Y = 45, Width = 28, Height = 26 },
-
         IshgardTabIcon = new ULDLibraryData { X = 173, Y = 45, Width = 28, Height = 26 },
         GyrAbaniaTabIcon = new ULDLibraryData { X = 3, Y = 79, Width = 28, Height = 26 },
         FarEastTabIcon = new ULDLibraryData { X = 37, Y = 79, Width = 28, Height = 26 },
