@@ -1,0 +1,15 @@
+{
+  "Author": "LDF",
+  "Name": "Better Teleport",
+  "InternalName": "BetterTeleport",
+  "AssemblyVersion": "0.0.0.1",
+  "Description": "This is a test plugin - this first line is a summary.\n\nYAML file works",
+  "ApplicableVersion": "any",
+  "DalamudApiLevel": 13,
+  "LoadRequiredState": 0,
+  "LoadSync": false,
+  "CanUnloadAsync": false,
+  "LoadPriority": 0,
+  "Punchline": "YAML file works",
+  "AcceptsFeedback": true
+}
