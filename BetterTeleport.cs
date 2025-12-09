@@ -1,10 +1,13 @@
 using BetterTeleportPlugin.Windows;
+using Dalamud.Game.Addon.Lifecycle;
+using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.Command;
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Windowing;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 using System;
 
 namespace BetterTeleportPlugin;
@@ -33,9 +36,7 @@ public sealed class BetterTeleport : IDalamudPlugin
     public static ISharedImmediateTexture? JournalSeparatorTexture;
 
     private bool texturesInitialized = false;
-
-    //private bool teleportWindowOpened = false;
-
+    public static bool teleportWindowOpen = false;
 
     public BetterTeleport()
     {
@@ -58,7 +59,8 @@ public sealed class BetterTeleport : IDalamudPlugin
         PluginInterface.UiBuilder.OpenConfigUi += ToggleConfigUi;
         PluginInterface.UiBuilder.OpenMainUi += ToggleMainUi;
 
-        //AddonLifecycle.RegisterListener(AddonEvent.PostUpdate, "Teleport", OnTeleportPostUpdate);
+        Log.Debug("Register Listener");
+        AddonLifecycle.RegisterListener(AddonEvent.PreSetup, "Teleport", ToggleTeleportWindow);
         Framework.Update += Framework_Update;
     }
 
@@ -76,7 +78,7 @@ public sealed class BetterTeleport : IDalamudPlugin
         MainWindow.Toggle();
     }
 
-    /*private unsafe void OnTeleportPostUpdate(AddonEvent type, AddonArgs args)
+    private unsafe void ToggleTeleportWindow(AddonEvent type, AddonArgs args)
     {
         if (args.Addon == nint.Zero)
             return;
@@ -85,22 +87,10 @@ public sealed class BetterTeleport : IDalamudPlugin
         if (atk == null)
             return;
 
-        if (atk->IsVisible)
-        {
-            if (!teleportWindowOpened)
-            {
-                atk->Hide(true, false, 0);
-
-                MainWindow.Toggle();
-
-                teleportWindowOpened = true;
-            }
-        }
-        else
-        {
-            teleportWindowOpened = false;
-        }
-    }*/
+        atk->Close(true);
+        teleportWindowOpen = !teleportWindowOpen;
+        MainWindow.IsOpen = teleportWindowOpen;
+    }
 
     public void Dispose()
     {
@@ -114,6 +104,7 @@ public sealed class BetterTeleport : IDalamudPlugin
         MainWindow.Dispose();
 
         CommandManager.RemoveHandler(TeleportMenuCommand);
+        AddonLifecycle.UnregisterListener(AddonEvent.PostDraw, "Teleport", ToggleTeleportWindow);
     }
 
     public void ToggleConfigUi() => ConfigWindow.Toggle();

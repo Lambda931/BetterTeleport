@@ -12,22 +12,24 @@ namespace BetterTeleportPlugin.Windows;
 
 public partial class MainWindow : Window, IDisposable
 {
-    private readonly BetterTeleportPlugin.BetterTeleport plugin;
+    private readonly BetterTeleport plugin;
     private uint[] locationIDs = LocationManager.locationIDs.AllIDs;
     public static Icons? Icons;
-    private enum Tab { 
+    public enum Tab { 
         All, Residential, LaNoscea, BlackShroud, Thanalan, Ishgard, 
         GyrAbania, FarEast, IndependentNations, Ilsabard, 
         Tural, Norvrandt, BeyondTheSource, Favourites, 
         MarketBoards, AlliedSocieties, CustomDeliveries, 
         DeepDungeons 
     };
-    private Tab currentTab = Tab.All;
+    public static Tab currentTab = Tab.All;
 
     string currentContentDropdownItem = "";
     string[] contentDropdownitems = { "Market Boards", "Allied Societies", "Custom Deliveries", "Deep Dungeons" };
+    
+    private bool resetScrollbar;
 
-    public MainWindow(BetterTeleportPlugin.BetterTeleport plugin) : base("Teleport Menu", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
+    public MainWindow(BetterTeleport plugin) : base("Teleport Menu", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
     {
         SizeConstraints = new WindowSizeConstraints
         {
@@ -193,6 +195,11 @@ public partial class MainWindow : Window, IDisposable
                         {
                             foreach (uint i in locationIDs)
                                 PopulateTable(i);
+                        }
+                        if(resetScrollbar)
+                        {
+                            ImGui.SetScrollY(0f);
+                            resetScrollbar = false;
                         }
                         ImGui.EndTable();
                     }
@@ -508,5 +515,19 @@ public partial class MainWindow : Window, IDisposable
             Tab.DeepDungeons => entry.ContentCategory == ContentInfo.Categories.DeepDungeons,
             _ => true
         };
+    }
+
+    public override void OnClose()
+    {
+        base.OnClose();
+        BetterTeleport.teleportWindowOpen = false;
+    }
+
+    public override void OnOpen()
+    {
+        base.OnOpen();
+        currentTab = Tab.All;
+        locationIDs = LocationManager.locationIDs.AllIDs;
+        resetScrollbar = true;
     }
 }
