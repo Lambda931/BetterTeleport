@@ -146,61 +146,58 @@ public partial class MainWindow : Window, IDisposable
             //Draw Table
             using (var child = ImRaii.Child("SomeChildWithAScrollbar", new Vector2(0, 600), true))
             {
-                if (child.Success)
+                if (!child.Success)
                 {
-                    if (ImGui.BeginTable("Teleport", 7, ImGuiTableFlags.BordersOuter))
-                    {
-                        ImGui.TableSetupColumn("", 0 , 0.0001f);
-                        ImGui.TableSetupColumn("", 0, 0.11f);
-                        ImGui.TableSetupColumn("", 0, 0.111f);
-                        ImGui.TableSetupColumn("Area", 0, 1.5f);
-                        ImGui.TableSetupColumn("Aetheryte", 0, 1.2f);
-                        ImGui.TableSetupColumn("Content");
-                        ImGui.TableSetupColumn("Fee", 0, 0.5f);
-
-                        ImGui.PushStyleColor(ImGuiCol.HeaderHovered, new Vector4(0, 0, 0, 0));
-                        ImGui.PushStyleColor(ImGuiCol.HeaderActive, new Vector4(0, 0, 0, 0));
-                        ImGui.TableHeadersRow();
-                        ImGui.PopStyleColor(2);
-
-                        DrawTopHeader();
-                        if (currentTab == Tab.All || currentTab == Tab.Residential)
-                        {
-                            var estates = new (TeleportInfo? info, string label)[]
-                            {
-                                (TeleportManager.GetApartmentLocation(), "Apartment"),
-                                (TeleportManager.GetPersonalEstate(), "Estate (Personal)"),
-                                (TeleportManager.GetFreeCompanyEstate(), "Estate (Free Company)")
-                            };
-                            foreach (var (info, label) in estates)
-                            {
-                                if (info != null)
-                                    PopulateEstateTable(info.Value, label);
-                                else
-                                    BetterTeleport.Log.Error($"{label} is null");
-                            }
-                            if(currentTab != Tab.Residential)
-                            {
-                                DrawHeader("La Noscea");
-                            }
-                        }
-                        if (currentTab != Tab.Residential)
-                        {
-                            foreach (uint i in locationIDs)
-                                PopulateTable(i);
-                        }
-                        if(resetScrollbar)
-                        {
-                            ImGui.SetScrollY(0f);
-                            resetScrollbar = false;
-                        }
-                        ImGui.EndTable();
-                    }
-                }
-                else
-                {
-
                     BetterTeleport.Log.Information("child failed");
+                    return;
+                }
+                if (ImGui.BeginTable("Teleport", 7, ImGuiTableFlags.BordersOuter))
+                {
+                    ImGui.TableSetupColumn("", 0 , 0.0001f);
+                    ImGui.TableSetupColumn("", 0, 0.11f);
+                    ImGui.TableSetupColumn("", 0, 0.111f);
+                    ImGui.TableSetupColumn("Area", 0, 1.5f);
+                    ImGui.TableSetupColumn("Aetheryte", 0, 1.2f);
+                    ImGui.TableSetupColumn("Content");
+                    ImGui.TableSetupColumn("Fee", 0, 0.5f);
+
+                    ImGui.PushStyleColor(ImGuiCol.HeaderHovered, new Vector4(0, 0, 0, 0));
+                    ImGui.PushStyleColor(ImGuiCol.HeaderActive, new Vector4(0, 0, 0, 0));
+                    ImGui.TableHeadersRow();
+                    ImGui.PopStyleColor(2);
+
+                    DrawTopHeader();
+                    if (currentTab == Tab.All || currentTab == Tab.Residential)
+                    {
+                        var estates = new (TeleportInfo? info, string label)[]
+                        {
+                            (TeleportManager.GetApartmentLocation(), "Apartment"),
+                            (TeleportManager.GetPersonalEstate(), "Estate (Personal)"),
+                            (TeleportManager.GetFreeCompanyEstate(), "Estate (Free Company)")
+                        };
+                        foreach (var (info, label) in estates)
+                        {
+                            if (info != null)
+                                PopulateEstateTable(info.Value, label);
+                            else
+                                BetterTeleport.Log.Error($"{label} is null");
+                        }
+                        if(currentTab != Tab.Residential)
+                        {
+                            DrawHeader("La Noscea");
+                        }
+                    }
+                    if (currentTab != Tab.Residential)
+                    {
+                        foreach (uint i in locationIDs)
+                            PopulateTable(i);
+                    }
+                    if(resetScrollbar)
+                    {
+                        ImGui.SetScrollY(0f);
+                        resetScrollbar = false;
+                    }
+                    ImGui.EndTable();
                 }
             }
             ImGui.Spacing();
