@@ -1,6 +1,9 @@
+using Dalamud.Bindings.ImGui;
+using Dalamud.Interface.Textures.TextureWraps;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,6 +30,34 @@ public partial class MainWindow
     };
     public static Tab currentTab = Tab.All;
 
+    private List<SubCategories> currentTabData;
+
+    private static readonly Dictionary<Tab, LocationManager.TabLocation> TabKeys = new()
+    {
+        { Tab.All, LocationManager.TabLocation.All },
+        { Tab.LaNoscea, LocationManager.TabLocation.LaNoscea },
+        { Tab.BlackShroud, LocationManager.TabLocation.BlackShroud },
+        { Tab.Thanalan, LocationManager.TabLocation.Thanalan },
+        { Tab.Ishgard, LocationManager.TabLocation.Ishgard },
+        { Tab.GyrAbania, LocationManager.TabLocation.GyrAbania },
+        { Tab.FarEast, LocationManager.TabLocation.FarEast },
+        { Tab.IndependentNations, LocationManager.TabLocation.IndependentNations },
+        { Tab.Ilsabard, LocationManager.TabLocation.Ilsabard },
+        { Tab.Tural, LocationManager.TabLocation.Tural },
+        { Tab.Norvrandt, LocationManager.TabLocation.Norvrandt },
+        { Tab.BeyondTheSource, LocationManager.TabLocation.BeyondTheSource },
+        { Tab.Favourites, LocationManager.TabLocation.Favourites }
+    };
+
+    private void GetTabData()
+    {
+        if (TabKeys.TryGetValue(currentTab, out var key) &&
+        LocationManager.SubCategories.TryGetValue(key, out var tabData))
+        {
+            currentTabData = tabData;
+        }
+    }
+
     private void SetDropdownEnum(string item)
     {
         if (DropdownTabs.TryGetValue(item, out var tabData))
@@ -38,9 +69,51 @@ public partial class MainWindow
     {
         if (DropdownTabs.TryGetValue(item, out var tabData))
         {
-            locationIDs = tabData.LocationIDs;
+            //locationIDs = tabData.LocationIDs;
         }
     }
+
+    private void CreateTabButton(Tab selectedTab, IDalamudTextureWrap textureSheet, ULDLibraryData iconData, string tooltip)
+    {
+        if (TabKeys.TryGetValue(selectedTab, out var key) &&
+        LocationManager.SubCategories.TryGetValue(key, out var tabData))
+        {
+            var validTab = false;
+            foreach (var subCategory in tabData)
+            {
+                foreach (var id in subCategory.ids)
+                {
+                    if (TeleportManager.IsAttuned(id))
+                    {
+                        {
+                            validTab = true;
+                        }
+                    }
+                }
+            }
+            if (validTab)
+            {
+                var iconProperties = GetIconProperties(textureSheet, iconData);
+                if (textureSheet != null)
+                {
+                    ImGui.PushID($"##{selectedTab}");
+                    if (ImGui.ImageButton(textureSheet.Handle, new Vector2(iconProperties.Width, iconProperties.Height), new Vector2(iconProperties.U0, iconProperties.V0), new Vector2(iconProperties.U1, iconProperties.V1)))
+                    {
+                        currentTab = selectedTab;
+                        currentContentDropdownItem = "";
+                        resetScrollbar = true;
+                    }
+                    if (ImGui.IsItemHovered())
+                    {
+                        ImGui.BeginTooltip();
+                        ImGui.Text(tooltip);
+                        ImGui.EndTooltip();
+                    }
+                }
+            }
+        }
+    }
+
     private bool FilterContentByCategory(ContentInfo entry)
     {
         return currentTab switch

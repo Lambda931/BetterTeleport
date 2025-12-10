@@ -3,9 +3,11 @@ using Dalamud.Game.Text;
 using Dalamud.Interface.Textures.TextureWraps;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
+using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 
 namespace BetterTeleportPlugin.Windows;
@@ -13,7 +15,6 @@ namespace BetterTeleportPlugin.Windows;
 public partial class MainWindow : Window, IDisposable
 {
     private readonly BetterTeleport plugin;
-    private uint[] locationIDs = LocationManager.locationIDs.AllIDs;
     public static Icons? Icons;
 
     string currentContentDropdownItem = "";
@@ -46,7 +47,6 @@ public partial class MainWindow : Window, IDisposable
             if (ImGui.Button("All", new Vector2(62, 31)))
             {
                 currentTab = Tab.All;
-                locationIDs = LocationManager.locationIDs.AllIDs;
                 currentContentDropdownItem = "";
                 resetScrollbar = true;
             }
@@ -54,40 +54,57 @@ public partial class MainWindow : Window, IDisposable
 
             if (TextureSheet != null)
             {
-                var ResidentialTexture = Icons.GetTextureFromIconID(IconData.IconLibrary.HousingTabIcon);
-                if (ResidentialTexture.TryGetWrap(out var ResidentialIcon, out Exception? ResidentialException))
+                /*var estates = new (TeleportInfo? info, string label)[]
                 {
-                    if (ImGui.ImageButton(ResidentialIcon.Handle, new Vector2(28, 26)))
+                    (TeleportManager.GetApartmentLocation(), "Apartment"),
+                    (TeleportManager.GetPersonalEstate(), "Estate (Personal)"),
+                    (TeleportManager.GetFreeCompanyEstate(), "Estate (Free Company)")
+                };
+                var estateValid = false;
+                foreach(var estate in estates)
+                {
+                    if(estate.info.HasValue)
                     {
-                        currentTab = Tab.Residential;
-                    }
-                    if (ImGui.IsItemHovered())
-                    {
-                        ImGui.BeginTooltip();
-                        ImGui.Text("Residential Areas");
-                        ImGui.EndTooltip();
+                        estateValid = true;
                     }
                 }
+                if(estateValid)
+                {
+                    var ResidentialTexture = Icons.GetTextureFromIconID(IconData.IconLibrary.HousingTabIcon);
+                    if (ResidentialTexture.TryGetWrap(out var ResidentialIcon, out Exception? ResidentialException))
+                    {
+                        if (ImGui.ImageButton(ResidentialIcon.Handle, new Vector2(28, 26)))
+                        {
+                            currentTab = Tab.Residential;
+                        }
+                        if (ImGui.IsItemHovered())
+                        {
+                            ImGui.BeginTooltip();
+                            ImGui.Text("Residential Areas");
+                            ImGui.EndTooltip();
+                        }
+                    }
+                }*/
 
                 ImGui.SameLine();
-                CreateTabButton(Tab.LaNoscea, TextureSheet, IconData.ULDLibrary.LaNosceaTabIcon, LocationManager.locationIDs.LaNosceaIDs, "La Noscea"); ImGui.SameLine();
-                CreateTabButton(Tab.BlackShroud, TextureSheet, IconData.ULDLibrary.BlackShroudTabIcon, LocationManager.locationIDs.BlackShroudIDs, "The Black Shroud"); ImGui.SameLine();
-                CreateTabButton(Tab.Thanalan, TextureSheet, IconData.ULDLibrary.ThanalanTabIcon, LocationManager.locationIDs.ThanalanIDs, "Thanalan"); ImGui.SameLine();
-                CreateTabButton(Tab.Ishgard, TextureSheet, IconData.ULDLibrary.IshgardTabIcon, LocationManager.locationIDs.IshgardIDs, "Ishgard and Surrounding Areas"); ImGui.SameLine();
-                CreateTabButton(Tab.GyrAbania, TextureSheet, IconData.ULDLibrary.GyrAbaniaTabIcon, LocationManager.locationIDs.GyrAbaniaIDs, "Gyr Abania"); ImGui.SameLine();
-                CreateTabButton(Tab.FarEast, TextureSheet, IconData.ULDLibrary.FarEastTabIcon, LocationManager.locationIDs.FarEastIDs, "The Far East"); ImGui.SameLine();
-                CreateTabButton(Tab.IndependentNations, TextureSheet, IconData.ULDLibrary.IndependentNationsTabIcon, LocationManager.locationIDs.IndependentNationsIDs, "Independent Nations"); ImGui.SameLine();
-                CreateTabButton(Tab.Ilsabard, TextureSheet, IconData.ULDLibrary.IlsabardTabIcon, LocationManager.locationIDs.IlsabardIDs, "Ilsabard"); ImGui.SameLine();
-                CreateTabButton(Tab.Tural, TextureSheet, IconData.ULDLibrary.TuralTabIcon, LocationManager.locationIDs.TuralIDs, "Tural"); ImGui.SameLine();
-                CreateTabButton(Tab.Norvrandt, TextureSheet, IconData.ULDLibrary.NorvrandtTabIcon, LocationManager.locationIDs.NorvrandtIDs, "Norvrandt"); ImGui.SameLine();
-                CreateTabButton(Tab.BeyondTheSource, TextureSheet, IconData.ULDLibrary.BeyondTheSourceTabIcon, LocationManager.locationIDs.BeyondTheSourceIDs, "Beyond the Source"); ImGui.SameLine();
+                CreateTabButton(Tab.LaNoscea, TextureSheet, IconData.ULDLibrary.LaNosceaTabIcon, "La Noscea"); ImGui.SameLine();
+                CreateTabButton(Tab.BlackShroud, TextureSheet, IconData.ULDLibrary.BlackShroudTabIcon, "The Black Shroud"); ImGui.SameLine();
+                CreateTabButton(Tab.Thanalan, TextureSheet, IconData.ULDLibrary.ThanalanTabIcon, "Thanalan"); ImGui.SameLine();
+                CreateTabButton(Tab.Ishgard, TextureSheet, IconData.ULDLibrary.IshgardTabIcon, "Ishgard and Surrounding Areas"); ImGui.SameLine();
+                CreateTabButton(Tab.GyrAbania, TextureSheet, IconData.ULDLibrary.GyrAbaniaTabIcon, "Gyr Abania"); ImGui.SameLine();
+                CreateTabButton(Tab.FarEast, TextureSheet, IconData.ULDLibrary.FarEastTabIcon, "The Far East"); ImGui.SameLine();
+                CreateTabButton(Tab.IndependentNations, TextureSheet, IconData.ULDLibrary.IndependentNationsTabIcon, "Independent Nations"); ImGui.SameLine();
+                CreateTabButton(Tab.Ilsabard, TextureSheet, IconData.ULDLibrary.IlsabardTabIcon, "Ilsabard"); ImGui.SameLine();
+                CreateTabButton(Tab.Tural, TextureSheet, IconData.ULDLibrary.TuralTabIcon, "Tural"); ImGui.SameLine();
+                CreateTabButton(Tab.Norvrandt, TextureSheet, IconData.ULDLibrary.NorvrandtTabIcon, "Norvrandt"); ImGui.SameLine();
+                CreateTabButton(Tab.BeyondTheSource, TextureSheet, IconData.ULDLibrary.BeyondTheSourceTabIcon, "Beyond the Source"); ImGui.SameLine();
 
                 var FavouritesIconData = GetIconProperties(TextureSheet, IconData.ULDLibrary.FavouritesTabIcon);
                 ImGui.PushID($"{Tab.Favourites}");
                 if (ImGui.ImageButton(TextureSheet.Handle, new Vector2(FavouritesIconData.Width, FavouritesIconData.Height), new Vector2(FavouritesIconData.U0, FavouritesIconData.V0), new Vector2(FavouritesIconData.U1, FavouritesIconData.V1)))
                 {
+                    LocationManager.GetFavouriteLocations();
                     currentTab = Tab.Favourites;
-                    locationIDs = GetFavouriteLocations();
                 }
                 if (ImGui.IsItemHovered())
                 {
@@ -166,8 +183,7 @@ public partial class MainWindow : Window, IDisposable
                     ImGui.TableHeadersRow();
                     ImGui.PopStyleColor(2);
 
-                    DrawTopHeader();
-                    if (currentTab == Tab.All || currentTab == Tab.Residential)
+                    /*if (currentTab == Tab.All || currentTab == Tab.Residential)
                     {
                         var estates = new (TeleportInfo? info, string label)[]
                         {
@@ -175,24 +191,38 @@ public partial class MainWindow : Window, IDisposable
                             (TeleportManager.GetPersonalEstate(), "Estate (Personal)"),
                             (TeleportManager.GetFreeCompanyEstate(), "Estate (Free Company)")
                         };
-                        foreach (var (info, label) in estates)
+                        if(estates.Length > 0)
                         {
-                            if (info != null)
-                                PopulateEstateTable(info.Value, label);
-                            else
-                                BetterTeleport.Log.Error($"{label} is null");
+                            DrawHeader("Residential Areas");
+                            foreach (var (info, label) in estates)
+                            {
+                                if (info != null)
+                                    PopulateEstateTable(info.Value, label);
+                                else
+                                    BetterTeleport.Log.Error($"{label} is null");
+                            }
                         }
-                        if(currentTab != Tab.Residential)
-                        {
-                            DrawHeader("La Noscea");
-                        }
-                    }
+                    }*/
                     if (currentTab != Tab.Residential)
                     {
-                        foreach (uint i in locationIDs)
-                            PopulateTable(i);
+                        GetTabData();
+
+                        foreach (var category in currentTabData)
+                        {
+                            var attunedIds = category.ids.Where(TeleportManager.IsAttuned).ToList();
+                            if (attunedIds.Count == 0)
+                                continue;
+
+                            DrawHeader(category.Header);
+
+                            // Now draw only attuned ones
+                            foreach (var id in attunedIds)
+                            {
+                                PopulateTable(id);
+                            }
+                        }
                     }
-                    if(resetScrollbar)
+                    if (resetScrollbar)
                     {
                         ImGui.SetScrollY(0f);
                         resetScrollbar = false;
@@ -311,94 +341,60 @@ public partial class MainWindow : Window, IDisposable
                 {
                     SetupTeleport(i);
                 }
-                DrawHeaderInNextRow(i);
             }
         }
     }
 
     private void PopulateEstateTable(TeleportInfo info, string estateType)
     {
-        var teleportTexture = Icons.ConvertToTextureWrap(BetterTeleport.TeleportTexture);
-        if (teleportTexture == null)
-            return;
-
-        ImGui.TableNextRow(ImGuiTableRowFlags.None, 32f);
-
-        // Selectable row
-        ImGui.TableSetColumnIndex(0);
-        bool selected = ImGui.Selectable($"##estate_{info.AetheryteId}_{info.SubIndex}", false, ImGuiSelectableFlags.SpanAllColumns, new Vector2(825, 25f));
-
-        // Icon column
-        ImGui.TableSetColumnIndex(2);
-        var locationData = IconData.ULDLibrary.MiscLocationTableIcon;
-        if (locationData != null)
+        if (TeleportManager.IsAttuned(info.AetheryteId))
         {
-            ApplyOffset(0, 2);
-            ImGui.PushID($"icon_{info.AetheryteId}_{info.SubIndex}");
-            var locationUVs = Icons.ULDSprite(teleportTexture, locationData.X, locationData.Y, locationData.Width, locationData.Height);
-            ImGui.Image(teleportTexture.Handle, new Vector2(locationUVs.Width, locationUVs.Height), new Vector2(locationUVs.U0, locationUVs.V0), new Vector2(locationUVs.U1, locationUVs.V1));
-            ImGui.PopID();
-        }
+            var teleportTexture = Icons.ConvertToTextureWrap(BetterTeleport.TeleportTexture);
+            if (teleportTexture == null)
+                return;
 
-        // Region column
-        ImGui.TableSetColumnIndex(3);
-        ImGui.Text(Aetheryte.AetheryteRegion((uint)info.AetheryteId).ToString());
+            ImGui.TableNextRow(ImGuiTableRowFlags.None, 32f);
 
-        // Estate type column
-        ImGui.TableSetColumnIndex(4);
-        ImGui.Text(estateType);
+            // Selectable row
+            ImGui.TableSetColumnIndex(0);
+            bool selected = ImGui.Selectable($"##estate_{info.AetheryteId}_{info.SubIndex}", false, ImGuiSelectableFlags.SpanAllColumns, new Vector2(825, 25f));
 
-        // Gil cost column
-        ImGui.TableSetColumnIndex(6);
-        ImGui.Text(info.GilCost.ToString("N0") + $"{(char)SeIconChar.Gil}");
+            // Icon column
+            ImGui.TableSetColumnIndex(2);
+            var locationData = IconData.ULDLibrary.MiscLocationTableIcon;
+            if (locationData != null)
+            {
+                ApplyOffset(0, 2);
+                ImGui.PushID($"icon_{info.AetheryteId}_{info.SubIndex}");
+                var locationUVs = Icons.ULDSprite(teleportTexture, locationData.X, locationData.Y, locationData.Width, locationData.Height);
+                ImGui.Image(teleportTexture.Handle, new Vector2(locationUVs.Width, locationUVs.Height), new Vector2(locationUVs.U0, locationUVs.V0), new Vector2(locationUVs.U1, locationUVs.V1));
+                ImGui.PopID();
+            }
 
-        // Teleport on click
-        if (selected)
-        {
-            TeleportManager.TeleportEstate(info);
-            plugin.ToggleMainUi();
+            // Region column
+            ImGui.TableSetColumnIndex(3);
+            ImGui.Text(Aetheryte.AetheryteRegion((uint)info.AetheryteId).ToString());
+
+            // Estate type column
+            ImGui.TableSetColumnIndex(4);
+            ImGui.Text(estateType);
+
+            // Gil cost column
+            ImGui.TableSetColumnIndex(6);
+            ImGui.Text(info.GilCost.ToString("N0") + $"{(char)SeIconChar.Gil}");
+
+            // Teleport on click
+            if (selected)
+            {
+                TeleportManager.TeleportEstate(info);
+                plugin.ToggleMainUi();
+            }
         }
     }
     private IconProperties GetIconProperties(IDalamudTextureWrap textureSheet, ULDLibraryData iconData)
     {
         var iconProperties = Icons.ULDSprite(textureSheet, iconData.X, iconData.Y, iconData.Width, iconData.Height);
         return iconProperties;
-    }
-    private void CreateTabButton(Tab selectedTab, IDalamudTextureWrap textureSheet, ULDLibraryData iconData, uint[] idLocation, string tooltip)
-    {
-        var iconProperties = GetIconProperties(textureSheet, iconData);
-        if (textureSheet != null)
-        {
-            ImGui.PushID($"##{selectedTab}");
-            if (ImGui.ImageButton(textureSheet.Handle, new Vector2(iconProperties.Width, iconProperties.Height), new Vector2(iconProperties.U0, iconProperties.V0), new Vector2(iconProperties.U1, iconProperties.V1)))
-            {
-                currentTab = selectedTab;
-                locationIDs = idLocation;
-                currentContentDropdownItem = "";
-                resetScrollbar = true;
-            }
-            if (ImGui.IsItemHovered())
-            {
-                ImGui.BeginTooltip();
-                ImGui.Text(tooltip);
-                ImGui.EndTooltip();
-            }
-        }
-    }
-
-    private uint[] GetFavouriteLocations()
-    {
-        List<uint> favouriteIDList = new List<uint>();
-        foreach (uint i in LocationManager.locationIDs.AllIDs)
-        {
-            var IsFavourite = Aetheryte.AetheryteFavourite(i);
-            if (IsFavourite != 0)
-            {
-                favouriteIDList.Add(i);
-            }
-        }
-        uint[] favouriteIDs = favouriteIDList.ToArray();
-        return favouriteIDs;
     }
 
     private void SetupTeleport(uint id)
@@ -427,7 +423,6 @@ public partial class MainWindow : Window, IDisposable
     {
         base.OnOpen();
         currentTab = Tab.All;
-        locationIDs = LocationManager.locationIDs.AllIDs;
         resetScrollbar = true;
     }
 }

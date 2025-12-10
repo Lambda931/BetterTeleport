@@ -40,14 +40,7 @@ public static unsafe class TeleportManager
     public static TeleportInfo? GetApartmentLocation()
     {
         UpdateAvailableTeleports();
-
         var apartment = AvailableTeleports.FirstOrDefault(tp => tp.IsApartment);
-        if (apartment.AetheryteId == 0)
-        {
-            BetterTeleport.Log.Warning("No owned apartment found.");
-            return apartment;
-        }
-
         return apartment;
     }
 
@@ -55,11 +48,6 @@ public static unsafe class TeleportManager
     {
         UpdateAvailableTeleports();
         var estate = AvailableTeleports.FirstOrDefault(tp => tp.EstateType == EstateType.PersonalEstate);
-        if (estate.AetheryteId == 0)
-        {
-            BetterTeleport.Log.Warning("No owned personal estate found.");
-            return estate;
-        }
         return estate;
     }
 
@@ -67,11 +55,6 @@ public static unsafe class TeleportManager
     {
         UpdateAvailableTeleports();
         var fcEstate = AvailableTeleports.FirstOrDefault(tp => tp.EstateType == EstateType.FreeCompanyEstate);
-        if (fcEstate.AetheryteId == 0)
-        {
-            BetterTeleport.Log.Warning("No Free Company estate found.");
-            return null;
-        }
         return fcEstate;
     }
 
