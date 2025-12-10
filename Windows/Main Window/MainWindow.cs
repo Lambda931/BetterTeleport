@@ -15,12 +15,6 @@ public partial class MainWindow : Window, IDisposable
     private readonly BetterTeleport plugin;
     private uint[] locationIDs = LocationManager.locationIDs.AllIDs;
     public static Icons? Icons;
-    public enum Tab { 
-        All, Residential, LaNoscea, BlackShroud, Thanalan, Ishgard, GyrAbania, FarEast, IndependentNations, Ilsabard, Tural, 
-        Norvrandt, BeyondTheSource, Favourites, MarketBoards, SummoningBells, AlliedSocieties, CustomDeliveries, DeepDungeons, 
-        RestorationContent, FieldOperations 
-    };
-    public static Tab currentTab = Tab.All;
 
     string currentContentDropdownItem = "";
     string[] contentDropdownitems = { "Market Boards", "Summoning Bells", "Allied Societies", "Custom Deliveries",
@@ -41,7 +35,6 @@ public partial class MainWindow : Window, IDisposable
     }
 
     public void Dispose() { }
-
 
     public override void Draw()
     {
@@ -395,106 +388,6 @@ public partial class MainWindow : Window, IDisposable
             }
         }
     }
-    private void SetDropdownEnum(string item)
-    {
-        if(item == "Market Boards")
-        {
-            currentTab = Tab.MarketBoards;
-        }
-        if (item == "Summoning Bells")
-        {
-            currentTab = Tab.SummoningBells;
-        }
-        if (item == "Allied Societies")
-        {
-            currentTab = Tab.AlliedSocieties;
-        }
-        if (item == "Custom Deliveries")
-        {
-            currentTab = Tab.CustomDeliveries;
-        }
-        if (item == "Deep Dungeons")
-        {
-            currentTab = Tab.DeepDungeons;
-        }
-        if (item == "Restoration Content")
-        {
-            currentTab = Tab.RestorationContent;
-        }
-        if (item == "Field Operations")
-        {
-            currentTab = Tab.FieldOperations;
-        }
-    }
-    private void DropdownSelection(string selection)
-    {
-        string[] contentDropdownitems = { "Market Boards", "Allied Societies", "Custom Deliveries", "Deep Dungeons" };
-        switch (selection)
-        {
-            case "Market Boards":
-                locationIDs = LocationManager.locationIDs.MarketBoardIDs;
-                break;
-            case "Summoning Bells":
-                locationIDs = LocationManager.locationIDs.SummoningBellIDs;
-                break;
-            case "Allied Societies":
-                locationIDs = LocationManager.locationIDs.AlliedSocietyIDs;
-                break;
-            case "Custom Deliveries":
-                locationIDs = LocationManager.locationIDs.CustomDeliveriesIDs;
-                break;
-            case "Deep Dungeons":
-                locationIDs = LocationManager.locationIDs.DeepDungeonIDs;
-                break;
-            case "Restoration Content":
-                locationIDs = LocationManager.locationIDs.RestorationContentIDs;
-                break;
-            case "Field Operations":
-                locationIDs = LocationManager.locationIDs.FieldOperationIDs;
-                break;
-        }
-    }
-
-    public static void DrawTableSectionHeader(string text, IDalamudTextureWrap bgImage, Vector4 textColor)
-    {
-        ImGui.TableNextRow();
-        ImGui.TableSetColumnIndex(0);
-
-        var drawList = ImGui.GetWindowDrawList();
-
-        Vector2 start = ImGui.GetCursorScreenPos();
-        float fullWidth = ImGui.GetContentRegionAvail().X;
-        float lineHeight = ImGui.GetTextLineHeight();
-        float paddingY = ImGui.GetStyle().FramePadding.Y;
-        float totalHeight = lineHeight + paddingY * 2;
-
-        drawList.PopClipRect();
-
-        var tableClipMin = drawList.GetClipRectMin();
-        var tableClipMax = drawList.GetClipRectMax();
-        drawList.PushClipRect(tableClipMin, tableClipMax, true);
-
-        //drawList.AddImage(bgImage.Handle, new Vector2(0, 0), new Vector2(0, 0));
-
-        /*drawList.AddRectFilled(
-            start,
-            new Vector2(start.X + fullWidth, start.Y + totalHeight),
-            ImGui.GetColorU32(bgColor)
-        );*/
-
-        drawList.AddText(
-            new Vector2(start.X + 6, start.Y + paddingY),
-            ImGui.GetColorU32(textColor),
-            text
-        );
-        drawList.PopClipRect();
-
-        var cellMin = ImGui.GetCursorScreenPos();
-        var cellMax = new Vector2(cellMin.X + fullWidth, cellMin.Y + totalHeight);
-        drawList.PushClipRect(cellMin, cellMax, true);
-
-        ImGui.Dummy(new Vector2(fullWidth, totalHeight + 2));
-    }
 
     private uint[] GetFavouriteLocations()
     {
@@ -525,21 +418,6 @@ public partial class MainWindow : Window, IDisposable
         float y = ImGui.GetCursorPosY();
         ImGui.SetCursorPosX(x + xOffset);
         ImGui.SetCursorPosY(y + yOffset);
-    }
-
-    private bool FilterContentByCategory(ContentInfo entry)
-    {
-        return currentTab switch
-        {
-            Tab.MarketBoards => entry.ContentCategory == ContentInfo.Categories.MarketBoard,
-            Tab.SummoningBells => entry.ContentCategory == ContentInfo.Categories.SummoningBell,
-            Tab.AlliedSocieties => entry.ContentCategory == ContentInfo.Categories.AlliedSocieties,
-            Tab.CustomDeliveries => entry.ContentCategory == ContentInfo.Categories.CustomDeliveries,
-            Tab.DeepDungeons => entry.ContentCategory == ContentInfo.Categories.DeepDungeons,
-            Tab.RestorationContent => entry.ContentCategory == ContentInfo.Categories.RestorationContent,
-            Tab.FieldOperations => entry.ContentCategory == ContentInfo.Categories.FieldOperations,
-            _ => true
-        };
     }
 
     public override void OnClose()
