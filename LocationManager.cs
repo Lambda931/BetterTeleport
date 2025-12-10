@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace BetterTeleportPlugin;
@@ -22,9 +23,12 @@ public class LocationIDs
 
     //Dropdown
     public required uint[] MarketBoardIDs { get; set; }
+    public required uint[] SummoningBellIDs { get; set; }
     public required uint[] AlliedSocietyIDs { get; set; }
     public required uint[] CustomDeliveriesIDs { get; set; }
     public required uint[] DeepDungeonIDs { get; set; }
+    public required uint[] RestorationContentIDs { get; set; }
+    public required uint[] FieldOperationIDs { get; set; }
 }
 
 public class LocationManager
@@ -51,10 +55,13 @@ public class LocationManager
         OtherIDs = new uint[] { },
         FavouriteIDs = new uint[] { },
 
-        MarketBoardIDs = new uint[] { 2, 8, 9, 70, 111, 133, 182, 216 },
+        MarketBoardIDs = new uint[] { 8, 2, 9, 70, 111, 133, 182, 216 },
+        SummoningBellIDs = new uint[] { 8, 2, 24, 9, 62, 70, 75, 104, 111, 127, 133, 134, 182, 183, 216, 217 },
         AlliedSocietyIDs = new uint[] { 19, 4, 16, 14, 7, 73, 77, 79, 105, 99, 128, 144, 143, 136, 169, 175, 181, 238, 206, 201 },
         CustomDeliveriesIDs = new uint[] { 75, 104, 105, 134, 70, 182, 144, 167, 208 },
-        DeepDungeonIDs = new uint[] { 5, 106, 24, 146 }
+        DeepDungeonIDs = new uint[] { 5, 106, 24, 146 },
+        RestorationContentIDs = new uint[] { 127, 70, 10, 175 },
+        FieldOperationIDs = new uint[] { 111, 127, 216 }
     };
 
     public static void GetCurrentResidentialIDs()

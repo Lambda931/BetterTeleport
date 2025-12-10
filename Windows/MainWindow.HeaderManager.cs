@@ -56,6 +56,9 @@ public partial class MainWindow
             case Tab.MarketBoards:
                 DrawTableSectionHeader("Market Boards", headerBackground, headerTextColour);
                 break;
+            case Tab.SummoningBells:
+                DrawTableSectionHeader("Summoning Bells", headerBackground, headerTextColour);
+                break;
             case Tab.AlliedSocieties:
                 DrawTableSectionHeader("A Realm Reborn", headerBackground, headerTextColour);
                 break;
@@ -64,6 +67,12 @@ public partial class MainWindow
                 break;
             case Tab.DeepDungeons:
                 DrawTableSectionHeader("Deep Dungeons", headerBackground, headerTextColour);
+                break;
+            case Tab.RestorationContent:
+                DrawTableSectionHeader("Restoration Content", headerBackground, headerTextColour);
+                break;
+            case Tab.FieldOperations:
+                DrawTableSectionHeader("Field Operations", headerBackground, headerTextColour);
                 break;
         }
     }

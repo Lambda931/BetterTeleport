@@ -57,16 +57,19 @@ public class IconData
         OmicronAlliedSocietyIcon = 65093, LoporritAlliedSocietyIcon = 65101, PelupeluAlliedSocietyIcon = 65113,
         MamoolJaAlliedSocietyIcon = 65115, YokHuyAlliedSocietyIcon = 65131,
 
-        DomanRestorationIcon = 60969,
+        DomanReconstructionIcon = 60969,
         IshgardianRestorationIcon = 60993,
         IslandSanctuaryIcon = 63970,
         CosmicExplorationIcon = 63895,
 
         DeepDungeonIcon = 63971,
+        FieldOperationsIcon = 63972,
         CustomDeliveriesIcon = 60927,
 
         GoldSaucerIcon = 60848,
-        WonderousTailsIcon = 60926
+        WonderousTailsIcon = 60926,
+        PvpZoneIcon = 60459,
+        MateriaTransmutationIcon = 60910
     };
 
     public static readonly Dictionary<uint, ULDLibraryData> IconLookup = new()
@@ -167,13 +170,14 @@ public class ULDLibrary
 
 public class IconLibrary
 {
+    #region Misc
     public required int GilIcon { get; set; }   
     public required int MarketBoardIcon { get; set; }
     public required int SummoningBellIcon { get; set; }
     public required int HousingTabIcon { get; set; }
+    #endregion
 
-    //Allied Society Icons
-
+    #region Allied Societies
     public required int AmaljaaAlliedSocietyIcon { get; set; }
     public required int SylphAlliedSocietyIcon { get; set; }
     public required int KoboldAlliedSocietyIcon { get; set; }
@@ -194,17 +198,26 @@ public class IconLibrary
     public required int PelupeluAlliedSocietyIcon { get; set; }
     public required int MamoolJaAlliedSocietyIcon { get; set; }
     public required int YokHuyAlliedSocietyIcon { get; set; }
+    #endregion
 
-    // Unique Content Icons
-    public required int DeepDungeonIcon { get; set; }
-    public required int CustomDeliveriesIcon { get; set; }
-    public required int DomanRestorationIcon { get; set; }
+    #region Restoration Content
+    public required int DomanReconstructionIcon { get; set; }
     public required int IshgardianRestorationIcon { get; set; }
     public required int IslandSanctuaryIcon { get; set; }
     public required int CosmicExplorationIcon { get; set; }
+    #endregion
+
+
+    #region General Content
+    public required int DeepDungeonIcon { get; set; }
+    public required int FieldOperationsIcon { get; set; }
+    public required int CustomDeliveriesIcon { get; set; }
+    
     public required int GoldSaucerIcon { get; set; }
     public required int WonderousTailsIcon { get; set; }
-
+    public required int PvpZoneIcon { get; set; }
+    public required int MateriaTransmutationIcon { get; set; }
+    #endregion
 }
 
 public class ULDLibraryData()

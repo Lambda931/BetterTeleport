@@ -16,16 +16,15 @@ public partial class MainWindow : Window, IDisposable
     private uint[] locationIDs = LocationManager.locationIDs.AllIDs;
     public static Icons? Icons;
     public enum Tab { 
-        All, Residential, LaNoscea, BlackShroud, Thanalan, Ishgard, 
-        GyrAbania, FarEast, IndependentNations, Ilsabard, 
-        Tural, Norvrandt, BeyondTheSource, Favourites, 
-        MarketBoards, AlliedSocieties, CustomDeliveries, 
-        DeepDungeons 
+        All, Residential, LaNoscea, BlackShroud, Thanalan, Ishgard, GyrAbania, FarEast, IndependentNations, Ilsabard, Tural, 
+        Norvrandt, BeyondTheSource, Favourites, MarketBoards, SummoningBells, AlliedSocieties, CustomDeliveries, DeepDungeons, 
+        RestorationContent, FieldOperations 
     };
     public static Tab currentTab = Tab.All;
 
     string currentContentDropdownItem = "";
-    string[] contentDropdownitems = { "Market Boards", "Allied Societies", "Custom Deliveries", "Deep Dungeons" };
+    string[] contentDropdownitems = { "Market Boards", "Summoning Bells", "Allied Societies", "Custom Deliveries",
+                                        "Deep Dungeons", "Restoration Content", "Field Operations" };
     
     private bool resetScrollbar;
 
@@ -121,7 +120,7 @@ public partial class MainWindow : Window, IDisposable
             ImGui.Spacing();
 
             //Draw Content Dropdown
-            ImGui.SetNextItemWidth(165);
+            ImGui.SetNextItemWidth(180);
             if (ImGui.BeginCombo("Filter by Content", currentContentDropdownItem))
             {
                 foreach (var item in contentDropdownitems)
@@ -400,6 +399,10 @@ public partial class MainWindow : Window, IDisposable
         {
             currentTab = Tab.MarketBoards;
         }
+        if (item == "Summoning Bells")
+        {
+            currentTab = Tab.SummoningBells;
+        }
         if (item == "Allied Societies")
         {
             currentTab = Tab.AlliedSocieties;
@@ -412,6 +415,14 @@ public partial class MainWindow : Window, IDisposable
         {
             currentTab = Tab.DeepDungeons;
         }
+        if (item == "Restoration Content")
+        {
+            currentTab = Tab.RestorationContent;
+        }
+        if (item == "Field Operations")
+        {
+            currentTab = Tab.FieldOperations;
+        }
     }
     private void DropdownSelection(string selection)
     {
@@ -421,6 +432,9 @@ public partial class MainWindow : Window, IDisposable
             case "Market Boards":
                 locationIDs = LocationManager.locationIDs.MarketBoardIDs;
                 break;
+            case "Summoning Bells":
+                locationIDs = LocationManager.locationIDs.SummoningBellIDs;
+                break;
             case "Allied Societies":
                 locationIDs = LocationManager.locationIDs.AlliedSocietyIDs;
                 break;
@@ -429,6 +443,12 @@ public partial class MainWindow : Window, IDisposable
                 break;
             case "Deep Dungeons":
                 locationIDs = LocationManager.locationIDs.DeepDungeonIDs;
+                break;
+            case "Restoration Content":
+                locationIDs = LocationManager.locationIDs.RestorationContentIDs;
+                break;
+            case "Field Operations":
+                locationIDs = LocationManager.locationIDs.FieldOperationIDs;
                 break;
         }
     }
@@ -510,9 +530,12 @@ public partial class MainWindow : Window, IDisposable
         return currentTab switch
         {
             Tab.MarketBoards => entry.ContentCategory == ContentInfo.Categories.MarketBoard,
+            Tab.SummoningBells => entry.ContentCategory == ContentInfo.Categories.SummoningBell,
             Tab.AlliedSocieties => entry.ContentCategory == ContentInfo.Categories.AlliedSocieties,
             Tab.CustomDeliveries => entry.ContentCategory == ContentInfo.Categories.CustomDeliveries,
             Tab.DeepDungeons => entry.ContentCategory == ContentInfo.Categories.DeepDungeons,
+            Tab.RestorationContent => entry.ContentCategory == ContentInfo.Categories.RestorationContent,
+            Tab.FieldOperations => entry.ContentCategory == ContentInfo.Categories.FieldOperations,
             _ => true
         };
     }
