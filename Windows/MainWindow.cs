@@ -55,6 +55,7 @@ public partial class MainWindow : Window, IDisposable
                 currentTab = Tab.All;
                 locationIDs = LocationManager.locationIDs.AllIDs;
                 currentContentDropdownItem = "";
+                resetScrollbar = true;
             }
             ImGui.SameLine();
 
@@ -384,6 +385,7 @@ public partial class MainWindow : Window, IDisposable
                 currentTab = selectedTab;
                 locationIDs = idLocation;
                 currentContentDropdownItem = "";
+                resetScrollbar = true;
             }
             if (ImGui.IsItemHovered())
             {

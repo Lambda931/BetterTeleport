@@ -65,6 +65,8 @@ public class ContentManager
     /* Outer La Noscea: Camp Overlook   */ {16,  [ContentInfo(Categories.AlliedSocieties, "Kobolds Allied Society Quests", Icons.KoboldAlliedSocietyIcon)]},
     /* Southern Thanalan: Lil Ala Mhigo */ {19,  [ContentInfo(Categories.AlliedSocieties, "Amalj'aa Allied Society Quests", Icons.AmaljaaAlliedSocietyIcon)]},
     /* Mor Dhona: Revenant's Toll       */ {24,  [DeepDungeon("Deep Dungeon: Eureka Orthos"), SummoningBell()]},
+    /* Central Than: Blk Brush Station  */ {53,  [ContentInfo(Categories.Misc, "Materia Transmutation", Icons.MateriaTransmutationIcon, 30, -2, -3)]},
+    /* Wolves' Den Pier                 */ {55,  [ContentInfo(Categories.Misc, "PVP Zone", Icons.PvpZoneIcon, 30, -2, -3)]},
     /* The Gold Saucer                  */ {62,  [ContentInfo(Categories.Misc, "The Gold Saucer", Icons.GoldSaucerIcon), SummoningBell()]},
 
     // ----------- Heavensward -----------
