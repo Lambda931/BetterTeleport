@@ -86,7 +86,7 @@ public static unsafe class TeleportManager
         if(localPlayer == null)
 
         {
-            return true;
+            return false;
         }
 
         var endPtr = teleport->TeleportList.Last;
@@ -95,7 +95,7 @@ public static unsafe class TeleportManager
             if (it->AetheryteId == aetheryte)
                 return true;
         }
-
+        BetterTeleport.Log.Error($"{aetheryte} is not attuned");
         return false;
     }
 
