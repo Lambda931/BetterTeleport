@@ -70,7 +70,6 @@ public sealed class BetterTeleport : IDalamudPlugin
             return;
         InitializeTextures();
         texturesInitialized = true;
-        ClientState.Login += OnLogin;
         Framework.Update -= Framework_Update;
     }
 
@@ -91,17 +90,6 @@ public sealed class BetterTeleport : IDalamudPlugin
         atk->Close(true);
         teleportWindowOpen = !teleportWindowOpen;
         MainWindow.IsOpen = teleportWindowOpen;
-    }
-    public static unsafe void DebugOpenOfficialWindow(AddonArgs args)
-    {
-        if (args.Addon == nint.Zero)
-            return;
-
-        var atk = (AtkUnitBase*)((IntPtr)args.Addon).ToPointer();
-        if (atk == null)
-            return;
-
-        atk->Open(0);;
     }
 
     public void Dispose()
@@ -148,9 +136,4 @@ public sealed class BetterTeleport : IDalamudPlugin
             Log.Error(ex, "Exception while initializing Teleport texture.");
         }
     }
-    private void OnLogin()
-    {
-        //TeleportManager.RequestUpdate();
-    }
-    
 }
