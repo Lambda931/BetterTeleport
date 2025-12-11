@@ -22,7 +22,7 @@ public class Icons
 {
     
 
-    public static IconProperties ULDSprite(IDalamudTextureWrap tex, int x, int y, int width, int height)
+    public static IconProperties? ULDSprite(IDalamudTextureWrap tex, int x, int y, int width, int height)
     {
         float U0 = (float) x / tex.Width;
         float V0 = (float) y / tex.Height;
@@ -40,7 +40,7 @@ public class Icons
         }
     }
 
-    public static ISharedImmediateTexture GetTextureFromULDPath(string path)
+    public static ISharedImmediateTexture? GetTextureFromULDPath(string path)
     {
         var image = BetterTeleport.TextureProvider.GetFromGame(path);
         if (image != null)
@@ -52,7 +52,7 @@ public class Icons
             return null;
         }
     }
-    public static ISharedImmediateTexture GetTextureFromIconID(int id)
+    public static ISharedImmediateTexture? GetTextureFromIconID(int id)
     {
         var image = BetterTeleport.TextureProvider.GetFromGameIcon(id);
         if (image != null)
@@ -65,7 +65,7 @@ public class Icons
         }
     }
 
-    public static IDalamudTextureWrap ConvertToTextureWrap(ISharedImmediateTexture tex)
+    public static IDalamudTextureWrap? ConvertToTextureWrap(ISharedImmediateTexture tex)
     {
         tex.TryGetWrap(out var wrap, out Exception? exception);
         if (tex != null && wrap != null)
@@ -86,12 +86,16 @@ public class Icons
         return icon;
     }
 
-    public IconProperties CreateTableIcon(uint iconID, uint id, ULDLibraryData iconData, ISharedImmediateTexture texture)
+    public IconProperties? CreateTableIcon(uint iconID, uint id, ULDLibraryData iconData, ISharedImmediateTexture texture)
     {
         if (iconID == id)
         {
             var sprite = ULDSprite(ConvertToTextureWrap(texture), iconData.X, iconData.Y, iconData.Width, iconData.Height);
-            return sprite;
+            if(sprite != null)
+            {
+                return sprite;
+            }
+            return null;
         }
         else
         {

@@ -54,7 +54,7 @@ public partial class MainWindow : Window, IDisposable
 
             if (TextureSheet != null)
             {
-                /*var estates = new (TeleportInfo? info, string label)[]
+                var estates = new (TeleportInfo? info, string label)[]
                 {
                     (TeleportManager.GetApartmentLocation(), "Apartment"),
                     (TeleportManager.GetPersonalEstate(), "Estate (Personal)"),
@@ -63,9 +63,10 @@ public partial class MainWindow : Window, IDisposable
                 var estateValid = false;
                 foreach(var estate in estates)
                 {
-                    if(estate.info.HasValue)
+                    if(estate.info.Value.AetheryteId != 0)
                     {
                         estateValid = true;
+                        BetterTeleport.Log.Debug(estate.info.Value.AetheryteId.ToString());
                     }
                 }
                 if(estateValid)
@@ -84,7 +85,7 @@ public partial class MainWindow : Window, IDisposable
                             ImGui.EndTooltip();
                         }
                     }
-                }*/
+                }
 
                 ImGui.SameLine();
                 CreateTabButton(Tab.LaNoscea, TextureSheet, IconData.ULDLibrary.LaNosceaTabIcon, "La Noscea"); ImGui.SameLine();
@@ -140,8 +141,7 @@ public partial class MainWindow : Window, IDisposable
                     if (ImGui.Selectable(item, isSelected))
                     {
                         currentContentDropdownItem = item;
-                        DropdownSelection(item);
-                        SetDropdownEnum(item);
+                        SetDropdownTab(item);
                     }
                     if (isSelected)
                     {
@@ -183,7 +183,7 @@ public partial class MainWindow : Window, IDisposable
                     ImGui.TableHeadersRow();
                     ImGui.PopStyleColor(2);
 
-                    /*if (currentTab == Tab.All || currentTab == Tab.Residential)
+                    if (currentTab == Tab.All || currentTab == Tab.Residential)
                     {
                         var estates = new (TeleportInfo? info, string label)[]
                         {
@@ -191,7 +191,16 @@ public partial class MainWindow : Window, IDisposable
                             (TeleportManager.GetPersonalEstate(), "Estate (Personal)"),
                             (TeleportManager.GetFreeCompanyEstate(), "Estate (Free Company)")
                         };
-                        if(estates.Length > 0)
+                        var estateValid = false;
+                        foreach (var estate in estates)
+                        {
+                            if (estate.info.Value.AetheryteId != 0)
+                            {
+                                estateValid = true;
+                                BetterTeleport.Log.Debug(estate.info.Value.AetheryteId.ToString());
+                            }
+                        }
+                        if (estateValid)
                         {
                             DrawHeader("Residential Areas");
                             foreach (var (info, label) in estates)
@@ -202,7 +211,7 @@ public partial class MainWindow : Window, IDisposable
                                     BetterTeleport.Log.Error($"{label} is null");
                             }
                         }
-                    }*/
+                    }
                     if (currentTab != Tab.Residential)
                     {
                         GetTabData();

@@ -29,7 +29,12 @@ public class LocationIDs
     //Dropdown
     public required uint[] MarketBoardIDs { get; set; }
     public required uint[] SummoningBellIDs { get; set; }
-    public required uint[] AlliedSocietyIDs { get; set; }
+    public required uint[] AlliedSocietyARRIDs { get; set; }
+    public required uint[] AlliedSocietyHeavenswardIDs { get; set; }
+    public required uint[] AlliedSocietyStormbloodIDs { get; set; }
+    public required uint[] AlliedSocietyShadowbringersIDs { get; set; }
+    public required uint[] AlliedSocietyEndwalkerIDs { get; set; }
+    public required uint[] AlliedSocietyDawntrailIDs { get; set; }
     public required uint[] CustomDeliveriesIDs { get; set; }
     public required uint[] DeepDungeonIDs { get; set; }
     public required uint[] RestorationContentIDs { get; set; }
@@ -71,7 +76,12 @@ public class LocationManager
 
         MarketBoardIDs = new uint[] { 8, 2, 9, 70, 111, 133, 182, 216 },
         SummoningBellIDs = new uint[] { 8, 2, 24, 9, 62, 70, 75, 104, 111, 127, 133, 134, 182, 183, 216, 217 },
-        AlliedSocietyIDs = new uint[] { 19, 4, 16, 14, 7, 73, 77, 79, 105, 99, 128, 144, 143, 136, 169, 175, 181, 238, 206, 201 },
+        AlliedSocietyARRIDs = new uint[] { 19, 4, 16, 14, 7, },
+        AlliedSocietyHeavenswardIDs = new uint[] { 73, 77, 79, },
+        AlliedSocietyStormbloodIDs = new uint[] { 105, 99, 128, },
+        AlliedSocietyShadowbringersIDs = new uint[] { 144, 143, 136, },
+        AlliedSocietyEndwalkerIDs = new uint[] { 169, 175, 181, },
+        AlliedSocietyDawntrailIDs = new uint[] { 238, 206, 201 },
         CustomDeliveriesIDs = new uint[] { 75, 104, 105, 134, 70, 182, 144, 167, 208 },
         DeepDungeonIDs = new uint[] { 5, 106, 24, 146 },
         RestorationContentIDs = new uint[] { 127, 70, 10, 175 },
@@ -99,26 +109,38 @@ public class LocationManager
                                           new SubCategories {Header = "The World Unsundered", ids = locationIDs.WorldUnsunderedIDs},
                                           new SubCategories {Header = "Unlost World", ids = locationIDs.UnlostWorldIDs},] },
 
-        {TabLocation.LaNoscea,           [new SubCategories {Header = "La Noscea", ids = locationIDs.LaNosceaIDs}] },
-        {TabLocation.BlackShroud,        [new SubCategories {Header = "The Black Shroud", ids = locationIDs.BlackShroudIDs}] },
-        {TabLocation.Thanalan,           [new SubCategories {Header = "Thanalan", ids = locationIDs.ThanalanIDs}] },
+        {TabLocation.LaNoscea,           [new SubCategories {Header = "La Noscea", ids = locationIDs.LaNosceaIDs}]},
+        {TabLocation.BlackShroud,        [new SubCategories {Header = "The Black Shroud", ids = locationIDs.BlackShroudIDs}]},
+        {TabLocation.Thanalan,           [new SubCategories {Header = "Thanalan", ids = locationIDs.ThanalanIDs}]},
         {TabLocation.Ishgard,            [new SubCategories {Header = "Coerthas", ids = locationIDs.CoerthasIDs},
                                           new SubCategories {Header = "Abalathia's Spine", ids = locationIDs.AbalathiasSpineIDs},
-                                          new SubCategories {Header = "Dravania", ids = locationIDs.DravaniaIDs},] },
-        {TabLocation.GyrAbania,          [new SubCategories {Header = "Gyr Abania", ids = locationIDs.GyrAbaniaIDs}] },
+                                          new SubCategories {Header = "Dravania", ids = locationIDs.DravaniaIDs}]},
+        {TabLocation.GyrAbania,          [new SubCategories {Header = "Gyr Abania", ids = locationIDs.GyrAbaniaIDs}]},
         {TabLocation.FarEast,            [new SubCategories {Header = "Hingashi", ids = locationIDs.HingashiIDs},
-                                          new SubCategories {Header = "Othard", ids = locationIDs.OthardIDs},] },
+                                          new SubCategories {Header = "Othard", ids = locationIDs.OthardIDs}]},
         {TabLocation.IndependentNations, [new SubCategories {Header = "Mor Dhona", ids = locationIDs.MorDhonaIDs},
-                                          new SubCategories {Header = "The Northern Empty", ids = locationIDs.NorthernEmptyIDs},] },
-        {TabLocation.Ilsabard,           [new SubCategories {Header = "Ilsabard", ids = locationIDs.IlsabardIDs},] },
+                                          new SubCategories {Header = "The Northern Empty", ids = locationIDs.NorthernEmptyIDs}]},
+        {TabLocation.Ilsabard,           [new SubCategories {Header = "Ilsabard", ids = locationIDs.IlsabardIDs}]},
         {TabLocation.Tural,              [new SubCategories {Header = "Yok Tural", ids = locationIDs.YokTuralIDs},
-                                          new SubCategories {Header = "Xak Tural", ids = locationIDs.XakTuralIDs},] },
-        {TabLocation.Norvrandt,          [new SubCategories {Header = "Norvrandt", ids = locationIDs.NorvrandtIDs}] },
+                                          new SubCategories {Header = "Xak Tural", ids = locationIDs.XakTuralIDs}]},
+        {TabLocation.Norvrandt,          [new SubCategories {Header = "Norvrandt", ids = locationIDs.NorvrandtIDs}]},
         {TabLocation.BeyondTheSource,    [new SubCategories {Header = "The Sea of Stars", ids = locationIDs.SeaOfStarsIDs},
                                           new SubCategories {Header = "The World Unsundered", ids = locationIDs.WorldUnsunderedIDs},
-                                          new SubCategories {Header = "Unlost World", ids = locationIDs.UnlostWorldIDs}] },
+                                          new SubCategories {Header = "Unlost World", ids = locationIDs.UnlostWorldIDs}]},
+        {TabLocation.Favourites,         [new SubCategories {Header = "Favourites", ids = locationIDs.FavouriteIDs}]},
 
-        {TabLocation.Favourites,        [new SubCategories {Header = "Favourites", ids = locationIDs.FavouriteIDs}] },
+        {TabLocation.MarketBoards,       [new SubCategories {Header = "Market Boards", ids = locationIDs.MarketBoardIDs}]},
+        {TabLocation.SummoningBells,     [new SubCategories {Header = "Summoning Bells", ids = locationIDs.SummoningBellIDs}]},
+        {TabLocation.AlliedSocieties,    [new SubCategories {Header = "A Realm Reborn", ids = locationIDs.AlliedSocietyARRIDs},
+                                          new SubCategories {Header = "Heavensward", ids = locationIDs.AlliedSocietyHeavenswardIDs},
+                                          new SubCategories {Header = "Stormblood", ids = locationIDs.AlliedSocietyStormbloodIDs},
+                                          new SubCategories {Header = "Shadowbringers", ids = locationIDs.AlliedSocietyShadowbringersIDs},
+                                          new SubCategories {Header = "Endwalker", ids = locationIDs.AlliedSocietyEndwalkerIDs},
+                                          new SubCategories {Header = "Dawntrail", ids = locationIDs.AlliedSocietyDawntrailIDs}]},
+        {TabLocation.CustomDeliveries,   [new SubCategories {Header = "Custom Deliveries", ids = locationIDs.CustomDeliveriesIDs}]},
+        {TabLocation.DeepDungeons,       [new SubCategories {Header = "Deep Dungeons", ids = locationIDs.DeepDungeonIDs}]},
+        {TabLocation.RestorationContent, [new SubCategories {Header = "Restoration Content", ids = locationIDs.RestorationContentIDs}]},
+        {TabLocation.FieldOperations,    [new SubCategories {Header = "Field Operations", ids = locationIDs.FieldOperationIDs}]},
     };
 
     public static void GetCurrentResidentialIDs()

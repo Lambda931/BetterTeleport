@@ -18,15 +18,15 @@ public partial class MainWindow
         RestorationContent, FieldOperations
     };
 
-    private static readonly Dictionary<string, TabData> DropdownTabs = new()
+    private static readonly Dictionary<string, Tab> DropdownTabs = new()
     {
-        ["Market Boards"] = new TabData {Tab = Tab.MarketBoards, LocationIDs = LocationManager.locationIDs.MarketBoardIDs},
-        ["Summoning Bells"] = new TabData {Tab = Tab.SummoningBells, LocationIDs = LocationManager.locationIDs.SummoningBellIDs},
-        ["Allied Societies"] = new TabData {Tab = Tab.AlliedSocieties, LocationIDs = LocationManager.locationIDs.AlliedSocietyIDs},
-        ["Custom Deliveries"] = new TabData {Tab = Tab.CustomDeliveries, LocationIDs = LocationManager.locationIDs.CustomDeliveriesIDs},
-        ["Deep Dungeons"] = new TabData { Tab = Tab.DeepDungeons, LocationIDs = LocationManager.locationIDs.DeepDungeonIDs },
-        ["Restoration Content"] = new TabData { Tab = Tab.RestorationContent, LocationIDs = LocationManager.locationIDs.RestorationContentIDs },
-        ["Field Operations"] = new TabData { Tab = Tab.FieldOperations, LocationIDs = LocationManager.locationIDs.FieldOperationIDs }
+        ["Market Boards"] = Tab.MarketBoards,
+        ["Summoning Bells"] = Tab.SummoningBells,
+        ["Allied Societies"] = Tab.AlliedSocieties,
+        ["Custom Deliveries"] = Tab.CustomDeliveries,
+        ["Deep Dungeons"] = Tab.DeepDungeons,
+        ["Restoration Content"] = Tab.RestorationContent,
+        ["Field Operations"] = Tab.FieldOperations
     };
     public static Tab currentTab = Tab.All;
 
@@ -46,7 +46,15 @@ public partial class MainWindow
         { Tab.Tural, LocationManager.TabLocation.Tural },
         { Tab.Norvrandt, LocationManager.TabLocation.Norvrandt },
         { Tab.BeyondTheSource, LocationManager.TabLocation.BeyondTheSource },
-        { Tab.Favourites, LocationManager.TabLocation.Favourites }
+        { Tab.Favourites, LocationManager.TabLocation.Favourites },
+
+        { Tab.MarketBoards, LocationManager.TabLocation.MarketBoards },
+        { Tab.SummoningBells, LocationManager.TabLocation.SummoningBells},
+        { Tab.AlliedSocieties, LocationManager.TabLocation.AlliedSocieties },
+        { Tab.CustomDeliveries, LocationManager.TabLocation.CustomDeliveries },
+        { Tab.DeepDungeons, LocationManager.TabLocation.DeepDungeons },
+        { Tab.RestorationContent, LocationManager.TabLocation.RestorationContent },
+        { Tab.FieldOperations, LocationManager.TabLocation.FieldOperations },
     };
 
     private void GetTabData()
@@ -58,18 +66,11 @@ public partial class MainWindow
         }
     }
 
-    private void SetDropdownEnum(string item)
+    private void SetDropdownTab(string item)
     {
         if (DropdownTabs.TryGetValue(item, out var tabData))
         {
-            currentTab = tabData.Tab;
-        }
-    }
-    private void DropdownSelection(string item)
-    {
-        if (DropdownTabs.TryGetValue(item, out var tabData))
-        {
-            //locationIDs = tabData.LocationIDs;
+            currentTab = tabData;
         }
     }
 
