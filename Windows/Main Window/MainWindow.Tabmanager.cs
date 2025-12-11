@@ -129,6 +129,11 @@ public partial class MainWindow
             _ => true
         };
     }
+    private IconProperties GetIconProperties(IDalamudTextureWrap textureSheet, ULDLibraryData iconData)
+    {
+        var iconProperties = Icons.ULDSprite(textureSheet, iconData.X, iconData.Y, iconData.Width, iconData.Height);
+        return iconProperties;
+    }
 }
 public class TabData()
 {

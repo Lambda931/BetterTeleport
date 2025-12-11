@@ -1,3 +1,4 @@
+using BetterTeleport;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface.Textures.TextureWraps;
@@ -5,6 +6,7 @@ using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using Lumina.Data.Parsing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,8 @@ public partial class MainWindow : Window, IDisposable
     
     private bool resetScrollbar;
 
+    private int colourChannels;
+
     public MainWindow(BetterTeleport plugin) : base("Teleport Menu", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
     {
         SizeConstraints = new WindowSizeConstraints
@@ -36,6 +40,23 @@ public partial class MainWindow : Window, IDisposable
     }
 
     public void Dispose() { }
+
+    public override void PreDraw()
+    {
+        WindowColourManager.ColourData.TryGetValue(WindowColourManager.Colours.ClearBlue, out var colourData);
+        if (colourData != null)
+        {
+            ImGui.PushStyleColor(ImGuiCol.WindowBg, colourData.windowBackground);
+            ImGui.PushStyleColor(ImGuiCol.TitleBg, colourData.windowTitles);
+            ImGui.PushStyleColor(ImGuiCol.TitleBgActive, colourData.windowTitles);
+            ImGui.PushStyleColor(ImGuiCol.TitleBgCollapsed, colourData.windowTitles);
+            ImGui.PushStyleColor(ImGuiCol.TableHeaderBg, colourData.windowTitles);
+            ImGui.PushStyleColor(ImGuiCol.Header, colourData.windowTitles);
+            ImGui.PushStyleColor(ImGuiCol.HeaderHovered, colourData.windowTitles);
+            ImGui.PushStyleColor(ImGuiCol.HeaderActive, colourData.windowTitles);
+        }
+        colourChannels = 8;
+    }
 
     public override void Draw()
     {
@@ -177,11 +198,7 @@ public partial class MainWindow : Window, IDisposable
                     ImGui.TableSetupColumn("Aetheryte", 0, 1.2f);
                     ImGui.TableSetupColumn("Content");
                     ImGui.TableSetupColumn("Fee", 0, 0.5f);
-
-                    ImGui.PushStyleColor(ImGuiCol.HeaderHovered, new Vector4(0, 0, 0, 0));
-                    ImGui.PushStyleColor(ImGuiCol.HeaderActive, new Vector4(0, 0, 0, 0));
                     ImGui.TableHeadersRow();
-                    ImGui.PopStyleColor(2);
 
                     if (currentTab == Tab.All || currentTab == Tab.Residential)
                     {
@@ -259,6 +276,11 @@ public partial class MainWindow : Window, IDisposable
             }
         }
     }
+    public override void PostDraw()
+    {
+        ImGui.PopStyleColor(colourChannels);
+    }
+
     private void PopulateTable(uint i)
     {
         if (TeleportManager.IsAttuned(i))
@@ -400,11 +422,7 @@ public partial class MainWindow : Window, IDisposable
             }
         }
     }
-    private IconProperties GetIconProperties(IDalamudTextureWrap textureSheet, ULDLibraryData iconData)
-    {
-        var iconProperties = Icons.ULDSprite(textureSheet, iconData.X, iconData.Y, iconData.Width, iconData.Height);
-        return iconProperties;
-    }
+    
 
     private void SetupTeleport(uint id)
     {
