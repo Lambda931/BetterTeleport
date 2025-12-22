@@ -1,12 +1,14 @@
 using BetterTeleportPlugin.Windows;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
+using Dalamud.Game.ClientState;
 using Dalamud.Game.Command;
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Windowing;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using System;
 
@@ -23,6 +25,8 @@ public sealed class BetterTeleport : IDalamudPlugin
     [PluginService] internal static IFramework Framework { get; private set; } = null!;
     [PluginService] internal static IGameGui GameGui { get; private set; } = null!;
     [PluginService] internal static IAddonLifecycle AddonLifecycle { get; private set; } = null!;
+    [PluginService] internal static QuestManager QuestManager { get; set; }
+
 
     private const string TeleportMenuCommand = "/betterteleport";
 
@@ -55,13 +59,14 @@ public sealed class BetterTeleport : IDalamudPlugin
         WindowSystem.AddWindow(ConfigWindow);
         WindowSystem.AddWindow(MainWindow);
 
-        PluginInterface.UiBuilder.Draw += WindowSystem.Draw;
+        PluginInterface.UiBuilder.Draw += WindowSystem.Draw; 
         PluginInterface.UiBuilder.OpenConfigUi += ToggleConfigUi;
         PluginInterface.UiBuilder.OpenMainUi += ToggleMainUi;
 
         Log.Debug("Register Listener");
         AddonLifecycle.RegisterListener(AddonEvent.PreSetup, "Teleport", ToggleTeleportWindow);
         Framework.Update += Framework_Update;
+        ClientState.Logout += OnLogout;
     }
 
     private void Framework_Update(IFramework _)
@@ -97,6 +102,7 @@ public sealed class BetterTeleport : IDalamudPlugin
         PluginInterface.UiBuilder.Draw -= WindowSystem.Draw;
         PluginInterface.UiBuilder.OpenConfigUi -= ToggleConfigUi;
         PluginInterface.UiBuilder.OpenMainUi -= ToggleMainUi;
+        ClientState.Logout -= OnLogout;
 
         WindowSystem.RemoveAllWindows();
 
@@ -105,6 +111,7 @@ public sealed class BetterTeleport : IDalamudPlugin
 
         CommandManager.RemoveHandler(TeleportMenuCommand);
         AddonLifecycle.UnregisterListener(AddonEvent.PostDraw, "Teleport", ToggleTeleportWindow);
+        
     }
 
     public void ToggleConfigUi() => ConfigWindow.Toggle();
@@ -135,5 +142,11 @@ public sealed class BetterTeleport : IDalamudPlugin
         {
             Log.Error(ex, "Exception while initializing Teleport texture.");
         }
+    }
+
+    private void OnLogout(int type, int code)
+    {
+        teleportWindowOpen = false;
+        MainWindow.IsOpen = false;
     }
 }

@@ -62,7 +62,7 @@ public class ContentManager
     /* Ul'Dah - Steps of Nald           */ {9,   [MarketBoard(), SummoningBell()]},
     /* Lower La Noscea: Moraby Drydocks */ {10,  [ContentInfo(Categories.RestorationContent, "Island Sanctuary", Icons.IslandSanctuaryIcon, 30, -2, -3)]},
     /* Western La Noscea: Aleport       */ {14,  [ContentInfo(Categories.AlliedSocieties, "Sahagin Allied Society Quests", Icons.SahaginAlliedSocietyIcon)]},
-    /* Outer La Noscea: Camp Overlook   */ {16,  [ContentInfo(Categories.AlliedSocieties, "Kobolds Allied Society Quests", Icons.KoboldAlliedSocietyIcon)]},
+    /* Outer La Noscea: Camp Overlook   */ {16,  [ContentInfo(Categories.AlliedSocieties, "Kobold Allied Society Quests", Icons.KoboldAlliedSocietyIcon)]},
     /* Southern Thanalan: Lil Ala Mhigo */ {19,  [ContentInfo(Categories.AlliedSocieties, "Amalj'aa Allied Society Quests", Icons.AmaljaaAlliedSocietyIcon)]},
     /* Mor Dhona: Revenant's Toll       */ {24,  [DeepDungeon("Deep Dungeon: Eureka Orthos"), SummoningBell()]},
     /* Central Than: Blk Brush Station  */ {53,  [ContentInfo(Categories.Misc, "Materia Transmutation", Icons.MateriaTransmutationIcon, 30, -2, -3)]},

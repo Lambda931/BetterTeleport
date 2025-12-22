@@ -1,4 +1,3 @@
-using BetterTeleport;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface.Textures.TextureWraps;
@@ -341,27 +340,30 @@ public partial class MainWindow : Window, IDisposable
                     var start = ImGui.GetCursorPos();
                     foreach (var entry in entries)
                     {
-                        if (FilterContentByCategory(entry) == true)
+                        if(PlayerProgressionManager.CheckUnlocked(entry.ContentCategory, entry.TooltipText))
                         {
-                            var texture = Icons.GetTextureFromIconID(entry.IconID);
-                            if (texture.TryGetWrap(out var wrap, out Exception? exception))
+                            if (FilterContentByCategory(entry) == true)
                             {
-                                var offset = entry.IconOffset;
-                                ImGui.SetCursorPos(start + offset + nextIconSpacing);
-                                ImGui.Image(wrap.Handle, entry.IconSize);
-                                ImGui.SetCursorPos(start);
-                            }
+                                var texture = Icons.GetTextureFromIconID(entry.IconID);
+                                if (texture.TryGetWrap(out var wrap, out Exception? exception))
+                                {
+                                    var offset = entry.IconOffset;
+                                    ImGui.SetCursorPos(start + offset + nextIconSpacing);
+                                    ImGui.Image(wrap.Handle, entry.IconSize);
+                                    ImGui.SetCursorPos(start);
+                                }
 
-                            if (ImGui.IsItemHovered())
-                            {
-                                ImGui.BeginTooltip();
-                                ImGui.Text(entry.TooltipText);
-                                ImGui.EndTooltip();
+                                if (ImGui.IsItemHovered())
+                                {
+                                    ImGui.BeginTooltip();
+                                    ImGui.Text(entry.TooltipText);
+                                    ImGui.EndTooltip();
+                                }
+                                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(0, 0));
+                                ImGui.SameLine(0, 0);
+                                ImGui.PopStyleVar();
+                                nextIconSpacing.X += 30;
                             }
-                            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(0, 0));
-                            ImGui.SameLine(0, 0);
-                            ImGui.PopStyleVar();
-                            nextIconSpacing.X += 30;
                         }
                     }
                 }
