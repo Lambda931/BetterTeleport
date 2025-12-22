@@ -22,15 +22,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net9.0-windows"
+          "net10.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0-windows7.0": {
-            "targetAlias": "net9.0-windows",
+          "net10.0-windows7.0": {
+            "targetAlias": "net10.0-windows",
             "projectReferences": {}
           }
         },
@@ -45,22 +45,22 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
+          "auditMode": "all"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
-        "net9.0-windows7.0": {
-          "targetAlias": "net9.0-windows",
+        "net10.0-windows7.0": {
+          "targetAlias": "net10.0-windows",
           "dependencies": {
             "DalamudPackager": {
               "target": "Package",
-              "version": "[13.1.0, )"
+              "version": "[14.0.0, )"
             },
             "DotNet.ReproducibleBuilds": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[1.2.25, )"
+              "version": "[1.2.39, )"
             },
             "Microsoft.CodeAnalysis.Workspaces.Common": {
               "target": "Package",
@@ -83,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

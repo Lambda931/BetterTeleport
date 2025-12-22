@@ -1,23 +1,19 @@
 {
   "runtimeTarget": {
-    "name": ".NETCoreApp,Version=v9.0",
+    "name": ".NETCoreApp,Version=v10.0",
     "signature": ""
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v9.0": {
+    ".NETCoreApp,Version=v10.0": {
       "BetterTeleport/0.0.0.1": {
         "dependencies": {
-          "DalamudPackager": "13.1.0",
-          "DotNet.ReproducibleBuilds": "1.2.25",
           "Microsoft.CodeAnalysis.Workspaces.Common": "4.14.0"
         },
         "runtime": {
           "BetterTeleport.dll": {}
         }
       },
-      "DalamudPackager/13.1.0": {},
-      "DotNet.ReproducibleBuilds/1.2.25": {},
       "Humanizer.Core/2.14.1": {
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
@@ -26,13 +22,7 @@
           }
         }
       },
-      "Microsoft.CodeAnalysis.Analyzers/3.11.0": {},
       "Microsoft.CodeAnalysis.Common/4.14.0": {
-        "dependencies": {
-          "Microsoft.CodeAnalysis.Analyzers": "3.11.0",
-          "System.Collections.Immutable": "9.0.0",
-          "System.Reflection.Metadata": "9.0.0"
-        },
         "runtime": {
           "lib/net9.0/Microsoft.CodeAnalysis.dll": {
             "assemblyVersion": "4.14.0.0",
@@ -84,13 +74,8 @@
       "Microsoft.CodeAnalysis.Workspaces.Common/4.14.0": {
         "dependencies": {
           "Humanizer.Core": "2.14.1",
-          "Microsoft.CodeAnalysis.Analyzers": "3.11.0",
           "Microsoft.CodeAnalysis.Common": "4.14.0",
-          "System.Collections.Immutable": "9.0.0",
-          "System.Composition": "9.0.0",
-          "System.IO.Pipelines": "9.0.0",
-          "System.Reflection.Metadata": "9.0.0",
-          "System.Threading.Channels": "7.0.0"
+          "System.Composition": "9.0.0"
         },
         "runtime": {
           "lib/net9.0/Microsoft.CodeAnalysis.Workspaces.dll": {
@@ -140,7 +125,6 @@
           }
         }
       },
-      "System.Collections.Immutable/9.0.0": {},
       "System.Composition/9.0.0": {
         "dependencies": {
           "System.Composition.AttributedModel": "9.0.0",
@@ -200,10 +184,7 @@
             "fileVersion": "9.0.24.52809"
           }
         }
-      },
-      "System.IO.Pipelines/9.0.0": {},
-      "System.Reflection.Metadata/9.0.0": {},
-      "System.Threading.Channels/7.0.0": {}
+      }
     }
   },
   "libraries": {
@@ -212,33 +193,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "DalamudPackager/13.1.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-XdoNhJGyFby5M/sdcRhnc5xTop9PHy+H50PTWpzLhJugjB19EDBiHD/AsiDF66RETM+0qKUdJBZrNuebn7qswQ==",
-      "path": "dalamudpackager/13.1.0",
-      "hashPath": "dalamudpackager.13.1.0.nupkg.sha512"
-    },
-    "DotNet.ReproducibleBuilds/1.2.25": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-xCXiw7BCxHJ8pF6wPepRUddlh2dlQlbr81gXA72hdk4FLHkKXas7EH/n+fk5UCA/YfMqG1Z6XaPiUjDbUNBUzg==",
-      "path": "dotnet.reproduciblebuilds/1.2.25",
-      "hashPath": "dotnet.reproduciblebuilds.1.2.25.nupkg.sha512"
-    },
     "Humanizer.Core/2.14.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
-    },
-    "Microsoft.CodeAnalysis.Analyzers/3.11.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-v/EW3UE8/lbEYHoC2Qq7AR/DnmvpgdtAMndfQNmpuIMx/Mto8L5JnuCfdBYtgvalQOtfNCnxFejxuRrryvUTsg==",
-      "path": "microsoft.codeanalysis.analyzers/3.11.0",
-      "hashPath": "microsoft.codeanalysis.analyzers.3.11.0.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.Common/4.14.0": {
       "type": "package",
@@ -253,13 +213,6 @@
       "sha512": "sha512-wNVK9JrqjqDC/WgBUFV6henDfrW87NPfo98nzah/+M/G1D6sBOPtXwqce3UQNn+6AjTnmkHYN1WV9XmTlPemTw==",
       "path": "microsoft.codeanalysis.workspaces.common/4.14.0",
       "hashPath": "microsoft.codeanalysis.workspaces.common.4.14.0.nupkg.sha512"
-    },
-    "System.Collections.Immutable/9.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-QhkXUl2gNrQtvPmtBTQHb0YsUrDiDQ2QS09YbtTTiSjGcf7NBqtYbrG/BE06zcBPCKEwQGzIv13IVdXNOSub2w==",
-      "path": "system.collections.immutable/9.0.0",
-      "hashPath": "system.collections.immutable.9.0.0.nupkg.sha512"
     },
     "System.Composition/9.0.0": {
       "type": "package",
@@ -302,27 +255,6 @@
       "sha512": "sha512-aRZlojCCGEHDKqh43jaDgaVpYETsgd7Nx4g1zwLKMtv4iTo0627715ajEFNpEEBTgLmvZuv8K0EVxc3sM4NWJA==",
       "path": "system.composition.typedparts/9.0.0",
       "hashPath": "system.composition.typedparts.9.0.0.nupkg.sha512"
-    },
-    "System.IO.Pipelines/9.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-eA3cinogwaNB4jdjQHOP3Z3EuyiDII7MT35jgtnsA4vkn0LUrrSHsU0nzHTzFzmaFYeKV7MYyMxOocFzsBHpTw==",
-      "path": "system.io.pipelines/9.0.0",
-      "hashPath": "system.io.pipelines.9.0.0.nupkg.sha512"
-    },
-    "System.Reflection.Metadata/9.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ANiqLu3DxW9kol/hMmTWbt3414t9ftdIuiIU7j80okq2YzAueo120M442xk1kDJWtmZTqWQn7wHDvMRipVOEOQ==",
-      "path": "system.reflection.metadata/9.0.0",
-      "hashPath": "system.reflection.metadata.9.0.0.nupkg.sha512"
-    },
-    "System.Threading.Channels/7.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-qmeeYNROMsONF6ndEZcIQ+VxR4Q/TX/7uIVLJqtwIWL7dDWeh0l1UIqgo4wYyjG//5lUNhwkLDSFl+pAWO6oiA==",
-      "path": "system.threading.channels/7.0.0",
-      "hashPath": "system.threading.channels.7.0.0.nupkg.sha512"
     }
   }
 }

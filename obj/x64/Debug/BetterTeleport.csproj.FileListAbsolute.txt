@@ -1,12 +1,5 @@
 C:\Users\User\source\repos\BetterTeleport\BetterTeleport\bin\x64\Debug\BetterTeleport.deps.json
 C:\Users\User\source\repos\BetterTeleport\BetterTeleport\bin\x64\Debug\BetterTeleport.dll
-C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.csproj.AssemblyReference.cache
-C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.AssemblyInfoInputs.cache
-C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.AssemblyInfo.cs
-C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.csproj.CoreCompileInputs.cache
-C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.sourcelink.json
-C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.dll
 C:\Users\User\source\repos\BetterTeleport\BetterTeleport\bin\x64\Debug\Humanizer.dll
 C:\Users\User\source\repos\BetterTeleport\BetterTeleport\bin\x64\Debug\Microsoft.CodeAnalysis.dll
 C:\Users\User\source\repos\BetterTeleport\BetterTeleport\bin\x64\Debug\Microsoft.CodeAnalysis.Workspaces.dll
@@ -41,4 +34,11 @@ C:\Users\User\source\repos\BetterTeleport\BetterTeleport\bin\x64\Debug\ru\Micros
 C:\Users\User\source\repos\BetterTeleport\BetterTeleport\bin\x64\Debug\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\User\source\repos\BetterTeleport\BetterTeleport\bin\x64\Debug\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\User\source\repos\BetterTeleport\BetterTeleport\bin\x64\Debug\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.AssemblyInfo.cs
+C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.sourcelink.json
 C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTe.69CF77FF.Up2Date
+C:\Users\User\source\repos\BetterTeleport\BetterTeleport\obj\x64\Debug\BetterTeleport.dll

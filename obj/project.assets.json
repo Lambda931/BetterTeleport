@@ -1,8 +1,8 @@
 {
   "version": 3,
   "targets": {
-    "net9.0-windows7.0": {
-      "DalamudPackager/13.1.0": {
+    "net10.0-windows7.0": {
+      "DalamudPackager/14.0.0": {
         "type": "package",
         "build": {
           "build/DalamudPackager.props": {},
@@ -12,7 +12,7 @@
           "buildMultiTargeting/DalamudPackager.props": {}
         }
       },
-      "DotNet.ReproducibleBuilds/1.2.25": {
+      "DotNet.ReproducibleBuilds/1.2.39": {
         "type": "package",
         "build": {
           "buildTransitive/DotNet.ReproducibleBuilds.props": {},
@@ -343,17 +343,17 @@
     }
   },
   "libraries": {
-    "DalamudPackager/13.1.0": {
-      "sha512": "XdoNhJGyFby5M/sdcRhnc5xTop9PHy+H50PTWpzLhJugjB19EDBiHD/AsiDF66RETM+0qKUdJBZrNuebn7qswQ==",
+    "DalamudPackager/14.0.0": {
+      "sha512": "9c1q/eAeAs82mkQWBOaCvbt3GIQxAIadz5b/7pCXDIy9nHPtnRc+tDXEvKR+M36Wvi7n+qBTevRupkLUQp6DFA==",
       "type": "package",
-      "path": "dalamudpackager/13.1.0",
+      "path": "dalamudpackager/14.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/DalamudPackager.props",
         "build/DalamudPackager.targets",
         "buildMultiTargeting/DalamudPackager.props",
-        "dalamudpackager.13.1.0.nupkg.sha512",
+        "dalamudpackager.14.0.0.nupkg.sha512",
         "dalamudpackager.nuspec",
         "tasks/net48/DalamudPackager.dll",
         "tasks/net48/Newtonsoft.Json.dll",
@@ -363,10 +363,10 @@
         "tasks/netstandard2.1/YamlDotNet.dll"
       ]
     },
-    "DotNet.ReproducibleBuilds/1.2.25": {
-      "sha512": "xCXiw7BCxHJ8pF6wPepRUddlh2dlQlbr81gXA72hdk4FLHkKXas7EH/n+fk5UCA/YfMqG1Z6XaPiUjDbUNBUzg==",
+    "DotNet.ReproducibleBuilds/1.2.39": {
+      "sha512": "fcFN01tDTIQqDuTwr1jUQK/geofiwjG5DycJQOnC72i1SsLAk1ELe+apBOuZ11UMQG8YKFZG1FgvjZPbqHyatg==",
       "type": "package",
-      "path": "dotnet.reproduciblebuilds/1.2.25",
+      "path": "dotnet.reproduciblebuilds/1.2.39",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -377,7 +377,7 @@
         "buildMultiTargeting/DotNet.ReproducibleBuilds.targets",
         "buildTransitive/DotNet.ReproducibleBuilds.props",
         "buildTransitive/DotNet.ReproducibleBuilds.targets",
-        "dotnet.reproduciblebuilds.1.2.25.nupkg.sha512",
+        "dotnet.reproduciblebuilds.1.2.39.nupkg.sha512",
         "dotnet.reproduciblebuilds.nuspec"
       ]
     },
@@ -1501,9 +1501,9 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net9.0-windows7.0": [
-      "DalamudPackager >= 13.1.0",
-      "DotNet.ReproducibleBuilds >= 1.2.25",
+    "net10.0-windows7.0": [
+      "DalamudPackager >= 14.0.0",
+      "DotNet.ReproducibleBuilds >= 1.2.39",
       "Microsoft.CodeAnalysis.Workspaces.Common >= 4.14.0"
     ]
   },
@@ -1529,15 +1529,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net9.0-windows"
+        "net10.0-windows"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net9.0-windows7.0": {
-          "targetAlias": "net9.0-windows",
+        "net10.0-windows7.0": {
+          "targetAlias": "net10.0-windows",
           "projectReferences": {}
         }
       },
@@ -1552,22 +1552,22 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
+        "auditMode": "all"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
-      "net9.0-windows7.0": {
-        "targetAlias": "net9.0-windows",
+      "net10.0-windows7.0": {
+        "targetAlias": "net10.0-windows",
         "dependencies": {
           "DalamudPackager": {
             "target": "Package",
-            "version": "[13.1.0, )"
+            "version": "[14.0.0, )"
           },
           "DotNet.ReproducibleBuilds": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[1.2.25, )"
+            "version": "[1.2.39, )"
           },
           "Microsoft.CodeAnalysis.Workspaces.Common": {
             "target": "Package",
@@ -1590,7 +1590,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
