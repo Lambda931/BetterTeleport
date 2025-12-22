@@ -16,6 +16,7 @@ namespace BetterTeleportPlugin;
 public class PlayerProgressionManager
 {
     public ContentManager contentManager = new ContentManager();
+
     public enum AlliedSociety : byte 
     {Amaljaa = 1, Sylph = 2, Kobold = 3, Sahagin = 4, Ixal = 5, VanuVanu = 6, Vath = 7, Moogle = 8,
      Kojin = 9, Ananta = 10, Namazu = 11, Pixie = 12, Qitari = 13, Dwarf = 14, Arkasodara = 15, Omicron = 16, Loporrit = 17,
@@ -49,18 +50,18 @@ public class PlayerProgressionManager
             "Pelupelu Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.PeluPelu),
             "Mamool Ja Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.MamoolJa),
             "Yok Huy Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.YokHuy),
-            //"Materia Transmutation" => CheckQuestComplete((uint)QuestID.MateriaTransmutation),
+            "Materia Transmutation" => CheckQuestComplete((uint)QuestID.MateriaTransmutation),
             _ => true
         };
     }
-    /*private static bool CheckQuestComplete(uint questID)
+    private static bool CheckQuestComplete(uint questID)
     {
         if (QuestManager.IsQuestComplete(questID))
         {
             return true;
         }
         return false;
-    }*/
+    }
 
     private static unsafe bool CheckAlliedSociety(byte index)
     {
