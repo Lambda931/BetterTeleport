@@ -49,18 +49,18 @@ public class PlayerProgressionManager
             "Pelupelu Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.PeluPelu),
             "Mamool Ja Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.MamoolJa),
             "Yok Huy Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.YokHuy),
-            "Materia Transmutation" => CheckQuestComplete((uint)QuestID.MateriaTransmutation),
+            //"Materia Transmutation" => CheckQuestComplete((uint)QuestID.MateriaTransmutation),
             _ => true
         };
     }
-    private static bool CheckQuestComplete(uint questID)
+    /*private static bool CheckQuestComplete(uint questID)
     {
         if (QuestManager.IsQuestComplete(questID))
         {
             return true;
         }
         return false;
-    }
+    }*/
 
     private static unsafe bool CheckAlliedSociety(byte index)
     {
