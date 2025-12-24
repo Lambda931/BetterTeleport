@@ -43,9 +43,10 @@ public class ConfigWindow : Window, IDisposable
     {
         // Can't ref a property, so use a local copy
         var configValue = configuration.SomePropertyToBeSavedAndWithADefault;
-        if (ImGui.Checkbox("Random Config Bool", ref configValue))
+        if (ImGui.Checkbox("DebugMode", ref configValue))
         {
             configuration.SomePropertyToBeSavedAndWithADefault = configValue;
+            BetterTeleport.Debug = configValue;
             // Can save immediately on change if you don't want to provide a "Save and Close" button
             configuration.Save();
         }

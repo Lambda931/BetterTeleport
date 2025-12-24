@@ -120,6 +120,7 @@ public partial class MainWindow : Window, IDisposable
                 CreateTabButton(Tab.Norvrandt, TextureSheet, IconData.ULDLibrary.NorvrandtTabIcon, "Norvrandt"); ImGui.SameLine();
                 CreateTabButton(Tab.BeyondTheSource, TextureSheet, IconData.ULDLibrary.BeyondTheSourceTabIcon, "Beyond the Source"); ImGui.SameLine();
 
+                //Favourites Button
                 var FavouritesIconData = GetIconProperties(TextureSheet, IconData.ULDLibrary.FavouritesTabIcon);
                 ImGui.PushID($"{Tab.Favourites}");
                 if (ImGui.ImageButton(TextureSheet.Handle, new Vector2(FavouritesIconData.Width, FavouritesIconData.Height), new Vector2(FavouritesIconData.U0, FavouritesIconData.V0), new Vector2(FavouritesIconData.U1, FavouritesIconData.V1)))
@@ -132,6 +133,24 @@ public partial class MainWindow : Window, IDisposable
                     ImGui.BeginTooltip();
                     ImGui.Text("Favorites");
                     ImGui.EndTooltip();
+                }
+                ImGui.SameLine();
+
+                //DebugAll
+                var DebugIconData = GetIconProperties(TextureSheet, IconData.ULDLibrary.OtherTabIcon);
+                ImGui.PushID($"{Tab.Debug}");
+                if (BetterTeleport.Debug)
+                {
+                    if (ImGui.ImageButton(TextureSheet.Handle, new Vector2(DebugIconData.Width, DebugIconData.Height), new Vector2(DebugIconData.U0, DebugIconData.V0), new Vector2(DebugIconData.U1, DebugIconData.V1)))
+                    {
+                        currentTab = Tab.Debug;
+                    }
+                    if (ImGui.IsItemHovered())
+                    {
+                        ImGui.BeginTooltip();
+                        ImGui.Text("Debug");
+                        ImGui.EndTooltip();
+                    }
                 }
             }
 
@@ -232,20 +251,37 @@ public partial class MainWindow : Window, IDisposable
                     {
                         GetTabData();
 
-                        foreach (var category in currentTabData)
+                        if(currentTab != Tab.Debug)
                         {
-                            var attunedIds = category.ids.Where(TeleportManager.IsAttuned).ToList();
-                            if (attunedIds.Count == 0)
-                                continue;
-
-                            DrawHeader(category.Header);
-
-                            // Now draw only attuned ones
-                            foreach (var id in attunedIds)
+                            foreach (var category in currentTabData)
                             {
-                                PopulateTable(id);
+                                var attunedIds = category.ids.Where(TeleportManager.IsAttuned).ToList();
+                                if (attunedIds.Count == 0)
+                                    continue;
+
+                                DrawHeader(category.Header);
+
+                                // Now draw only attuned ones
+                                foreach (var id in attunedIds)
+                                {
+                                    PopulateTable(id);
+                                }
                             }
                         }
+                        else
+                        {
+                            foreach (var category in currentTabData)
+                            {
+                                DrawHeader(category.Header);
+
+                                // Now draw only attuned ones
+                                foreach (var id in category.ids)
+                                {
+                                    PopulateTable(id);
+                                }
+                            }
+                        }
+                        
                     }
                     if (resetScrollbar)
                     {
@@ -282,7 +318,7 @@ public partial class MainWindow : Window, IDisposable
 
     private void PopulateTable(uint i)
     {
-        if (TeleportManager.IsAttuned(i))
+        if (TeleportManager.IsAttuned(i) || currentTab == Tab.Debug)
         {
             var teleportTexture = Icons.ConvertToTextureWrap(BetterTeleport.TeleportTexture);
             if (teleportTexture != null)

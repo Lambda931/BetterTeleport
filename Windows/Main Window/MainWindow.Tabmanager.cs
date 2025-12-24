@@ -13,8 +13,12 @@ public partial class MainWindow
 {
     public enum Tab
     {
+        //Main Tabs
         All, Residential, LaNoscea, BlackShroud, Thanalan, Ishgard, GyrAbania, FarEast, IndependentNations, Ilsabard, Tural,
-        Norvrandt, BeyondTheSource, Favourites, MarketBoards, SummoningBells, AlliedSocieties, CustomDeliveries, DeepDungeons,
+        Norvrandt, BeyondTheSource, Favourites, Debug,
+
+        //Dropdown Tabs
+        MarketBoards, SummoningBells, AlliedSocieties, CustomDeliveries, DeepDungeons,
         RestorationContent, FieldOperations
     };
 
@@ -47,6 +51,7 @@ public partial class MainWindow
         { Tab.Norvrandt, LocationManager.TabLocation.Norvrandt },
         { Tab.BeyondTheSource, LocationManager.TabLocation.BeyondTheSource },
         { Tab.Favourites, LocationManager.TabLocation.Favourites },
+        { Tab.Debug, LocationManager.TabLocation.All },
 
         { Tab.MarketBoards, LocationManager.TabLocation.MarketBoards },
         { Tab.SummoningBells, LocationManager.TabLocation.SummoningBells},
@@ -55,6 +60,8 @@ public partial class MainWindow
         { Tab.DeepDungeons, LocationManager.TabLocation.DeepDungeons },
         { Tab.RestorationContent, LocationManager.TabLocation.RestorationContent },
         { Tab.FieldOperations, LocationManager.TabLocation.FieldOperations },
+
+        
     };
 
     private void GetTabData()
