@@ -10,10 +10,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BetterTeleportPlugin.ContentInfo;
 
 namespace BetterTeleportPlugin;
 
-public class PlayerProgressionManager
+public partial class ContentManager
 {
     public ContentManager contentManager = new ContentManager();
 
@@ -72,6 +73,17 @@ public class PlayerProgressionManager
             return true;
         }
         return false;
+    }
+
+    public static bool HasAetheryteUnlockedAlliedSocietyContent(uint aetheryteId)
+    {
+        if (!ContentManager.Content.TryGetValue(aetheryteId, out var entries))
+            return false;
+
+        return entries.Any(entry =>
+            entry.ContentCategory == Categories.AlliedSocieties &&
+            CheckUnlocked(entry.ContentCategory, entry.TooltipText)
+        );
     }
 
     /*private static unsafe bool CheckCustomDeliveries(uint npcID)

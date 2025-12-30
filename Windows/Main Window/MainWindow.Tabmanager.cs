@@ -64,9 +64,9 @@ public partial class MainWindow
         
     };
 
-    private void GetTabData()
+    private void GetTabData(Tab tab)
     {
-        if (TabKeys.TryGetValue(currentTab, out var key) &&
+        if (TabKeys.TryGetValue(tab, out var key) &&
         LocationManager.SubCategories.TryGetValue(key, out var tabData))
         {
             currentTabData = tabData;
@@ -135,6 +135,30 @@ public partial class MainWindow
             Tab.FieldOperations => entry.ContentCategory == ContentInfo.Categories.FieldOperations,
             _ => true
         };
+    }
+    private bool IsDropdownEntryUnlocked(Tab tab, uint id)
+    {
+        return tab switch
+        {
+            Tab.AlliedSocieties => ContentManager.HasAetheryteUnlockedAlliedSocietyContent(id),
+            _ => true
+        };
+    }
+
+    private bool DoesTabHaveValidRows(string dropdownItem)
+    {
+        DropdownTabs.TryGetValue(dropdownItem, out var tab);
+        GetTabData(tab);
+        foreach (var category in currentTabData)
+        {
+            foreach (var id in category.ids)
+            {
+                if (!TeleportManager.IsAttuned(id) || !IsDropdownEntryUnlocked(tab, id))
+                    continue;
+                return true;
+            }
+        }
+        return false;
     }
     private IconProperties GetIconProperties(IDalamudTextureWrap textureSheet, ULDLibraryData iconData)
     {

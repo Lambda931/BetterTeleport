@@ -16,7 +16,7 @@ public class ContentInfo
     public Vector2 IconOffset { get; set; }
 }
 
-public class ContentManager
+public partial class ContentManager
 {
     private static readonly IconLibrary Icons = IconData.IconLibrary;
 

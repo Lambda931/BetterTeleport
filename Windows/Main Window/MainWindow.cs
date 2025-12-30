@@ -26,6 +26,8 @@ public partial class MainWindow : Window, IDisposable
 
     private int colourChannels;
 
+    private List<uint> unlockedIds;
+
     public MainWindow(BetterTeleport plugin) : base("Teleport Menu", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
     {
         SizeConstraints = new WindowSizeConstraints
@@ -176,6 +178,9 @@ public partial class MainWindow : Window, IDisposable
             {
                 foreach (var item in contentDropdownitems)
                 {
+                    if (!DoesTabHaveValidRows(item))
+                        continue;
+
                     bool isSelected = (currentContentDropdownItem == item);
                     if (ImGui.Selectable(item, isSelected))
                     {
@@ -185,7 +190,6 @@ public partial class MainWindow : Window, IDisposable
                     if (isSelected)
                     {
                         ImGui.SetItemDefaultFocus();
-                        
                     }
                 }
                 ImGui.EndCombo();
@@ -249,19 +253,17 @@ public partial class MainWindow : Window, IDisposable
                     }
                     if (currentTab != Tab.Residential)
                     {
-                        GetTabData();
+                        GetTabData(currentTab);
 
                         if(currentTab != Tab.Debug)
                         {
                             foreach (var category in currentTabData)
                             {
-                                var attunedIds = category.ids.Where(TeleportManager.IsAttuned).ToList();
+                                var attunedIds = category.ids.Where(TeleportManager.IsAttuned).Where(id => IsDropdownEntryUnlocked(currentTab, id)).ToList();
                                 if (attunedIds.Count == 0)
                                     continue;
-
+                                
                                 DrawHeader(category.Header);
-
-                                // Now draw only attuned ones
                                 foreach (var id in attunedIds)
                                 {
                                     PopulateTable(id);
@@ -273,8 +275,6 @@ public partial class MainWindow : Window, IDisposable
                             foreach (var category in currentTabData)
                             {
                                 DrawHeader(category.Header);
-
-                                // Now draw only attuned ones
                                 foreach (var id in category.ids)
                                 {
                                     PopulateTable(id);
@@ -376,7 +376,7 @@ public partial class MainWindow : Window, IDisposable
                     var start = ImGui.GetCursorPos();
                     foreach (var entry in entries)
                     {
-                        if(PlayerProgressionManager.CheckUnlocked(entry.ContentCategory, entry.TooltipText))
+                        if(ContentManager.CheckUnlocked(entry.ContentCategory, entry.TooltipText))
                         {
                             if (FilterContentByCategory(entry) == true)
                             {
