@@ -43,7 +43,7 @@ public class LocationIDs
 
 public class LocationManager
 {
-    public static uint[] currentResidentialIDs;
+    public static uint[]? currentResidentialIDs;
     public enum TabLocation {
         All, Residential, LaNoscea, BlackShroud, Thanalan, Ishgard, GyrAbania, FarEast, IndependentNations, Ilsabard, Tural,
         Norvrandt, BeyondTheSource, Favourites, MarketBoards, SummoningBells, AlliedSocieties, CustomDeliveries, DeepDungeons,

@@ -26,7 +26,7 @@ public sealed class BetterTeleport : IDalamudPlugin
     [PluginService] internal static IGameGui GameGui { get; private set; } = null!;
     [PluginService] internal static IAddonLifecycle AddonLifecycle { get; private set; } = null!;
 
-    public static bool Debug = false;
+    public static bool Debug = true;
 
     private const string TeleportMenuCommand = "/betterteleport";
 

@@ -24,34 +24,37 @@ public partial class ContentManager
      PeluPelu = 18, MamoolJa = 19, YokHuy = 20}
     public enum QuestID : uint
     {
-        MateriaTransmutation = 66999
+        MateriaTransmutation = 66999,
+        IslandSanctuary = 68622,
+        //IslandSanctuary = 70179
     }
 
-    public static unsafe bool CheckUnlocked(ContentInfo.Categories category, string name)
+    public static unsafe bool CheckUnlocked(ContentInfo.Categories category, Tooltip tooltip)
     {
-        return name switch
+        return tooltip switch
         {
-            "Amalj'aa Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Amaljaa),
-            "Sylph Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Sylph),
-            "Kobold Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Kobold),
-            "Sahagin Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Sahagin),
-            "Ixal Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Ixal),
-            "Vanu Vanu Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.VanuVanu),
-            "Vath Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Vath),
-            "Moogle Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Moogle),
-            "Kojin Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Kojin),
-            "Ananta Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Ananta),
-            "Namazu Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Namazu),
-            "Pixie Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Pixie),
-            "Qitari Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Qitari),
-            "Dwarf Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Dwarf),
-            "Arkasodara Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Arkasodara),
-            "Omicron Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Omicron),
-            "Loporrit Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.Loporrit),
-            "Pelupelu Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.PeluPelu),
-            "Mamool Ja Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.MamoolJa),
-            "Yok Huy Allied Society Quests" => CheckAlliedSociety((byte)AlliedSociety.YokHuy),
-            "Materia Transmutation" => CheckQuestComplete((uint)QuestID.MateriaTransmutation),
+            Tooltip.AlliedSocietiesAmaljaa => CheckAlliedSociety((byte)AlliedSociety.Amaljaa),
+            Tooltip.AlliedSocietiesSylph => CheckAlliedSociety((byte)AlliedSociety.Sylph),
+            Tooltip.AlliedSocietiesKobold => CheckAlliedSociety((byte)AlliedSociety.Kobold),
+            Tooltip.AlliedSocietiesSahagin => CheckAlliedSociety((byte)AlliedSociety.Sahagin),
+            Tooltip.AlliedSocietiesIxal => CheckAlliedSociety((byte)AlliedSociety.Ixal),
+            Tooltip.AlliedSocietiesVanuVanu => CheckAlliedSociety((byte)AlliedSociety.VanuVanu),
+            Tooltip.AlliedSocietiesVath => CheckAlliedSociety((byte)AlliedSociety.Vath),
+            Tooltip.AlliedSocietiesMoogle => CheckAlliedSociety((byte)AlliedSociety.Moogle),
+            Tooltip.AlliedSocietiesKojin => CheckAlliedSociety((byte)AlliedSociety.Kojin),
+            Tooltip.AlliedSocietiesAnanta => CheckAlliedSociety((byte)AlliedSociety.Ananta),
+            Tooltip.AlliedSocietiesNamazu => CheckAlliedSociety((byte)AlliedSociety.Namazu),
+            Tooltip.AlliedSocietiesPixie => CheckAlliedSociety((byte)AlliedSociety.Pixie),
+            Tooltip.AlliedSocietiesQitari => CheckAlliedSociety((byte)AlliedSociety.Qitari),
+            Tooltip.AlliedSocietiesDwarf => CheckAlliedSociety((byte)AlliedSociety.Dwarf),
+            Tooltip.AlliedSocietiesArkasodara => CheckAlliedSociety((byte)AlliedSociety.Arkasodara),
+            Tooltip.AlliedSocietiesOmicron => CheckAlliedSociety((byte)AlliedSociety.Omicron),
+            Tooltip.AlliedSocietiesLoporrit => CheckAlliedSociety((byte)AlliedSociety.Loporrit),
+            Tooltip.AlliedSocietiesPeluPelu => CheckAlliedSociety((byte)AlliedSociety.PeluPelu),
+            Tooltip.AlliedSocietiesMamoolJa => CheckAlliedSociety((byte)AlliedSociety.MamoolJa),
+            Tooltip.AlliedSocietiesYokHuy => CheckAlliedSociety((byte)AlliedSociety.YokHuy),
+            Tooltip.MateriaTransmutation => CheckQuestComplete((uint)QuestID.MateriaTransmutation),
+            Tooltip.IslandSanctuary => CheckQuestComplete((uint)QuestID.IslandSanctuary),
             _ => true
         };
     }

@@ -392,7 +392,7 @@ public partial class MainWindow : Window, IDisposable
                                 if (ImGui.IsItemHovered())
                                 {
                                     ImGui.BeginTooltip();
-                                    ImGui.Text(entry.TooltipText);
+                                    ImGui.Text(ContentManager.TooltipText[entry.TooltipText]);
                                     ImGui.EndTooltip();
                                 }
                                 ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(0, 0));
