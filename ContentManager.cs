@@ -62,16 +62,15 @@ public partial class ContentManager
         {Tooltip.AlliedSocietiesQitari, "Qitari Allied Society Quests"},     {Tooltip.AlliedSocietiesDwarf, "Dwarf Allied Society Quests"},        {Tooltip.AlliedSocietiesArkasodara, "Arkasodara Allied Society Quests"}, {Tooltip.AlliedSocietiesOmicron, "Omicron Allied Society Quests"},
         {Tooltip.AlliedSocietiesLoporrit, "Loporrit Allied Society Quests"}, {Tooltip.AlliedSocietiesPeluPelu, "Pelupelu Allied Society Quests"},  {Tooltip.AlliedSocietiesMamoolJa, "Mamool Ja Allied Society Quests"},    {Tooltip.AlliedSocietiesYokHuy, "Yok Huy Allied Society Quests"},
 
-        {Tooltip.CustomDeliveriesZhloe, "Custom Deliveries: Zhloe Aliapoh"},   {Tooltip.CustomDeliveriesMnaago, "Custom Deliveries: M'naago"},      {Tooltip.CustomDeliveriesKurenai, "Custom Deliveries: Kurenai"},
-        {Tooltip.CustomDeliveriesAdkiragh, "Custom Deliveries: Adkiragh"},     {Tooltip.CustomDeliveriesKaiShirr, "Custom Deliveries: Kai-Shirr"},  {Tooltip.CustomDeliveriesEhllTou, "Custom Deliveries: Ehll Tou"},
-        {Tooltip.CustomDeliveriesCharlemend, "Custom Deliveries: Charlemend"}, {Tooltip.CustomDeliveriesAmeliance, "Custom Deliveries: Ameliance"}, {Tooltip.CustomDeliveriesAnden, "Custom Deliveries: Anden"},
-        {Tooltip.CustomDeliveriesMargrat, "Custom Deliveries: Margrat"},       {Tooltip.CustomDeliveriesNitowikwe, "Custom Deliveries: Nitowikwe"},
+        {Tooltip.CustomDeliveriesZhloe, "Custom Deliveries: Zhloe Aliapoh"}, {Tooltip.CustomDeliveriesMnaago, "Custom Deliveries: M'naago"},       {Tooltip.CustomDeliveriesKurenai, "Custom Deliveries: Kurenai"},         {Tooltip.CustomDeliveriesAdkiragh, "Custom Deliveries: Adkiragh"},     
+        {Tooltip.CustomDeliveriesKaiShirr, "Custom Deliveries: Kai-Shirr"},  {Tooltip.CustomDeliveriesEhllTou, "Custom Deliveries: Ehll Tou"},     {Tooltip.CustomDeliveriesCharlemend, "Custom Deliveries: Charlemend"},   {Tooltip.CustomDeliveriesAmeliance, "Custom Deliveries: Ameliance"},  
+        {Tooltip.CustomDeliveriesAnden, "Custom Deliveries: Anden"},         {Tooltip.CustomDeliveriesMargrat, "Custom Deliveries: Margrat"},      {Tooltip.CustomDeliveriesNitowikwe, "Custom Deliveries: Nitowikwe"},
 
-        {Tooltip.PalaceOfTheDead, "Deep Dungeon: Palace of the Dead"}, {Tooltip.HeavenOnHigh, "Deep Dungeon: Heaven on High"}, {Tooltip.EurekaOrthos, "Deep Dungeon: Eureka Orthos"}, {Tooltip.PilgrimsTraverse, "Deep Dungeon: Pilgrim's Traverse"},
-        {Tooltip.DomanRestoration, "Doman Enclave Reconstruction"}, {Tooltip.IshgardianRestoration, "Ishgardian Restoration"}, {Tooltip.IslandSanctuary, "Island Sanctuary"}, {Tooltip.CosmicExploration, "Cosmic Exploration"},
-        {Tooltip.Eureka, "The Forbidden Land, Eureka"}, {Tooltip.Bozja, "Save the Queen (Bozja)"}, {Tooltip.OccultCresent, "The Occult Cresent"},
+        {Tooltip.PalaceOfTheDead, "Deep Dungeon: Palace of the Dead"},       {Tooltip.HeavenOnHigh, "Deep Dungeon: Heaven on High"},               {Tooltip.EurekaOrthos, "Deep Dungeon: Eureka Orthos"},                   {Tooltip.PilgrimsTraverse, "Deep Dungeon: Pilgrim's Traverse"},
+        {Tooltip.DomanRestoration, "Doman Enclave Reconstruction"},          {Tooltip.IshgardianRestoration, "Ishgardian Restoration"},            {Tooltip.IslandSanctuary, "Island Sanctuary"},                           {Tooltip.CosmicExploration, "Cosmic Exploration"},
+        {Tooltip.Eureka, "The Forbidden Land, Eureka"},                      {Tooltip.Bozja, "Save the Queen (Bozja)"},                            {Tooltip.OccultCresent, "The Occult Cresent"},
 
-        {Tooltip.MateriaTransmutation, "Materia Transmutation"}, {Tooltip.PVPZone, "PVP Zone"}, {Tooltip.GoldSaucer, "The Gold Saucer"}
+        {Tooltip.MateriaTransmutation, "Materia Transmutation"},             {Tooltip.PVPZone, "PVP Zone"},                                        {Tooltip.GoldSaucer, "The Gold Saucer"}
     };
 
     private static ContentInfo MarketBoard() =>
@@ -83,6 +82,9 @@ public partial class ContentManager
     private static ContentInfo DeepDungeon(Tooltip tooltip) =>
         ContentInfo(Categories.DeepDungeons, tooltip, Icons.DeepDungeonIcon, 38, -6, -6.5f);
 
+    private static ContentInfo AlliedSociety(Tooltip tooltip, int icon) =>
+        ContentInfo(Categories.AlliedSocieties, tooltip, icon, 30, -3, -3);
+
     private static ContentInfo CustomDelivery(Tooltip tooltip) =>
         ContentInfo(Categories.CustomDeliveries, tooltip, Icons.CustomDeliveriesIcon, 33, -4, -4);
 
@@ -93,15 +95,15 @@ public partial class ContentManager
     
     // --------------- ARR ---------------
     /* New Gridania                     */ {2,   [MarketBoard(), SummoningBell()]},
-    /* East Shroud: The Hawthorne Hut   */ {4,   [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesSylph, Icons.SylphAlliedSocietyIcon)]},
+    /* East Shroud: The Hawthorne Hut   */ {4,   [AlliedSociety(Tooltip.AlliedSocietiesSylph, Icons.SylphAlliedSocietyIcon)]},
     /* South Shroud: Quarrymill         */ {5,   [DeepDungeon(Tooltip.PalaceOfTheDead)]},
-    /* North Shroud: Fallgourd Float    */ {7,   [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesIxal, Icons.IxalAlliedSocietyIcon)]},
+    /* North Shroud: Fallgourd Float    */ {7,   [AlliedSociety(Tooltip.AlliedSocietiesIxal, Icons.IxalAlliedSocietyIcon)]},
     /* Limsa Lominsa Lower Decks        */ {8,   [MarketBoard(), SummoningBell()]},
     /* Ul'Dah - Steps of Nald           */ {9,   [MarketBoard(), SummoningBell()]},
     /* Lower La Noscea: Moraby Drydocks */ {10,  [ContentInfo(Categories.RestorationContent, Tooltip.IslandSanctuary, Icons.IslandSanctuaryIcon, 30, -2, -3)]},
-    /* Western La Noscea: Aleport       */ {14,  [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesSahagin, Icons.SahaginAlliedSocietyIcon)]},
-    /* Outer La Noscea: Camp Overlook   */ {16,  [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesKobold, Icons.KoboldAlliedSocietyIcon)]},
-    /* Southern Thanalan: Lil Ala Mhigo */ {19,  [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesAmaljaa, Icons.AmaljaaAlliedSocietyIcon)]},
+    /* Western La Noscea: Aleport       */ {14,  [AlliedSociety(Tooltip.AlliedSocietiesSahagin, Icons.SahaginAlliedSocietyIcon)]},
+    /* Outer La Noscea: Camp Overlook   */ {16,  [AlliedSociety(Tooltip.AlliedSocietiesKobold, Icons.KoboldAlliedSocietyIcon)]},
+    /* Southern Thanalan: Lil Ala Mhigo */ {19,  [AlliedSociety(Tooltip.AlliedSocietiesAmaljaa, Icons.AmaljaaAlliedSocietyIcon)]},
     /* Mor Dhona: Revenant's Toll       */ {24,  [DeepDungeon(Tooltip.EurekaOrthos), SummoningBell()]},
     /* Central Than: Blk Brush Station  */ {53,  [ContentInfo(Categories.Misc, Tooltip.MateriaTransmutation, Icons.MateriaTransmutationIcon, 30, -2, -3)]},
     /* Wolves' Den Pier                 */ {55,  [ContentInfo(Categories.Misc, Tooltip.PVPZone, Icons.PvpZoneIcon, 30, -2, -3)]},
@@ -112,52 +114,52 @@ public partial class ContentManager
                                                   ContentInfo(Categories.RestorationContent, Tooltip.IshgardianRestoration, Icons.IshgardianRestorationIcon, 30, -2, -3),
                                                   CustomDelivery(Tooltip.CustomDeliveriesEhllTou),
                                                   CustomDelivery(Tooltip.CustomDeliveriesCharlemend)]},
-    /* The Sea of Clouds: Ok'Zundu      */ {73,  [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesVanuVanu, Icons.VanuVanuAlliedSocietyIcon)]},
+    /* The Sea of Clouds: Ok'Zundu      */ {73,  [AlliedSociety(Tooltip.AlliedSocietiesVanuVanu, Icons.VanuVanuAlliedSocietyIcon)]},
     /* Idyllshire                       */ {75,  [SummoningBell(),
                                                   CustomDelivery(Tooltip.CustomDeliveriesZhloe),
                                                   CustomDelivery(Tooltip.CustomDeliveriesAdkiragh)]},
-    /* Dravanian Forelands: Anyx Trine  */ {77,  [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesVath, Icons.VathAlliedSocietyIcon)]},
-    /* Churning Mists: Zenith           */ {79,  [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesMoogle, Icons.MoogleAlliedSocietyIcon)]},
+    /* Dravanian Forelands: Anyx Trine  */ {77,  [AlliedSociety(Tooltip.AlliedSocietiesVath, Icons.VathAlliedSocietyIcon)]},
+    /* Churning Mists: Zenith           */ {79,  [AlliedSociety(Tooltip.AlliedSocietiesMoogle, Icons.MoogleAlliedSocietyIcon)]},
 
     // ----------- Stormblood ------------
-    /* The Fringes: The Peering Stones  */ {99,  [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesAnanta, Icons.AnantaAlliedSocietyIcon)]},
+    /* The Fringes: The Peering Stones  */ {99,  [AlliedSociety(Tooltip.AlliedSocietiesAnanta, Icons.AnantaAlliedSocietyIcon)]},
     /* Rhalgr's Reach                   */ {104, [SummoningBell(), 
                                                   CustomDelivery(Tooltip.CustomDeliveriesMnaago)]},
-    /* The Ruby Sea: Tamamizu           */ {105, [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesKojin, Icons.KojinAlliedSocietyIcon),
+    /* The Ruby Sea: Tamamizu           */ {105, [AlliedSociety(Tooltip.AlliedSocietiesKojin, Icons.KojinAlliedSocietyIcon),
                                                   CustomDelivery(Tooltip.CustomDeliveriesKurenai)]},
     /* The Ruby Sea: Onokoro            */ {106, [DeepDungeon(Tooltip.HeavenOnHigh)]},
     /* Kugane                           */ {111, [MarketBoard(), SummoningBell(), FieldOperation(Tooltip.Eureka),]},
     /* The Doman Enclave                */ {127, [SummoningBell(), 
                                                   ContentInfo(Categories.RestorationContent, Tooltip.DomanRestoration, Icons.DomanReconstructionIcon, 30, -2, -3), 
                                                   FieldOperation(Tooltip.Bozja)]},
-    /* The Azim Steppe: Dhoro Iloh      */ {128, [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesNamazu, Icons.NamazuAlliedSocietyIcon)]},
+    /* The Azim Steppe: Dhoro Iloh      */ {128, [AlliedSociety(Tooltip.AlliedSocietiesNamazu, Icons.NamazuAlliedSocietyIcon)]},
 
     // --------- Shadowbringers ----------
     /* The Crystarium                   */ {133, [MarketBoard(), SummoningBell()]},
     /* Eulmore                          */ {134, [SummoningBell(), CustomDelivery(Tooltip.CustomDeliveriesKaiShirr)]},   
-    /* Lakeland: The Ostall Imperative  */ {136, [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesDwarf, Icons.DwarfAlliedSocietyIcon)]},
-    /* The Rak'tika Greatwood: Fanow    */ {143, [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesQitari, Icons.QitariAlliedSocietyIcon)]},
-    /* Il Mheg: Lydha Lran              */ {144, [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesPixie, Icons.PixieAlliedSocietyIcon), 
+    /* Lakeland: The Ostall Imperative  */ {136, [AlliedSociety(Tooltip.AlliedSocietiesDwarf, Icons.DwarfAlliedSocietyIcon)]},
+    /* The Rak'tika Greatwood: Fanow    */ {143, [AlliedSociety(Tooltip.AlliedSocietiesQitari, Icons.QitariAlliedSocietyIcon)]},
+    /* Il Mheg: Lydha Lran              */ {144, [AlliedSociety(Tooltip.AlliedSocietiesPixie, Icons.PixieAlliedSocietyIcon), 
                                                   CustomDelivery(Tooltip.CustomDeliveriesAnden)]},
     /* Il Mheg: Wolekdorf               */ {146, [DeepDungeon(Tooltip.PilgrimsTraverse)]},
 
     // ----------- Endwalker -------------
     /* Labyrinthos: Sharlayan Hamlet    */ {167, [CustomDelivery(Tooltip.CustomDeliveriesMargrat)]},
-    /* Thavnair: Yedlihmad              */ {169, [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesArkasodara, Icons.ArkasodaraAlliedSocietyIcon)]},
-    /* Mare Lamentorum: Bestway Burrow  */ {175, [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesLoporrit, Icons.LoporritAlliedSocietyIcon),
+    /* Thavnair: Yedlihmad              */ {169, [AlliedSociety(Tooltip.AlliedSocietiesArkasodara, Icons.ArkasodaraAlliedSocietyIcon)]},
+    /* Mare Lamentorum: Bestway Burrow  */ {175, [AlliedSociety(Tooltip.AlliedSocietiesLoporrit, Icons.LoporritAlliedSocietyIcon),
                                                   ContentInfo(Categories.RestorationContent, Tooltip.CosmicExploration, Icons.CosmicExplorationIcon, 30, -2, -3)]},
-    /* Ultima Thule: Base Omicron       */ {181, [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesOmicron, Icons.OmicronAlliedSocietyIcon)]},
+    /* Ultima Thule: Base Omicron       */ {181, [AlliedSociety(Tooltip.AlliedSocietiesOmicron, Icons.OmicronAlliedSocietyIcon)]},
     /* Old Sharlayan                    */ {182, [MarketBoard(), SummoningBell(),
                                                   CustomDelivery(Tooltip.CustomDeliveriesAmeliance)]},
     /* Radz-at-Han                      */ {183, [SummoningBell()]},
 
     // ----------- Dawntrail -------------
-    /* Urqopacha: Worlar's Echo         */ {201, [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesYokHuy, Icons.YokHuyAlliedSocietyIcon)]},
-    /* Yak T'el: Mamook                 */ {206, [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesMamoolJa, Icons.MamoolJaAlliedSocietyIcon)]},
+    /* Urqopacha: Worlar's Echo         */ {201, [AlliedSociety(Tooltip.AlliedSocietiesYokHuy, Icons.YokHuyAlliedSocietyIcon)]},
+    /* Yak T'el: Mamook                 */ {206, [AlliedSociety(Tooltip.AlliedSocietiesMamoolJa, Icons.MamoolJaAlliedSocietyIcon)]},
     /* Shaaloani: Sheshenewezi Springs  */ {208, [CustomDelivery(Tooltip.CustomDeliveriesNitowikwe)]},
     /* Tulitollal                       */ {216, [MarketBoard(), SummoningBell(), FieldOperation(Tooltip.OccultCresent)]},
     /* Solution Nine                    */ {217, [SummoningBell()]},
-    /* Kozama'uka: Dock Poga            */ {238, [ContentInfo(Categories.AlliedSocieties, Tooltip.AlliedSocietiesPeluPelu, Icons.PelupeluAlliedSocietyIcon)]},
+    /* Kozama'uka: Dock Poga            */ {238, [AlliedSociety(Tooltip.AlliedSocietiesPeluPelu, Icons.PelupeluAlliedSocietyIcon)]},
     };
 }
 

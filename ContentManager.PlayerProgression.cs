@@ -18,7 +18,7 @@ public partial class ContentManager
 {
     public ContentManager contentManager = new ContentManager();
 
-    public enum AlliedSociety : byte 
+    public enum AlliedSocietyID : byte 
     {Amaljaa = 1, Sylph = 2, Kobold = 3, Sahagin = 4, Ixal = 5, VanuVanu = 6, Vath = 7, Moogle = 8,
      Kojin = 9, Ananta = 10, Namazu = 11, Pixie = 12, Qitari = 13, Dwarf = 14, Arkasodara = 15, Omicron = 16, Loporrit = 17,
      PeluPelu = 18, MamoolJa = 19, YokHuy = 20}
@@ -33,26 +33,27 @@ public partial class ContentManager
     {
         return tooltip switch
         {
-            Tooltip.AlliedSocietiesAmaljaa => CheckAlliedSociety((byte)AlliedSociety.Amaljaa),
-            Tooltip.AlliedSocietiesSylph => CheckAlliedSociety((byte)AlliedSociety.Sylph),
-            Tooltip.AlliedSocietiesKobold => CheckAlliedSociety((byte)AlliedSociety.Kobold),
-            Tooltip.AlliedSocietiesSahagin => CheckAlliedSociety((byte)AlliedSociety.Sahagin),
-            Tooltip.AlliedSocietiesIxal => CheckAlliedSociety((byte)AlliedSociety.Ixal),
-            Tooltip.AlliedSocietiesVanuVanu => CheckAlliedSociety((byte)AlliedSociety.VanuVanu),
-            Tooltip.AlliedSocietiesVath => CheckAlliedSociety((byte)AlliedSociety.Vath),
-            Tooltip.AlliedSocietiesMoogle => CheckAlliedSociety((byte)AlliedSociety.Moogle),
-            Tooltip.AlliedSocietiesKojin => CheckAlliedSociety((byte)AlliedSociety.Kojin),
-            Tooltip.AlliedSocietiesAnanta => CheckAlliedSociety((byte)AlliedSociety.Ananta),
-            Tooltip.AlliedSocietiesNamazu => CheckAlliedSociety((byte)AlliedSociety.Namazu),
-            Tooltip.AlliedSocietiesPixie => CheckAlliedSociety((byte)AlliedSociety.Pixie),
-            Tooltip.AlliedSocietiesQitari => CheckAlliedSociety((byte)AlliedSociety.Qitari),
-            Tooltip.AlliedSocietiesDwarf => CheckAlliedSociety((byte)AlliedSociety.Dwarf),
-            Tooltip.AlliedSocietiesArkasodara => CheckAlliedSociety((byte)AlliedSociety.Arkasodara),
-            Tooltip.AlliedSocietiesOmicron => CheckAlliedSociety((byte)AlliedSociety.Omicron),
-            Tooltip.AlliedSocietiesLoporrit => CheckAlliedSociety((byte)AlliedSociety.Loporrit),
-            Tooltip.AlliedSocietiesPeluPelu => CheckAlliedSociety((byte)AlliedSociety.PeluPelu),
-            Tooltip.AlliedSocietiesMamoolJa => CheckAlliedSociety((byte)AlliedSociety.MamoolJa),
-            Tooltip.AlliedSocietiesYokHuy => CheckAlliedSociety((byte)AlliedSociety.YokHuy),
+            Tooltip.AlliedSocietiesAmaljaa => CheckAlliedSociety((byte)AlliedSocietyID.Amaljaa),
+            Tooltip.AlliedSocietiesSylph => CheckAlliedSociety((byte)AlliedSocietyID.Sylph),
+            Tooltip.AlliedSocietiesKobold => CheckAlliedSociety((byte)AlliedSocietyID.Kobold),
+            Tooltip.AlliedSocietiesSahagin => CheckAlliedSociety((byte)AlliedSocietyID.Sahagin),
+            Tooltip.AlliedSocietiesIxal => CheckAlliedSociety((byte)AlliedSocietyID.Ixal),
+            Tooltip.AlliedSocietiesVanuVanu => CheckAlliedSociety((byte)AlliedSocietyID.VanuVanu),
+            Tooltip.AlliedSocietiesVath => CheckAlliedSociety((byte)AlliedSocietyID.Vath),
+            Tooltip.AlliedSocietiesMoogle => CheckAlliedSociety((byte)AlliedSocietyID.Moogle),
+            Tooltip.AlliedSocietiesKojin => CheckAlliedSociety((byte)AlliedSocietyID.Kojin),
+            Tooltip.AlliedSocietiesAnanta => CheckAlliedSociety((byte)AlliedSocietyID.Ananta),
+            Tooltip.AlliedSocietiesNamazu => CheckAlliedSociety((byte)AlliedSocietyID.Namazu),
+            Tooltip.AlliedSocietiesPixie => CheckAlliedSociety((byte)AlliedSocietyID.Pixie),
+            Tooltip.AlliedSocietiesQitari => CheckAlliedSociety((byte)AlliedSocietyID.Qitari),
+            Tooltip.AlliedSocietiesDwarf => CheckAlliedSociety((byte)AlliedSocietyID.Dwarf),
+            Tooltip.AlliedSocietiesArkasodara => CheckAlliedSociety((byte)AlliedSocietyID.Arkasodara),
+            Tooltip.AlliedSocietiesOmicron => CheckAlliedSociety((byte)AlliedSocietyID.Omicron),
+            Tooltip.AlliedSocietiesLoporrit => CheckAlliedSociety((byte)AlliedSocietyID.Loporrit),
+            Tooltip.AlliedSocietiesPeluPelu => CheckAlliedSociety((byte)AlliedSocietyID.PeluPelu),
+            Tooltip.AlliedSocietiesMamoolJa => CheckAlliedSociety((byte)AlliedSocietyID.MamoolJa),
+            Tooltip.AlliedSocietiesYokHuy => CheckAlliedSociety((byte)AlliedSocietyID.YokHuy),
+
             Tooltip.MateriaTransmutation => CheckQuestComplete((uint)QuestID.MateriaTransmutation),
             Tooltip.IslandSanctuary => CheckQuestComplete((uint)QuestID.IslandSanctuary),
             _ => true
