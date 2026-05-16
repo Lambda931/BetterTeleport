@@ -25,8 +25,7 @@ public partial class ContentManager
     public enum QuestID : uint
     {
         MateriaTransmutation = 66999,
-        IslandSanctuary = 68622,
-        //IslandSanctuary = 70179
+        IslandSanctuary = 68622
     }
 
     public static unsafe bool CheckUnlocked(ContentInfo.Categories category, Tooltip tooltip)

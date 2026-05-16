@@ -110,28 +110,20 @@ public partial class ContentManager
     /* The Gold Saucer                  */ {62,  [ContentInfo(Categories.Misc, Tooltip.GoldSaucer, Icons.GoldSaucerIcon), SummoningBell()]},
 
     // ----------- Heavensward -----------
-    /* Foundation                       */ {70,  [MarketBoard(), SummoningBell(),
-                                                  ContentInfo(Categories.RestorationContent, Tooltip.IshgardianRestoration, Icons.IshgardianRestorationIcon, 30, -2, -3),
-                                                  CustomDelivery(Tooltip.CustomDeliveriesEhllTou),
-                                                  CustomDelivery(Tooltip.CustomDeliveriesCharlemend)]},
+    /* Foundation                       */ {70,  [MarketBoard(), SummoningBell(), ContentInfo(Categories.RestorationContent, Tooltip.IshgardianRestoration, Icons.IshgardianRestorationIcon, 30, -2, -3), 
+                                                  CustomDelivery(Tooltip.CustomDeliveriesEhllTou), CustomDelivery(Tooltip.CustomDeliveriesCharlemend)]},
     /* The Sea of Clouds: Ok'Zundu      */ {73,  [AlliedSociety(Tooltip.AlliedSocietiesVanuVanu, Icons.VanuVanuAlliedSocietyIcon)]},
-    /* Idyllshire                       */ {75,  [SummoningBell(),
-                                                  CustomDelivery(Tooltip.CustomDeliveriesZhloe),
-                                                  CustomDelivery(Tooltip.CustomDeliveriesAdkiragh)]},
+    /* Idyllshire                       */ {75,  [SummoningBell(), CustomDelivery(Tooltip.CustomDeliveriesZhloe), CustomDelivery(Tooltip.CustomDeliveriesAdkiragh)]},
     /* Dravanian Forelands: Anyx Trine  */ {77,  [AlliedSociety(Tooltip.AlliedSocietiesVath, Icons.VathAlliedSocietyIcon)]},
     /* Churning Mists: Zenith           */ {79,  [AlliedSociety(Tooltip.AlliedSocietiesMoogle, Icons.MoogleAlliedSocietyIcon)]},
 
     // ----------- Stormblood ------------
     /* The Fringes: The Peering Stones  */ {99,  [AlliedSociety(Tooltip.AlliedSocietiesAnanta, Icons.AnantaAlliedSocietyIcon)]},
-    /* Rhalgr's Reach                   */ {104, [SummoningBell(), 
-                                                  CustomDelivery(Tooltip.CustomDeliveriesMnaago)]},
-    /* The Ruby Sea: Tamamizu           */ {105, [AlliedSociety(Tooltip.AlliedSocietiesKojin, Icons.KojinAlliedSocietyIcon),
-                                                  CustomDelivery(Tooltip.CustomDeliveriesKurenai)]},
+    /* Rhalgr's Reach                   */ {104, [SummoningBell(), CustomDelivery(Tooltip.CustomDeliveriesMnaago)]},
+    /* The Ruby Sea: Tamamizu           */ {105, [AlliedSociety(Tooltip.AlliedSocietiesKojin, Icons.KojinAlliedSocietyIcon), CustomDelivery(Tooltip.CustomDeliveriesKurenai)]},
     /* The Ruby Sea: Onokoro            */ {106, [DeepDungeon(Tooltip.HeavenOnHigh)]},
     /* Kugane                           */ {111, [MarketBoard(), SummoningBell(), FieldOperation(Tooltip.Eureka),]},
-    /* The Doman Enclave                */ {127, [SummoningBell(), 
-                                                  ContentInfo(Categories.RestorationContent, Tooltip.DomanRestoration, Icons.DomanReconstructionIcon, 30, -2, -3), 
-                                                  FieldOperation(Tooltip.Bozja)]},
+    /* The Doman Enclave                */ {127, [SummoningBell(), ContentInfo(Categories.RestorationContent, Tooltip.DomanRestoration, Icons.DomanReconstructionIcon, 30, -2, -3), FieldOperation(Tooltip.Bozja)]},
     /* The Azim Steppe: Dhoro Iloh      */ {128, [AlliedSociety(Tooltip.AlliedSocietiesNamazu, Icons.NamazuAlliedSocietyIcon)]},
 
     // --------- Shadowbringers ----------
@@ -139,18 +131,15 @@ public partial class ContentManager
     /* Eulmore                          */ {134, [SummoningBell(), CustomDelivery(Tooltip.CustomDeliveriesKaiShirr)]},   
     /* Lakeland: The Ostall Imperative  */ {136, [AlliedSociety(Tooltip.AlliedSocietiesDwarf, Icons.DwarfAlliedSocietyIcon)]},
     /* The Rak'tika Greatwood: Fanow    */ {143, [AlliedSociety(Tooltip.AlliedSocietiesQitari, Icons.QitariAlliedSocietyIcon)]},
-    /* Il Mheg: Lydha Lran              */ {144, [AlliedSociety(Tooltip.AlliedSocietiesPixie, Icons.PixieAlliedSocietyIcon), 
-                                                  CustomDelivery(Tooltip.CustomDeliveriesAnden)]},
+    /* Il Mheg: Lydha Lran              */ {144, [AlliedSociety(Tooltip.AlliedSocietiesPixie, Icons.PixieAlliedSocietyIcon), CustomDelivery(Tooltip.CustomDeliveriesAnden)]},
     /* Il Mheg: Wolekdorf               */ {146, [DeepDungeon(Tooltip.PilgrimsTraverse)]},
 
     // ----------- Endwalker -------------
     /* Labyrinthos: Sharlayan Hamlet    */ {167, [CustomDelivery(Tooltip.CustomDeliveriesMargrat)]},
     /* Thavnair: Yedlihmad              */ {169, [AlliedSociety(Tooltip.AlliedSocietiesArkasodara, Icons.ArkasodaraAlliedSocietyIcon)]},
-    /* Mare Lamentorum: Bestway Burrow  */ {175, [AlliedSociety(Tooltip.AlliedSocietiesLoporrit, Icons.LoporritAlliedSocietyIcon),
-                                                  ContentInfo(Categories.RestorationContent, Tooltip.CosmicExploration, Icons.CosmicExplorationIcon, 30, -2, -3)]},
+    /* Mare Lamentorum: Bestway Burrow  */ {175, [AlliedSociety(Tooltip.AlliedSocietiesLoporrit, Icons.LoporritAlliedSocietyIcon), ContentInfo(Categories.RestorationContent, Tooltip.CosmicExploration, Icons.CosmicExplorationIcon, 30, -2, -3)]},
     /* Ultima Thule: Base Omicron       */ {181, [AlliedSociety(Tooltip.AlliedSocietiesOmicron, Icons.OmicronAlliedSocietyIcon)]},
-    /* Old Sharlayan                    */ {182, [MarketBoard(), SummoningBell(),
-                                                  CustomDelivery(Tooltip.CustomDeliveriesAmeliance)]},
+    /* Old Sharlayan                    */ {182, [MarketBoard(), SummoningBell(), CustomDelivery(Tooltip.CustomDeliveriesAmeliance)]},
     /* Radz-at-Han                      */ {183, [SummoningBell()]},
 
     // ----------- Dawntrail -------------
