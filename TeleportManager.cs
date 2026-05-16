@@ -61,7 +61,7 @@ public static unsafe class TeleportManager
     public static bool IsAttuned(uint aetheryte)
     {
         var teleport = Telepo.Instance();
-        var localPlayer = BetterTeleport.ClientState.LocalPlayer;
+        var localPlayer = BetterTeleport.ObjectTable.LocalPlayer;
         if (teleport == null)
         {
             return false;
