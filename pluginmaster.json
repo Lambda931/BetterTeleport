@@ -16,8 +16,8 @@
 		"ApplicableVersion": "any",
 		"Changelog": "Initial Release",
 
-    		"DownloadLinkInstall": "https://github.com/Lambda931/BetterTeleport/releases/tag/Pre-release/BetterTeleport.zip",
-    		"DownloadLinkTesting": "https://github.com/Lambda931/BetterTeleport/releases/tag/Pre-release/BetterTeleport.zip",
-    		"DownloadLinkUpdate": "https://github.com/Lambda931/BetterTeleport/releases/tag/Pre-release/BetterTeleport.zip"
+    		"DownloadLinkInstall": "https://github.com/Lambda931/BetterTeleport/releases/tag/Pre-release/BetterTeleport-Pre-release.zip",
+    		"DownloadLinkTesting": "https://github.com/Lambda931/BetterTeleport/releases/tag/Pre-release/BetterTeleport-Pre-release.zip",
+    		"DownloadLinkUpdate": "https://github.com/Lambda931/BetterTeleport/releases/tag/Pre-release/BetterTeleport-Pre-release.zip"
 	}
 ]
