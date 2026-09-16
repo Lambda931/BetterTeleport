@@ -1,21 +1,17 @@
 [
     {
-        Author: 'Lambda931',
-        Name: 'Better Teleport Menu',
-        Description: 'A better teleport menu',
-        InternalName: 'BetterTeleport',
-        AssemblyVersion: '0.0.0.1',
-        TestingAssemblyVersion: null,
-        RepoUrl: 'https://github.com/Lambda931/BetterTeleport',
-        ApplicableVersion: 'any',
-        DalamudApiLevel: 15,
-        Punchline: 'A better teleport menu',
-        IsHide: false,
-        IsTestingExclusive: false,
-        IconUrl: https://github.com/Lambda931/BetterTeleport/blob/main/Images/icon.png
-        DownloadLinkInstall: 'https://github.com/Lambda931/BetterTeleport/archive/refs/tags/Release.zip',
-        DownloadLinkTesting: 'https://github.com/Lambda931/BetterTeleport/archive/refs/tags/Release.zip',
-        DownloadLinkUpdate: 'https://github.com/Lambda931/BetterTeleport/archive/refs/tags/Release.zip',
-        LastUpdate: '2339160926',
+        "Author": "Lambda931",
+        "Name": "Better Teleport Menu",
+        "Punchline": "A better teleport menu",
+        "Description": "A better teleport menu",
+        "IconUrl": "https://github.com/Lambda931/BetterTeleport/blob/main/Images/icon.png",
+        "ImageUrls": [ "" ],
+        "RepoUrl": "https://github.com/Lambda931/BetterTeleport",
+        "CategoryTags": [
+            "UI",
+        ],
+        "InternalName": "BetterTeleport",
+        "AssemblyVersion": "1.0.0.0",   
+        "Changelog": "Initial Release"
     }
 ]
