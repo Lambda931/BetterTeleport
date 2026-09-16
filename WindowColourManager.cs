@@ -10,6 +10,8 @@ public class WindowColourManager
 {
     public enum Colours { DalamudDefault, ClearPurple, ClearBlue};
 
+    public static Colours ColourProfile;
+
     public static readonly Dictionary<Colours, WindowColours> ColourData = new()
     {
         { Colours.DalamudDefault, new WindowColours { windowBackground = new Vector4(0.06f, 0.06f, 0.06f, 0.85f), windowTitles = new Vector4(0.25f, 0.25f, 0.25f, 1f)}},

@@ -145,9 +145,18 @@ public sealed class BetterTeleport : IDalamudPlugin
         }
     }
 
+    public void AutoCloseConfigWindow()
+    {
+        if (ConfigWindow.IsOpen == true)
+        {
+            ConfigWindow.IsOpen = false;
+        }
+    }
+
     private void OnLogout(int type, int code)
     {
         teleportWindowOpen = false;
         MainWindow.IsOpen = false;
+        ConfigWindow.IsOpen = false;
     }
 }

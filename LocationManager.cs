@@ -39,6 +39,7 @@ public class LocationIDs
     public required uint[] DeepDungeonIDs { get; set; }
     public required uint[] RestorationContentIDs { get; set; }
     public required uint[] FieldOperationIDs { get; set; }
+    public required uint[] LimitedJobsIDs { get; set; }
 }
 
 public class LocationManager
@@ -47,7 +48,7 @@ public class LocationManager
     public enum TabLocation {
         All, Residential, LaNoscea, BlackShroud, Thanalan, Ishgard, GyrAbania, FarEast, IndependentNations, Ilsabard, Tural,
         Norvrandt, BeyondTheSource, Favourites, MarketBoards, SummoningBells, AlliedSocieties, CustomDeliveries, DeepDungeons,
-        RestorationContent, FieldOperations
+        RestorationContent, FieldOperations, LimitedJobs
     }
 
 
@@ -82,10 +83,11 @@ public class LocationManager
         AlliedSocietyShadowbringersIDs = new uint[] { 144, 143, 136, },
         AlliedSocietyEndwalkerIDs = new uint[] { 169, 175, 181, },
         AlliedSocietyDawntrailIDs = new uint[] { 238, 206, 201 },
-        CustomDeliveriesIDs = new uint[] { 75, 104, 105, 134, 70, 182, 144, 167, 208 },
+        CustomDeliveriesIDs = new uint[] { 75, 104, 105, 134, 70, 182, 144, 167, 208, 216 },
         DeepDungeonIDs = new uint[] { 5, 106, 24, 146 },
         RestorationContentIDs = new uint[] { 127, 70, 10, 175 },
-        FieldOperationIDs = new uint[] { 111, 127, 216 }
+        FieldOperationIDs = new uint[] { 111, 127, 216 },
+        LimitedJobsIDs = new uint[] { 9, 3 }
     };
 
     public static readonly Dictionary<TabLocation, List<SubCategories>> SubCategories = new()
@@ -141,6 +143,7 @@ public class LocationManager
         {TabLocation.DeepDungeons,       [new SubCategories {Header = "Deep Dungeons", ids = locationIDs.DeepDungeonIDs}]},
         {TabLocation.RestorationContent, [new SubCategories {Header = "Restoration Content", ids = locationIDs.RestorationContentIDs}]},
         {TabLocation.FieldOperations,    [new SubCategories {Header = "Field Operations", ids = locationIDs.FieldOperationIDs}]},
+        {TabLocation.LimitedJobs,        [new SubCategories {Header = "Limited Jobs", ids = locationIDs.LimitedJobsIDs}]},
     };
 
     public static void GetCurrentResidentialIDs()

@@ -6,10 +6,12 @@ using Dalamud.Interface.Windowing;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Data.Parsing;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using static BetterTeleportPlugin.ContentManager;
 
 namespace BetterTeleportPlugin.Windows;
 
@@ -20,7 +22,7 @@ public partial class MainWindow : Window, IDisposable
 
     string currentContentDropdownItem = "";
     string[] contentDropdownitems = { "Market Boards", "Summoning Bells", "Allied Societies", "Custom Deliveries",
-                                        "Deep Dungeons", "Restoration Content", "Field Operations" };
+                                        "Deep Dungeons", "Restoration Content", "Field Operations", "Limited Jobs" };
     
     private bool resetScrollbar;
 
@@ -44,7 +46,7 @@ public partial class MainWindow : Window, IDisposable
 
     public override void PreDraw()
     {
-        WindowColourManager.ColourData.TryGetValue(WindowColourManager.Colours.ClearBlue, out var colourData);
+        WindowColourManager.ColourData.TryGetValue(WindowColourManager.ColourProfile, out var colourData);
         if (colourData != null)
         {
             ImGui.PushStyleColor(ImGuiCol.WindowBg, colourData.windowBackground);
@@ -481,6 +483,7 @@ public partial class MainWindow : Window, IDisposable
     public override void OnClose()
     {
         base.OnClose();
+        plugin.AutoCloseConfigWindow();
         BetterTeleport.teleportWindowOpen = false;
     }
 

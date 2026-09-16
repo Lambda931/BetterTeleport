@@ -19,7 +19,7 @@ public partial class MainWindow
 
         //Dropdown Tabs
         MarketBoards, SummoningBells, AlliedSocieties, CustomDeliveries, DeepDungeons,
-        RestorationContent, FieldOperations
+        RestorationContent, FieldOperations, LimitedJobs
     };
 
     private static readonly Dictionary<string, Tab> DropdownTabs = new()
@@ -30,7 +30,8 @@ public partial class MainWindow
         ["Custom Deliveries"] = Tab.CustomDeliveries,
         ["Deep Dungeons"] = Tab.DeepDungeons,
         ["Restoration Content"] = Tab.RestorationContent,
-        ["Field Operations"] = Tab.FieldOperations
+        ["Field Operations"] = Tab.FieldOperations,
+        ["Limited Jobs"] = Tab.LimitedJobs
     };
     public static Tab currentTab = Tab.All;
 
@@ -60,8 +61,9 @@ public partial class MainWindow
         { Tab.DeepDungeons, LocationManager.TabLocation.DeepDungeons },
         { Tab.RestorationContent, LocationManager.TabLocation.RestorationContent },
         { Tab.FieldOperations, LocationManager.TabLocation.FieldOperations },
+        { Tab.LimitedJobs, LocationManager.TabLocation.LimitedJobs },
 
-        
+
     };
 
     private void GetTabData(Tab tab)
@@ -133,6 +135,7 @@ public partial class MainWindow
             Tab.DeepDungeons => entry.ContentCategory == ContentInfo.Categories.DeepDungeons,
             Tab.RestorationContent => entry.ContentCategory == ContentInfo.Categories.RestorationContent,
             Tab.FieldOperations => entry.ContentCategory == ContentInfo.Categories.FieldOperations,
+            Tab.LimitedJobs => entry.ContentCategory == ContentInfo.Categories.LimitedJobs,
             _ => true
         };
     }
