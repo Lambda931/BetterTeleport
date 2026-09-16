@@ -14,5 +14,22 @@
         "IsTestingExclusive": false,
         "DownloadCount": 0,
         "LastUpdate": 1778950742
+
+        Author: 'Lambda931',
+        Name: 'Better Teleport Menu',
+        Description: 'A better teleport menu',
+        InternalName: 'BetterTeleport',
+        AssemblyVersion: '0.0.0.1',
+        TestingAssemblyVersion: null,
+        RepoUrl: 'https://github.com/Lambda931/BetterTeleport',
+        ApplicableVersion: 'any',
+        DalamudApiLevel: 15,
+        Punchline: 'A better teleport menu',
+        IsHide: false,
+        IsTestingExclusive: false,
+        DownloadLinkInstall: 'https://github.com/Lambda931/BetterTeleport/archive/refs/tags/Release.zip',
+        DownloadLinkTesting: 'https://github.com/Lambda931/BetterTeleport/archive/refs/tags/Release.zip',
+        DownloadLinkUpdate: 'https://github.com/Lambda931/BetterTeleport/archive/refs/tags/Release.zip',
+        LastUpdate: '2339160926',
     }
 ]
