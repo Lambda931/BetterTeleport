@@ -1,0 +1,17 @@
+[
+    {
+        "Author": "Lambda931",
+        "Name": "Better Teleport Menu",
+        "Punchline": "A better teleport menu",
+        "Description": "A better teleport menu",
+        "IconUrl": "https://github.com/Lambda931/BetterTeleport/blob/main/Images/icon.png",
+        "ImageUrls": [ "" ],
+        "RepoUrl": "https://github.com/Lambda931/BetterTeleport",
+        "CategoryTags": [
+            "UI",
+        ],
+        "InternalName": "BetterTeleport",
+        "AssemblyVersion": "1.0.0.0",   
+        "Changelog": "Initial Release"
+    }
+]
