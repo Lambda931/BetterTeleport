@@ -5,8 +5,7 @@ description: |- # long description, shown when your plugin is clicked on
   This is a test plugin - this first line is a summary.
 
   YAML file works
-ImageURLs: C:\Users\User\source\repos\BetterTeleport\BetterTeleport\Images\icon.png
-IconURL: C:\Users\User\source\repos\BetterTeleport\BetterTeleport\Images\icon.png
+IconURL: https://raw.githubusercontent.com/Lambda931/BetterTeleport/main/Images/icon.png
 "Tags": [
     "plugin",
     "teleport"
