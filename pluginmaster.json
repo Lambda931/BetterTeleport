@@ -1,20 +1,5 @@
 [
     {
-        "Author": "Lambda931",
-        "Name": "Better Teleport",
-        "InternalName": "BetterTeleport",
-        "AssemblyVersion": "0.0.0.1",
-        "Description": "A brief description of what your plugin does.",
-        "ApplicableVersion": "any",
-        "RepoUrl": "https://github.com/Lambda931/BetterTeleport",
-        "DownloadLinkInstall": "https://github.com/Lambda931/BetterTeleport/archive/refs/tags/Release.zip",
-        "IconUrl": "https://raw.githubusercontent.com/yourusername/your-repo/main/plugins/YourPluginInternalName/icon.png",
-        "Category": "Utility",
-        "IsHide": false,
-        "IsTestingExclusive": false,
-        "DownloadCount": 0,
-        "LastUpdate": 1778950742
-
         Author: 'Lambda931',
         Name: 'Better Teleport Menu',
         Description: 'A better teleport menu',
