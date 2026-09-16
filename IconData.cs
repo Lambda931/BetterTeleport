@@ -69,7 +69,9 @@ public class IconData
         GoldSaucerIcon = 60848,
         WonderousTailsIcon = 60926,
         PvpZoneIcon = 60459,
-        MateriaTransmutationIcon = 60910
+        MateriaTransmutationIcon = 60910,
+        MaskedCarnivalIcon = 60983,
+        CrucibleOfTheUnbrokenIcon = 63997
     };
 
     public static readonly Dictionary<uint, ULDLibraryData> IconLookup = new()
@@ -217,6 +219,8 @@ public class IconLibrary
     public required int WonderousTailsIcon { get; set; }
     public required int PvpZoneIcon { get; set; }
     public required int MateriaTransmutationIcon { get; set; }
+    public required int MaskedCarnivalIcon { get; set; }
+    public required int CrucibleOfTheUnbrokenIcon { get; set; }
     #endregion
 }
 
