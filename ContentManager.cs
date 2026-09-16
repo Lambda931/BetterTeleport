@@ -7,7 +7,7 @@ namespace BetterTeleportPlugin;
 
 public class ContentInfo
 {
-    public enum Categories { Misc, MarketBoard, SummoningBell, AlliedSocieties, CustomDeliveries, DeepDungeons, RestorationContent, FieldOperations}
+    public enum Categories { Misc, MarketBoard, SummoningBell, AlliedSocieties, CustomDeliveries, DeepDungeons, RestorationContent, FieldOperations, LimitedJobs}
     public enum Tooltip
     {
         MarketBoard, SummoningBell,
@@ -23,7 +23,7 @@ public class ContentInfo
         Eureka, Bozja, OccultCresent,
         DomanRestoration, IshgardianRestoration, IslandSanctuary, CosmicExploration,
 
-        MateriaTransmutation, PVPZone, GoldSaucer, MaskedCarnival, CrucibleOfTheUnbroken
+        MateriaTransmutation, PVPZone, GoldSaucer, MaskedCarnivale, CrucibleOfTheUnbroken
     }
     public Categories ContentCategory { get; set; }
     public required Tooltip TooltipText { get; set; }
@@ -64,13 +64,13 @@ public partial class ContentManager
 
         {Tooltip.CustomDeliveriesZhloe, "Custom Deliveries: Zhloe Aliapoh"}, {Tooltip.CustomDeliveriesMnaago, "Custom Deliveries: M'naago"},       {Tooltip.CustomDeliveriesKurenai, "Custom Deliveries: Kurenai"},         {Tooltip.CustomDeliveriesAdkiragh, "Custom Deliveries: Adkiragh"},     
         {Tooltip.CustomDeliveriesKaiShirr, "Custom Deliveries: Kai-Shirr"},  {Tooltip.CustomDeliveriesEhllTou, "Custom Deliveries: Ehll Tou"},     {Tooltip.CustomDeliveriesCharlemend, "Custom Deliveries: Charlemend"},   {Tooltip.CustomDeliveriesAmeliance, "Custom Deliveries: Ameliance"},  
-        {Tooltip.CustomDeliveriesAnden, "Custom Deliveries: Anden"},         {Tooltip.CustomDeliveriesMargrat, "Custom Deliveries: Margrat"},      {Tooltip.CustomDeliveriesNitowikwe, "Custom Deliveries: Nitowikwe"},     {Tooltip.CustomDeliveriesAuntTi, "Custom Deliveries: Aunt Ti"},
+        {Tooltip.CustomDeliveriesAnden, "Custom Deliveries: Anden"},         {Tooltip.CustomDeliveriesMargrat, "Custom Deliveries: Margrat"},      {Tooltip.CustomDeliveriesNitowikwe, "Custom Deliveries: Nitowikwe"},     {Tooltip.CustomDeliveriesAuntTi, "Custom Deliveries: Tiisol Ja"},
 
         {Tooltip.PalaceOfTheDead, "Deep Dungeon: Palace of the Dead"},       {Tooltip.HeavenOnHigh, "Deep Dungeon: Heaven on High"},               {Tooltip.EurekaOrthos, "Deep Dungeon: Eureka Orthos"},                   {Tooltip.PilgrimsTraverse, "Deep Dungeon: Pilgrim's Traverse"},
         {Tooltip.DomanRestoration, "Doman Enclave Reconstruction"},          {Tooltip.IshgardianRestoration, "Ishgardian Restoration"},            {Tooltip.IslandSanctuary, "Island Sanctuary"},                           {Tooltip.CosmicExploration, "Cosmic Exploration"},
         {Tooltip.Eureka, "The Forbidden Land, Eureka"},                      {Tooltip.Bozja, "Save the Queen (Bozja)"},                            {Tooltip.OccultCresent, "The Occult Cresent"},
 
-        {Tooltip.MateriaTransmutation, "Materia Transmutation"},             {Tooltip.PVPZone, "PVP Zone"},                                        {Tooltip.GoldSaucer, "The Gold Saucer"},                                 {Tooltip.MaskedCarnival, "The Masked Carnival"},
+        {Tooltip.MateriaTransmutation, "Materia Transmutation"},             {Tooltip.PVPZone, "PVP Zone"},                                        {Tooltip.GoldSaucer, "The Gold Saucer"},                                 {Tooltip.MaskedCarnivale, "The Masked Carnivale"},
         {Tooltip.CrucibleOfTheUnbroken, "Crucible of the Unbroken"}
     };
 
@@ -96,12 +96,12 @@ public partial class ContentManager
     
     // --------------- ARR ---------------
     /* New Gridania                       */ {2,   [MarketBoard(), SummoningBell()]},
-    /* Central Shroud: Bentbranch Meadows */ {3,   [ContentInfo(Categories.Misc, Tooltip.CrucibleOfTheUnbroken, Icons.CrucibleOfTheUnbrokenIcon, 30, -2, -3)]},
+    /* Central Shroud: Bentbranch Meadows */ {3,   [ContentInfo(Categories.LimitedJobs, Tooltip.CrucibleOfTheUnbroken, Icons.CrucibleOfTheUnbrokenIcon, 30, -2, -3)]},
     /* East Shroud: The Hawthorne Hut     */ {4,   [AlliedSociety(Tooltip.AlliedSocietiesSylph, Icons.SylphAlliedSocietyIcon)]},
     /* South Shroud: Quarrymill           */ {5,   [DeepDungeon(Tooltip.PalaceOfTheDead)]},
     /* North Shroud: Fallgourd Float      */ {7,   [AlliedSociety(Tooltip.AlliedSocietiesIxal, Icons.IxalAlliedSocietyIcon)]},
     /* Limsa Lominsa Lower Decks          */ {8,   [MarketBoard(), SummoningBell()]},
-    /* Ul'Dah - Steps of Nald             */ {9,   [MarketBoard(), SummoningBell(), ContentInfo(Categories.Misc, Tooltip.MaskedCarnival, Icons.MaskedCarnivalIcon, 30, -2, -3)]},
+    /* Ul'Dah - Steps of Nald             */ {9,   [MarketBoard(), SummoningBell(), ContentInfo(Categories.LimitedJobs, Tooltip.MaskedCarnivale, Icons.MaskedCarnivalIcon, 30, -2, -3)]},
     /* Lower La Noscea: Moraby Drydocks   */ {10,  [ContentInfo(Categories.RestorationContent, Tooltip.IslandSanctuary, Icons.IslandSanctuaryIcon, 30, -2, -3)]},
     /* Western La Noscea: Aleport         */ {14,  [AlliedSociety(Tooltip.AlliedSocietiesSahagin, Icons.SahaginAlliedSocietyIcon)]},
     /* Outer La Noscea: Camp Overlook     */ {16,  [AlliedSociety(Tooltip.AlliedSocietiesKobold, Icons.KoboldAlliedSocietyIcon)]},
