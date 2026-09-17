@@ -3,9 +3,9 @@
   <PropertyGroup>
     <Version>0.0.0.1</Version>
     <Description>A plugin that gives the player a better teleport menu.</Description>
-    <PackageProjectUrl>https://github.com/goatcorp/SamplePlugin</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Lambda931/BetterTeleport</PackageProjectUrl>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
-    <IsPackable>false</IsPackable>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

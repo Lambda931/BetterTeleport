@@ -1,10 +1,8 @@
-name: Better Teleport
+name: Better Teleport Menu
 author: LDF
-punchline: YAML file works
+punchline: A better teleport menu
 description: |- # long description, shown when your plugin is clicked on
-  This is a test plugin - this first line is a summary.
-
-  YAML file works
+  A plugin that gives the player a better teleport menu.
 IconURL: https://raw.githubusercontent.com/Lambda931/BetterTeleport/main/Images/icon.png
 "Tags": [
     "plugin",
