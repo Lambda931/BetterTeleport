@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("A plugin that gives the player a better teleport menu.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.0.0.1")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.0.0.1+2e9a4589bd0f571af66da3b80214d2b234be7ada")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.0.0.1+c33de925d23d0474240b43dd7c6a9690c142d3dd")]
 [assembly: System.Reflection.AssemblyProductAttribute("BetterTeleport")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BetterTeleport")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.0.0.1")]
