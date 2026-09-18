@@ -7,14 +7,13 @@
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="BetterTeleport.json" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Classes\" />
     <Folder Include="Images\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="BetterTeleport.yaml" />
   </ItemGroup>
 
   <ItemGroup>
