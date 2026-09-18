@@ -3,7 +3,11 @@ author: LDF
 punchline: A better teleport menu
 description: |- # long description, shown when your plugin is clicked on
 <<<<<<< HEAD
+<<<<<<< HEAD
  Replaces the teleport menu with a new window that aims to keep the original feel while adding new features. The new menu includes: Content Tracking for all locations, a drop-down menu to filter the menu by content, and the introduction of two new location tabs named Independent Nations and Beyond the Source to replace the Other tab.
+=======
+  A plugin that gives the player a better teleport menu.
+>>>>>>> parent of d1a9fd9 (Updated mod description)
 =======
   A plugin that gives the player a better teleport menu.
 >>>>>>> parent of d1a9fd9 (Updated mod description)
