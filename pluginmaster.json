@@ -1,0 +1,22 @@
+{
+	"Author": "Lambda931",
+	"Name": "Better Teleport Menu",
+	"Punchline": "An expanded teleport menu mod",
+	"Description": "Replaces the teleport menu with a new window that aims to keep the original feel while adding new features. The new menu includes content tracking for all locations, a drop-down menu to filter by content, and the introduction of two new location tabs named Independent Nations and Beyond the Source to replace the Other tab.",
+	"IconUrl": "https://raw.githubusercontent.com/Lambda931/BetterTeleport/main/Images/icon.png",
+	"ImageUrls": [""],
+	"RepoUrl": "https://github.com/Lambda931/BetterTeleport",
+	"CategoryTags": [
+		"UI"
+	],
+	"InternalName": "BetterTeleportPlugin",
+	"AssemblyVersion": "0.0.0.1",
+	"DalamudApiLevel": 15,
+	"ApplicableVersion": "any",
+	"Changelog": "Initial Release",
+
+    	"DownloadLinkInstall": "https://github.com/Lambda931/BetterTeleport/releases/tag/Pre-release/BetterTeleport-Pre-release.zip",
+    	"DownloadLinkTesting": "https://github.com/Lambda931/BetterTeleport/releases/tag/Pre-release/BetterTeleport-Pre-release.zip",
+    	"DownloadLinkUpdate": "https://github.com/Lambda931/BetterTeleport/releases/tag/Pre-release/BetterTeleport-Pre-release.zip"
+}
+
