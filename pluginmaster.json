@@ -11,7 +11,7 @@
 			"UI"
 		],
 		"InternalName": "BetterTeleport",
-		"AssemblyVersion": "1.0.0.0",
+		"AssemblyVersion": "0.0.0.1",
 		"DalamudApiLevel": 15,
 		"ApplicableVersion": "any",
 		"Changelog": "Initial Release",
