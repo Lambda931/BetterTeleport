@@ -10,7 +10,7 @@
 		"CategoryTags": [
 			"UI"
 		],
-		"InternalName": "BetterTeleportPlugin",
+		"InternalName": "BetterTeleport",
 		"AssemblyVersion": "0.0.0.1",
 		"DalamudApiLevel": 15,
 		"ApplicableVersion": "any",
