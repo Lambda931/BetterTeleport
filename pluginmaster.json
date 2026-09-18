@@ -3,10 +3,10 @@
 		"Author": "Lambda931",
 		"Name": "Better Teleport Menu",
 		"Punchline": "An expanded Teleport Menu replacement mod",
-		"Description": Replaces the teleport menu with a new window that aims to keep the original feel, while adding new features. The new menu includes
+		"Description": "Replaces the teleport menu with a new window that aims to keep the original feel, while adding new features. The new menu includes
   - Content Tracking. Zones that contain dedicated content NPCs will be displayed.
   - Content Filtering. A drop down menu is available to filter the menu by content type (e.g. Allied Societies, Custom Deliveries, Deep Dungeons).
-  - "Other" tab has been removed, and its zones moved into two new tabs - "Independent Nations" and "Beyond the Source".,
+  - "Other" tab has been removed, and its zones moved into two new tabs - "Independent Nations" and "Beyond the Source".",
 		"IconUrl": "https://raw.githubusercontent.com/Lambda931/BetterTeleport/main/Images/icon.png",
 		"ImageUrls": [],
 		"RepoUrl": "https://github.com/Lambda931/BetterTeleport",
