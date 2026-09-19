@@ -1,15 +1,16 @@
 {
-  "Author": "LDF",
-  "Name": "Better Teleport",
+  "Author": "Lambda931",
+  "Name": "Better Teleport Menu",
   "InternalName": "BetterTeleport",
   "AssemblyVersion": "0.0.0.1",
-  "Description": "This is a test plugin - this first line is a summary.\n\nYAML file works",
+  "Description": "Replaces the teleport menu with a new window that aims to keep the original feel while adding new features. The new menu includes content tracking for all locations, a drop-down menu to filter by content, and the introduction of two new location tabs named Independent Nations and Beyond the Source to replace the Other tab.",
   "ApplicableVersion": "any",
+  "RepoUrl": "https://github.com/Lambda931/BetterTeleport",
   "DalamudApiLevel": 15,
   "LoadRequiredState": 0,
   "LoadSync": false,
   "CanUnloadAsync": false,
   "LoadPriority": 0,
-  "Punchline": "YAML file works",
+  "Punchline": "An expanded teleport menu mod",
   "AcceptsFeedback": true
 }

@@ -20,7 +20,7 @@ public partial class ContentManager
         CustomDeliveryZhloe = 67087, CustomDeliveryMnaago = 68541, CustomDeliveryKurenai = 68675, CustomDeliveryAdkiragh = 68713, CustomDeliveryKaiShirr = 69265, CustomDeliveryEhllTou = 69425, CustomDeliveryCharlemend = 69615, 
         CustomDeliveryAmeliance = 70059, CustomDeliveryAnden = 70251, CustomDeliveryMargrat = 70351, CustomDeliveryNitowikwe = 70775, CustomDeliveryAuntTi = 70996,
         PalaceOfTheDead = 67092, HeavenOnHigh = 68667, EurekaOrthos = 70199, PilgrimsTraverse = 70941,
-        DomanRestoration = 68677, IshgardianRestoration = 69208, IslandSanctuary = 68622, CosmicExploration = 70789,
+        DomanRestoration = 68677, IshgardianRestoration = 69208, IslandSanctuary = 70179, CosmicExploration = 70789,
         Eureka = 68614, Bozja = 69370, OccultCresent = 70847,
         MaskedCarnivale = 68734, CrucibleOfTheUnbroken = 71030,
         MateriaTransmutation = 66999

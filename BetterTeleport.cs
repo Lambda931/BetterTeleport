@@ -25,7 +25,7 @@ public sealed class BetterTeleport : IDalamudPlugin
     [PluginService] internal static IAddonLifecycle AddonLifecycle { get; private set; } = null!;
     [PluginService] internal static IObjectTable ObjectTable { get; private set; } = null!;
 
-    public static bool Debug = true;
+    public static bool Debug = false;
 
     private const string TeleportMenuCommand = "/betterteleport";
 

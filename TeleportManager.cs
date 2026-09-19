@@ -51,6 +51,13 @@ public static unsafe class TeleportManager
         return estate;
     }
 
+    public static TeleportInfo? GetSharedEstates()
+    {
+        UpdateAvailableTeleports();
+        var estate = AvailableTeleports.FirstOrDefault(tp => tp.EstateType == EstateType.SharedEstate);
+        return estate;
+    }
+
     public static TeleportInfo? GetFreeCompanyEstate()
     {
         UpdateAvailableTeleports();

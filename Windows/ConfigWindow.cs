@@ -12,6 +12,7 @@ public class ConfigWindow : Window, IDisposable
 {
     
     private readonly Configuration configuration;
+    private int colourChannels;
 
     // We give this window a constant ID using ###.
     // This allows for labels to be dynamic, like "{FPS Counter}fps###XYZ counter window",
@@ -31,7 +32,7 @@ public class ConfigWindow : Window, IDisposable
 
     public override void PreDraw()
     {
-        WindowColourManager.ColourData.TryGetValue(WindowColourManager.ColourProfile, out var colourData);
+        WindowColourManager.ColourData.TryGetValue(configuration.ColourProfile, out var colourData);
         if (colourData != null)
         {
             ImGui.PushStyleColor(ImGuiCol.WindowBg, colourData.windowBackground);
@@ -43,6 +44,7 @@ public class ConfigWindow : Window, IDisposable
             ImGui.PushStyleColor(ImGuiCol.HeaderHovered, colourData.windowTitles);
             ImGui.PushStyleColor(ImGuiCol.HeaderActive, colourData.windowTitles);
         }
+        colourChannels = 8;
 
         // Flags must be added or removed before Draw() is being called, or they won't apply
         if (configuration.IsConfigWindowMovable)
@@ -58,8 +60,13 @@ public class ConfigWindow : Window, IDisposable
     public override void Draw()
     {
         ImGui.Text("Themes");
-        if (ImGui.Button("Default", new Vector2(100, 31))) {ColourProfile = Colours.DalamudDefault;} ImGui.SameLine();
-        if (ImGui.Button("Clear Blue", new Vector2(100, 31))) {ColourProfile = Colours.ClearBlue;} ImGui.SameLine();
-        if (ImGui.Button("Clear Purple", new Vector2(100, 31))) {ColourProfile = Colours.ClearPurple;} ImGui.SameLine();
+        if (ImGui.Button("Default", new Vector2(100, 31))) { configuration.ColourProfile = Colours.DalamudDefault; configuration.Save(); } ImGui.SameLine();
+        if (ImGui.Button("Clear Blue", new Vector2(100, 31))) { configuration.ColourProfile = Colours.ClearBlue; configuration.Save(); } ImGui.SameLine();
+        if (ImGui.Button("Clear Purple", new Vector2(100, 31))) { configuration.ColourProfile = Colours.ClearPurple; configuration.Save(); } ImGui.SameLine();
+    }
+
+    public override void PostDraw()
+    {
+        ImGui.PopStyleColor(colourChannels);
     }
 }

@@ -46,7 +46,7 @@ public partial class MainWindow : Window, IDisposable
 
     public override void PreDraw()
     {
-        WindowColourManager.ColourData.TryGetValue(WindowColourManager.ColourProfile, out var colourData);
+        WindowColourManager.ColourData.TryGetValue(plugin.Configuration.ColourProfile, out var colourData);
         if (colourData != null)
         {
             ImGui.PushStyleColor(ImGuiCol.WindowBg, colourData.windowBackground);
@@ -230,6 +230,7 @@ public partial class MainWindow : Window, IDisposable
                         {
                             (TeleportManager.GetApartmentLocation(), "Apartment"),
                             (TeleportManager.GetPersonalEstate(), "Estate (Personal)"),
+                            (TeleportManager.GetSharedEstates(), "Estate (Shared)"),
                             (TeleportManager.GetFreeCompanyEstate(), "Estate (Free Company)")
                         };
                         var estateValid = false;

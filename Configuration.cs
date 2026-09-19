@@ -1,6 +1,7 @@
 using BetterTeleportPlugin;
 using Dalamud.Configuration;
 using System;
+using static BetterTeleportPlugin.WindowColourManager;
 
 namespace BetterTeleportPlugin;
 
@@ -11,6 +12,8 @@ public class Configuration : IPluginConfiguration
 
     public bool IsConfigWindowMovable { get; set; } = true;
     public bool SomePropertyToBeSavedAndWithADefault { get; set; } = true;
+
+    public Colours ColourProfile { get; set; } = Colours.DalamudDefault;
 
     // The below exist just to make saving less cumbersome
     public void Save()
