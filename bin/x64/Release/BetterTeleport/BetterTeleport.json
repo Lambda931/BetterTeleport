@@ -2,23 +2,15 @@
   "Author": "Lambda931",
   "Name": "Better Teleport Menu",
   "InternalName": "BetterTeleport",
-  "AssemblyVersion": "0.0.0.1",
+  "AssemblyVersion": "0.0.0.2",
   "Description": "Replaces the teleport menu with a new window that aims to keep the original feel while adding new features. The new menu includes content tracking for all locations, a drop-down menu to filter by content, and the introduction of two new location tabs named Independent Nations and Beyond the Source to replace the Other tab.",
   "ApplicableVersion": "any",
   "RepoUrl": "https://github.com/Lambda931/BetterTeleport",
-  "CategoryTags": [
-    "UI"
-  ],
   "DalamudApiLevel": 15,
   "LoadRequiredState": 0,
   "LoadSync": false,
   "CanUnloadAsync": false,
   "LoadPriority": 0,
-  "ImageUrls": [
-    ""
-  ],
-  "IconUrl": "https://raw.githubusercontent.com/Lambda931/BetterTeleport/main/Images/icon.png",
   "Punchline": "An expanded teleport menu mod",
-  "Changelog": "Initial Release",
   "AcceptsFeedback": true
 }

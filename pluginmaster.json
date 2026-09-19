@@ -14,7 +14,7 @@
 		"AssemblyVersion": "0.0.0.2",
 		"DalamudApiLevel": 15,
 		"ApplicableVersion": "any",
-		"Changelog": "Initial Release",
+		"Changelog": "Pre-release version. Updates will be frequent",
 
 			"DownloadLinkInstall": "https://github.com/Lambda931/BetterTeleport/releases/download/v0.0.2-alpha/BetterTeleport.zip",
 			"DownloadLinkUpdate": "https://github.com/Lambda931/BetterTeleport/releases/download/v0.0.2-alpha/BetterTeleport.zip"
