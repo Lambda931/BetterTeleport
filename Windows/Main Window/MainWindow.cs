@@ -98,10 +98,13 @@ public partial class MainWindow : Window, IDisposable
                     var ResidentialTexture = Icons.GetTextureFromIconID(IconData.IconLibrary.HousingTabIcon);
                     if (ResidentialTexture.TryGetWrap(out var ResidentialIcon, out Exception? ResidentialException))
                     {
-                        if (ImGui.ImageButton(ResidentialIcon.Handle, new Vector2(28, 26)))
+                        PushTabStyle();
+                        var iconScale = new Vector2(28, 28) * 1.15f; 
+                        if (ImGui.ImageButton(ResidentialIcon.Handle, iconScale))
                         {
                             currentTab = Tab.Residential;
                         }
+                        PopTabStyle();
                         if (ImGui.IsItemHovered())
                         {
                             ImGui.BeginTooltip();
@@ -127,11 +130,13 @@ public partial class MainWindow : Window, IDisposable
                 //Favourites Button
                 var FavouritesIconData = GetIconProperties(TextureSheet, IconData.ULDLibrary.FavouritesTabIcon);
                 ImGui.PushID($"{Tab.Favourites}");
-                if (ImGui.ImageButton(TextureSheet.Handle, new Vector2(FavouritesIconData.Width, FavouritesIconData.Height), new Vector2(FavouritesIconData.U0, FavouritesIconData.V0), new Vector2(FavouritesIconData.U1, FavouritesIconData.V1)))
+                PushTabStyle();
+                if (ImGui.ImageButton(TextureSheet.Handle, new Vector2(FavouritesIconData.Width * 1.275f, FavouritesIconData.Height * 1.275f), new Vector2(FavouritesIconData.U0, FavouritesIconData.V0), new Vector2(FavouritesIconData.U1, FavouritesIconData.V1)))
                 {
                     LocationManager.GetFavouriteLocations();
                     currentTab = Tab.Favourites;
                 }
+                PopTabStyle();
                 if (ImGui.IsItemHovered())
                 {
                     ImGui.BeginTooltip();
@@ -229,9 +234,9 @@ public partial class MainWindow : Window, IDisposable
                         var estates = new (TeleportInfo? info, string label)[]
                         {
                             (TeleportManager.GetApartmentLocation(), "Apartment"),
-                            (TeleportManager.GetPersonalEstate(), "Estate (Personal)"),
-                            (TeleportManager.GetSharedEstates(), "Estate (Shared)"),
-                            (TeleportManager.GetFreeCompanyEstate(), "Estate (Free Company)")
+                            (TeleportManager.GetPersonalEstate(), "Estate Hall (Private)"),
+                            (TeleportManager.GetSharedEstates(), "Estate Hall (Shared)"),
+                            (TeleportManager.GetFreeCompanyEstate(), "Estate Hall (Free Company)")
                         };
                         var estateValid = false;
                         foreach (var estate in estates)
@@ -483,6 +488,7 @@ public partial class MainWindow : Window, IDisposable
 
     public override void OnClose()
     {
+        currentContentDropdownItem = "";
         base.OnClose();
         plugin.AutoCloseConfigWindow();
         BetterTeleport.teleportWindowOpen = false;

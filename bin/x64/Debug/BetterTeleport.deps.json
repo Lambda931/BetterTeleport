@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v10.0": {
-      "BetterTeleport/0.0.0.1": {
+      "BetterTeleport/0.0.0.2": {
         "dependencies": {
           "Microsoft.CodeAnalysis.Workspaces.Common": "4.14.0"
         },
@@ -188,7 +188,7 @@
     }
   },
   "libraries": {
-    "BetterTeleport/0.0.0.1": {
+    "BetterTeleport/0.0.0.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

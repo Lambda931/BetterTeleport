@@ -1,11 +1,7 @@
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Textures.TextureWraps;
 using System;
-
-
 namespace BetterTeleportPlugin;
-
-
 
 public class IconProperties
 {
@@ -20,7 +16,7 @@ public class IconProperties
 
 public class Icons
 {
-    
+    public float iconScale = 1.275f;
 
     public static IconProperties? ULDSprite(IDalamudTextureWrap tex, int x, int y, int width, int height)
     {

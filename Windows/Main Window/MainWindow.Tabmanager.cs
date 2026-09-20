@@ -107,12 +107,15 @@ public partial class MainWindow
                 if (textureSheet != null)
                 {
                     ImGui.PushID($"##{selectedTab}");
-                    if (ImGui.ImageButton(textureSheet.Handle, new Vector2(iconProperties.Width, iconProperties.Height), new Vector2(iconProperties.U0, iconProperties.V0), new Vector2(iconProperties.U1, iconProperties.V1)))
+                    PushTabStyle();
+                    float iconScale = 1.275f;
+                    if (ImGui.ImageButton(textureSheet.Handle, new Vector2(iconProperties.Width * iconScale, iconProperties.Height * iconScale), new Vector2(iconProperties.U0, iconProperties.V0), new Vector2(iconProperties.U1, iconProperties.V1)))
                     {
                         currentTab = selectedTab;
                         currentContentDropdownItem = "";
                         resetScrollbar = true;
                     }
+                    PopTabStyle();
                     if (ImGui.IsItemHovered())
                     {
                         ImGui.BeginTooltip();
@@ -167,6 +170,20 @@ public partial class MainWindow
     {
         var iconProperties = Icons.ULDSprite(textureSheet, iconData.X, iconData.Y, iconData.Width, iconData.Height);
         return iconProperties;
+    }
+
+    private void PushTabStyle()
+    {
+        ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, Vector2.Zero);
+        ImGui.PushStyleColor(ImGuiCol.Button, Vector4.Zero);
+        ImGui.PushStyleColor(ImGuiCol.ButtonHovered, Vector4.Zero);
+        ImGui.PushStyleColor(ImGuiCol.ButtonActive, Vector4.Zero);
+    }
+
+    private void PopTabStyle()
+    {
+        ImGui.PopStyleColor(3);
+        ImGui.PopStyleVar();
     }
 }
 public class TabData()
