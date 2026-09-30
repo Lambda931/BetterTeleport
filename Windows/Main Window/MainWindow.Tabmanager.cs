@@ -19,7 +19,7 @@ public partial class MainWindow
 
         //Dropdown Tabs
         MarketBoards, SummoningBells, AlliedSocieties, CustomDeliveries, DeepDungeons,
-        RestorationContent, FieldOperations, LimitedJobs
+        RestorationContent, RelicAndFieldOperations, LimitedJobs
     };
 
     private static readonly Dictionary<string, Tab> DropdownTabs = new()
@@ -30,7 +30,7 @@ public partial class MainWindow
         ["Custom Deliveries"] = Tab.CustomDeliveries,
         ["Deep Dungeons"] = Tab.DeepDungeons,
         ["Restoration Content"] = Tab.RestorationContent,
-        ["Field Operations"] = Tab.FieldOperations,
+        ["Relic and Field Operations"] = Tab.RelicAndFieldOperations,
         ["Limited Jobs"] = Tab.LimitedJobs
     };
     public static Tab currentTab = Tab.All;
@@ -60,7 +60,7 @@ public partial class MainWindow
         { Tab.CustomDeliveries, LocationManager.TabLocation.CustomDeliveries },
         { Tab.DeepDungeons, LocationManager.TabLocation.DeepDungeons },
         { Tab.RestorationContent, LocationManager.TabLocation.RestorationContent },
-        { Tab.FieldOperations, LocationManager.TabLocation.RelicAndFieldOperations },
+        { Tab.RelicAndFieldOperations, LocationManager.TabLocation.RelicAndFieldOperations },
         { Tab.LimitedJobs, LocationManager.TabLocation.LimitedJobs },
 
 
@@ -137,7 +137,7 @@ public partial class MainWindow
             Tab.CustomDeliveries => entry.ContentCategory == ContentInfo.Categories.CustomDeliveries,
             Tab.DeepDungeons => entry.ContentCategory == ContentInfo.Categories.DeepDungeons,
             Tab.RestorationContent => entry.ContentCategory == ContentInfo.Categories.RestorationContent,
-            Tab.FieldOperations => entry.ContentCategory == ContentInfo.Categories.RelicAndFieldOperations,
+            Tab.RelicAndFieldOperations => entry.ContentCategory == ContentInfo.Categories.RelicAndFieldOperations,
             Tab.LimitedJobs => entry.ContentCategory == ContentInfo.Categories.LimitedJobs,
             _ => true
         };

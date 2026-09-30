@@ -21,9 +21,9 @@ public partial class ContentManager
         CustomDeliveryAmeliance = 70059, CustomDeliveryAnden = 70251, CustomDeliveryMargrat = 70351, CustomDeliveryNitowikwe = 70775, CustomDeliveryAuntTi = 70996,
         PalaceOfTheDead = 67092, HeavenOnHigh = 68667, EurekaOrthos = 70199, PilgrimsTraverse = 70941,
         DomanRestoration = 68677, IshgardianRestoration = 69208, IslandSanctuary = 70179, CosmicExploration = 70789,
-        Eureka = 68614, Bozja = 69370, OccultCresent = 70847,
+        ZodiacWeapons = 66241, AnimaWeapons = 67747, Eureka = 68614, Bozja = 69370, MandervilleWeapons = 70188, OccultCresent = 70847,
         MaskedCarnivale = 68734, CrucibleOfTheUnbroken = 71030,
-        MateriaTransmutation = 66999
+        MateriaTransmutation = 66999, WondrousTails = 67928, FauxHollows = 69501
     }
 
     public static unsafe bool CheckUnlocked(ContentInfo.Categories category, Tooltip tooltip)
@@ -78,9 +78,12 @@ public partial class ContentManager
             Tooltip.IslandSanctuary => CheckQuestComplete((uint)QuestID.IslandSanctuary),
             Tooltip.CosmicExploration => CheckQuestComplete((uint)QuestID.CosmicExploration),
 
-            //Field Operations
+            //Relic and Field Operations
+            Tooltip.ZodiacWeapons => CheckQuestComplete((uint)QuestID.ZodiacWeapons),
+            Tooltip.AnimaWeapons => CheckQuestComplete((uint)QuestID.AnimaWeapons),
             Tooltip.Eureka => CheckQuestComplete((uint)QuestID.Eureka),
             Tooltip.Bozja => CheckQuestComplete((uint)QuestID.Bozja),
+            Tooltip.MandervilleWeapons => CheckQuestComplete((uint)QuestID.MandervilleWeapons),
             Tooltip.OccultCresent => CheckQuestComplete((uint)QuestID.OccultCresent),
 
             //Limited Jobs
@@ -89,6 +92,8 @@ public partial class ContentManager
             
             //Misc
             Tooltip.MateriaTransmutation => CheckQuestComplete((uint)QuestID.MateriaTransmutation),
+            Tooltip.WondrousTails => CheckQuestComplete((uint)QuestID.WondrousTails),
+            Tooltip.FauxHollows => CheckQuestComplete((uint)QuestID.FauxHollows),
             _ => true
         };
     }

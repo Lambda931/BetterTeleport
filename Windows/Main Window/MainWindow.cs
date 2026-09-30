@@ -22,7 +22,7 @@ public partial class MainWindow : Window, IDisposable
 
     string currentContentDropdownItem = "";
     string[] contentDropdownitems = { "Market Boards", "Summoning Bells", "Allied Societies", "Custom Deliveries",
-                                        "Deep Dungeons", "Restoration Content", "Field Operations", "Limited Jobs" };
+                                        "Deep Dungeons", "Restoration Content", "Relic and Field Operations", "Limited Jobs" };
     
     private bool resetScrollbar;
 
@@ -180,7 +180,7 @@ public partial class MainWindow : Window, IDisposable
             ImGui.Spacing();
 
             //Draw Content Dropdown
-            ImGui.SetNextItemWidth(180);
+            ImGui.SetNextItemWidth(220);
             if (ImGui.BeginCombo("Filter by Content", currentContentDropdownItem))
             {
                 foreach (var item in contentDropdownitems)
