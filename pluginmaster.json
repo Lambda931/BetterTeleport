@@ -9,9 +9,12 @@
 		"RepoUrl": "https://github.com/Lambda931/BetterTeleport",
 		"CategoryTags": [
 			"UI"
+		],		
+		"Tags": [
+			"Teleport"
 		],
 		"InternalName": "BetterTeleport",
-		"AssemblyVersion": "0.0.0.2",
+		"AssemblyVersion": "0.0.0.3",
 		"DalamudApiLevel": 15,
 		"ApplicableVersion": "any",
 		"Changelog": "Pre-release version. Updates will be frequent",
