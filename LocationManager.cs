@@ -38,7 +38,7 @@ public class LocationIDs
     public required uint[] CustomDeliveriesIDs { get; set; }
     public required uint[] DeepDungeonIDs { get; set; }
     public required uint[] RestorationContentIDs { get; set; }
-    public required uint[] FieldOperationIDs { get; set; }
+    public required uint[] RelicAndFieldOperationIDs { get; set; }
     public required uint[] LimitedJobsIDs { get; set; }
 }
 
@@ -48,7 +48,7 @@ public class LocationManager
     public enum TabLocation {
         All, Residential, LaNoscea, BlackShroud, Thanalan, Ishgard, GyrAbania, FarEast, IndependentNations, Ilsabard, Tural,
         Norvrandt, BeyondTheSource, Favourites, MarketBoards, SummoningBells, AlliedSocieties, CustomDeliveries, DeepDungeons,
-        RestorationContent, FieldOperations, LimitedJobs
+        RestorationContent, RelicAndFieldOperations, LimitedJobs
     }
 
 
@@ -86,7 +86,7 @@ public class LocationManager
         CustomDeliveriesIDs = new uint[] { 75, 104, 105, 134, 70, 182, 144, 167, 208, 216 },
         DeepDungeonIDs = new uint[] { 5, 106, 24, 146 },
         RestorationContentIDs = new uint[] { 127, 70, 10, 175 },
-        FieldOperationIDs = new uint[] { 111, 127, 216 },
+        RelicAndFieldOperationIDs = new uint[] { 7, 74, 111, 127, 183, 216 },
         LimitedJobsIDs = new uint[] { 9, 3 }
     };
 
@@ -142,7 +142,7 @@ public class LocationManager
         {TabLocation.CustomDeliveries,   [new SubCategories {Header = "Custom Deliveries", ids = locationIDs.CustomDeliveriesIDs}]},
         {TabLocation.DeepDungeons,       [new SubCategories {Header = "Deep Dungeons", ids = locationIDs.DeepDungeonIDs}]},
         {TabLocation.RestorationContent, [new SubCategories {Header = "Restoration Content", ids = locationIDs.RestorationContentIDs}]},
-        {TabLocation.FieldOperations,    [new SubCategories {Header = "Field Operations", ids = locationIDs.FieldOperationIDs}]},
+        {TabLocation.RelicAndFieldOperations,    [new SubCategories {Header = "Field Operations", ids = locationIDs.RelicAndFieldOperationIDs}]},
         {TabLocation.LimitedJobs,        [new SubCategories {Header = "Limited Jobs", ids = locationIDs.LimitedJobsIDs}]},
     };
 

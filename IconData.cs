@@ -64,10 +64,12 @@ public class IconData
 
         DeepDungeonIcon = 63971,
         FieldOperationsIcon = 63972,
+        RelicIcon = 60412,
         CustomDeliveriesIcon = 60927,
 
         GoldSaucerIcon = 60848,
         WonderousTailsIcon = 60926,
+        FauxHollowsIcon = 63920,
         PvpZoneIcon = 60459,
         MateriaTransmutationIcon = 60910,
         MaskedCarnivalIcon = 60983,
@@ -213,10 +215,12 @@ public class IconLibrary
     #region General Content
     public required int DeepDungeonIcon { get; set; }
     public required int FieldOperationsIcon { get; set; }
+    public required int RelicIcon { get; set; }
     public required int CustomDeliveriesIcon { get; set; }
     
     public required int GoldSaucerIcon { get; set; }
     public required int WonderousTailsIcon { get; set; }
+    public required int FauxHollowsIcon { get; set; }
     public required int PvpZoneIcon { get; set; }
     public required int MateriaTransmutationIcon { get; set; }
     public required int MaskedCarnivalIcon { get; set; }

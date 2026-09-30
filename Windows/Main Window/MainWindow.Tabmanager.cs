@@ -60,7 +60,7 @@ public partial class MainWindow
         { Tab.CustomDeliveries, LocationManager.TabLocation.CustomDeliveries },
         { Tab.DeepDungeons, LocationManager.TabLocation.DeepDungeons },
         { Tab.RestorationContent, LocationManager.TabLocation.RestorationContent },
-        { Tab.FieldOperations, LocationManager.TabLocation.FieldOperations },
+        { Tab.FieldOperations, LocationManager.TabLocation.RelicAndFieldOperations },
         { Tab.LimitedJobs, LocationManager.TabLocation.LimitedJobs },
 
 
@@ -137,7 +137,7 @@ public partial class MainWindow
             Tab.CustomDeliveries => entry.ContentCategory == ContentInfo.Categories.CustomDeliveries,
             Tab.DeepDungeons => entry.ContentCategory == ContentInfo.Categories.DeepDungeons,
             Tab.RestorationContent => entry.ContentCategory == ContentInfo.Categories.RestorationContent,
-            Tab.FieldOperations => entry.ContentCategory == ContentInfo.Categories.FieldOperations,
+            Tab.FieldOperations => entry.ContentCategory == ContentInfo.Categories.RelicAndFieldOperations,
             Tab.LimitedJobs => entry.ContentCategory == ContentInfo.Categories.LimitedJobs,
             _ => true
         };

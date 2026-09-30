@@ -7,7 +7,7 @@ namespace BetterTeleportPlugin;
 
 public class ContentInfo
 {
-    public enum Categories { Misc, MarketBoard, SummoningBell, AlliedSocieties, CustomDeliveries, DeepDungeons, RestorationContent, FieldOperations, LimitedJobs}
+    public enum Categories { Misc, MarketBoard, SummoningBell, AlliedSocieties, CustomDeliveries, DeepDungeons, RestorationContent, RelicAndFieldOperations, LimitedJobs}
     public enum Tooltip
     {
         MarketBoard, SummoningBell,
@@ -20,10 +20,10 @@ public class ContentInfo
         CustomDeliveriesCharlemend, CustomDeliveriesAmeliance, CustomDeliveriesAnden, CustomDeliveriesMargrat, CustomDeliveriesNitowikwe, CustomDeliveriesAuntTi,
 
         PalaceOfTheDead, HeavenOnHigh, EurekaOrthos, PilgrimsTraverse,
-        Eureka, Bozja, OccultCresent,
+        ZodiacWeapons, AnimaWeapons, Eureka, Bozja, MandervilleWeapons, OccultCresent,
         DomanRestoration, IshgardianRestoration, IslandSanctuary, CosmicExploration,
 
-        MateriaTransmutation, PVPZone, GoldSaucer, MaskedCarnivale, CrucibleOfTheUnbroken
+        MateriaTransmutation, WondrousTails, FauxHollows, PVPZone, GoldSaucer, MaskedCarnivale, CrucibleOfTheUnbroken
     }
     public Categories ContentCategory { get; set; }
     public required Tooltip TooltipText { get; set; }
@@ -67,11 +67,16 @@ public partial class ContentManager
         {Tooltip.CustomDeliveriesAnden, "Custom Deliveries: Anden"},         {Tooltip.CustomDeliveriesMargrat, "Custom Deliveries: Margrat"},      {Tooltip.CustomDeliveriesNitowikwe, "Custom Deliveries: Nitowikwe"},     {Tooltip.CustomDeliveriesAuntTi, "Custom Deliveries: Tiisol Ja"},
 
         {Tooltip.PalaceOfTheDead, "Deep Dungeon: Palace of the Dead"},       {Tooltip.HeavenOnHigh, "Deep Dungeon: Heaven on High"},               {Tooltip.EurekaOrthos, "Deep Dungeon: Eureka Orthos"},                   {Tooltip.PilgrimsTraverse, "Deep Dungeon: Pilgrim's Traverse"},
+        
         {Tooltip.DomanRestoration, "Doman Enclave Reconstruction"},          {Tooltip.IshgardianRestoration, "Ishgardian Restoration"},            {Tooltip.IslandSanctuary, "Island Sanctuary"},                           {Tooltip.CosmicExploration, "Cosmic Exploration"},
-        {Tooltip.Eureka, "The Forbidden Land, Eureka"},                      {Tooltip.Bozja, "Save the Queen (Bozja)"},                            {Tooltip.OccultCresent, "The Occult Cresent"},
+        
+        {Tooltip.ZodiacWeapons, "Zodiac Weapons"},                           {Tooltip.AnimaWeapons, "Anima Weapons"},                              {Tooltip.Eureka, "The Forbidden Land, Eureka"},                          {Tooltip.Bozja, "Save the Queen (Bozja)"},
+        {Tooltip.MandervilleWeapons, "Manderville Weapons"},                 {Tooltip.OccultCresent, "The Occult Cresent"},
 
-        {Tooltip.MateriaTransmutation, "Materia Transmutation"},             {Tooltip.PVPZone, "PVP Zone"},                                        {Tooltip.GoldSaucer, "The Gold Saucer"},                                 {Tooltip.MaskedCarnivale, "The Masked Carnivale"},
-        {Tooltip.CrucibleOfTheUnbroken, "Crucible of the Unbroken"}
+        {Tooltip.MateriaTransmutation, "Materia Transmutation"},             {Tooltip.WondrousTails, "Wondrous Tails"},                            {Tooltip.FauxHollows, "Faux Hollows"},                                   {Tooltip.PVPZone, "PVP Zone"},                                        
+        {Tooltip.GoldSaucer, "The Gold Saucer"},                             
+        
+        {Tooltip.MaskedCarnivale, "The Masked Carnivale"},                   {Tooltip.CrucibleOfTheUnbroken, "Crucible of the Unbroken"}
     };
 
     private static ContentInfo MarketBoard() =>
@@ -90,7 +95,10 @@ public partial class ContentManager
         ContentInfo(Categories.CustomDeliveries, tooltip, Icons.CustomDeliveriesIcon, 33, -4, -4);
 
     private static ContentInfo FieldOperation(Tooltip tooltip) =>
-        ContentInfo(Categories.FieldOperations, tooltip, Icons.FieldOperationsIcon, 38, -6, -6.5f);
+        ContentInfo(Categories.RelicAndFieldOperations, tooltip, Icons.FieldOperationsIcon, 38, -6, -6.5f);
+
+    private static ContentInfo RelicWeapons(Tooltip tooltip) =>
+        ContentInfo(Categories.RelicAndFieldOperations, tooltip, Icons.RelicIcon, 38, -6, -6.5f);
 
     public static readonly Dictionary<uint, List<ContentInfo>> Content = new() {
     
@@ -99,7 +107,7 @@ public partial class ContentManager
     /* Central Shroud: Bentbranch Meadows */ {3,   [ContentInfo(Categories.LimitedJobs, Tooltip.CrucibleOfTheUnbroken, Icons.CrucibleOfTheUnbrokenIcon, 30, -2, -3)]},
     /* East Shroud: The Hawthorne Hut     */ {4,   [AlliedSociety(Tooltip.AlliedSocietiesSylph, Icons.SylphAlliedSocietyIcon)]},
     /* South Shroud: Quarrymill           */ {5,   [DeepDungeon(Tooltip.PalaceOfTheDead)]},
-    /* North Shroud: Fallgourd Float      */ {7,   [AlliedSociety(Tooltip.AlliedSocietiesIxal, Icons.IxalAlliedSocietyIcon)]},
+    /* North Shroud: Fallgourd Float      */ {7,   [AlliedSociety(Tooltip.AlliedSocietiesIxal, Icons.IxalAlliedSocietyIcon), RelicWeapons(Tooltip.ZodiacWeapons)]},
     /* Limsa Lominsa Lower Decks          */ {8,   [MarketBoard(), SummoningBell()]},
     /* Ul'Dah - Steps of Nald             */ {9,   [MarketBoard(), SummoningBell(), ContentInfo(Categories.LimitedJobs, Tooltip.MaskedCarnivale, Icons.MaskedCarnivalIcon, 30, -2, -3)]},
     /* Lower La Noscea: Moraby Drydocks   */ {10,  [ContentInfo(Categories.RestorationContent, Tooltip.IslandSanctuary, Icons.IslandSanctuaryIcon, 30, -2, -3)]},
@@ -115,7 +123,9 @@ public partial class ContentManager
     /* Foundation                         */ {70,  [MarketBoard(), SummoningBell(), ContentInfo(Categories.RestorationContent, Tooltip.IshgardianRestoration, Icons.IshgardianRestorationIcon, 30, -2, -3), 
                                                     CustomDelivery(Tooltip.CustomDeliveriesEhllTou), CustomDelivery(Tooltip.CustomDeliveriesCharlemend)]},
     /* The Sea of Clouds: Ok'Zundu        */ {73,  [AlliedSociety(Tooltip.AlliedSocietiesVanuVanu, Icons.VanuVanuAlliedSocietyIcon)]},
-    /* Idyllshire                         */ {75,  [SummoningBell(), CustomDelivery(Tooltip.CustomDeliveriesZhloe), CustomDelivery(Tooltip.CustomDeliveriesAdkiragh)]},
+    /* Azyz Lla                           */ {74,  [RelicWeapons(Tooltip.AnimaWeapons)]},
+    /* Idyllshire                         */ {75,  [SummoningBell(), ContentInfo(Categories.Misc, Tooltip.WondrousTails, Icons.WonderousTailsIcon, 30, -2, -3), ContentInfo(Categories.Misc, Tooltip.FauxHollows, Icons.FauxHollowsIcon, 30, -2, -3), 
+                                                    CustomDelivery(Tooltip.CustomDeliveriesZhloe), CustomDelivery(Tooltip.CustomDeliveriesAdkiragh)]},
     /* Dravanian Forelands: Anyx Trine    */ {77,  [AlliedSociety(Tooltip.AlliedSocietiesVath, Icons.VathAlliedSocietyIcon)]},
     /* Churning Mists: Zenith             */ {79,  [AlliedSociety(Tooltip.AlliedSocietiesMoogle, Icons.MoogleAlliedSocietyIcon)]},
 
@@ -142,7 +152,7 @@ public partial class ContentManager
     /* Mare Lamentorum: Bestway Burrow    */ {175, [AlliedSociety(Tooltip.AlliedSocietiesLoporrit, Icons.LoporritAlliedSocietyIcon), ContentInfo(Categories.RestorationContent, Tooltip.CosmicExploration, Icons.CosmicExplorationIcon, 30, -2, -3)]},
     /* Ultima Thule: Base Omicron         */ {181, [AlliedSociety(Tooltip.AlliedSocietiesOmicron, Icons.OmicronAlliedSocietyIcon)]},
     /* Old Sharlayan                      */ {182, [MarketBoard(), SummoningBell(), CustomDelivery(Tooltip.CustomDeliveriesAmeliance)]},
-    /* Radz-at-Han                        */ {183, [SummoningBell()]},
+    /* Radz-at-Han                        */ {183, [SummoningBell(), RelicWeapons(Tooltip.MandervilleWeapons)]},
 
     // ----------- Dawntrail -------------
     /* Urqopacha: Worlar's Echo           */ {201, [AlliedSociety(Tooltip.AlliedSocietiesYokHuy, Icons.YokHuyAlliedSocietyIcon)]},
