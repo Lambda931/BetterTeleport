@@ -1,6 +1,7 @@
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface.Textures.TextureWraps;
+using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -30,15 +31,16 @@ public partial class MainWindow : Window, IDisposable
 
     private List<uint> unlockedIds;
 
+    private static readonly Vector2 WindowSize = new(700, 750);
+
     public MainWindow(BetterTeleport plugin) : base("Teleport Menu", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
     {
+        Size = WindowSize;
         SizeConstraints = new WindowSizeConstraints
         {
-
-            MinimumSize = new Vector2(700, 600),
-            MaximumSize = new Vector2(700, 600)
+            MinimumSize = WindowSize,
+            MaximumSize = WindowSize
         };
-
         this.plugin = plugin;
     }
 
@@ -68,6 +70,9 @@ public partial class MainWindow : Window, IDisposable
             var TextureSheet = Icons.ConvertToTextureWrap(BetterTeleport.TeleportTexture);
 
             //Draw Tabs
+            ImGui.Text($"Global Scale: {ImGuiHelpers.GlobalScale}");
+            ImGui.Text($"Display Size: {ImGui.GetIO().DisplaySize}");
+            ImGui.Text($"Window Size: {ImGui.GetWindowSize()}");
             if (ImGui.Button("All", new Vector2(62, 31)))
             {
                 currentTab = Tab.All;
