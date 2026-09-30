@@ -1,6 +1,7 @@
 using BetterTeleportPlugin.Windows;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Command;
 using Dalamud.Interface.Textures;
 using Dalamud.Interface.Windowing;
@@ -21,6 +22,7 @@ public sealed class BetterTeleport : IDalamudPlugin
     [PluginService] internal static IDataManager DataManager { get; private set; } = null!;
     [PluginService] internal static IPluginLog Log { get; private set; } = null!;
     [PluginService] internal static IFramework Framework { get; private set; } = null!;
+    [PluginService] internal static ICondition Condition { get; private set; } = null!;
     [PluginService] internal static IGameGui GameGui { get; private set; } = null!;
     [PluginService] internal static IAddonLifecycle AddonLifecycle { get; private set; } = null!;
     [PluginService] internal static IObjectTable ObjectTable { get; private set; } = null!;
@@ -53,8 +55,6 @@ public sealed class BetterTeleport : IDalamudPlugin
         ConfigWindow = new ConfigWindow(this);
         MainWindow = new MainWindow(this);
 
-
-
         WindowSystem.AddWindow(ConfigWindow);
         WindowSystem.AddWindow(MainWindow);
 
@@ -65,6 +65,7 @@ public sealed class BetterTeleport : IDalamudPlugin
         Log.Debug("Register Listener");
         AddonLifecycle.RegisterListener(AddonEvent.PreSetup, "Teleport", ToggleTeleportWindow);
         Framework.Update += Framework_Update;
+        Condition.ConditionChange += OnAreaChange;
         ClientState.Logout += OnLogout;
     }
 
@@ -96,11 +97,20 @@ public sealed class BetterTeleport : IDalamudPlugin
         MainWindow.IsOpen = teleportWindowOpen;
     }
 
+    private void OnAreaChange(ConditionFlag flag, bool value)
+    {
+        if (flag == ConditionFlag.BetweenAreas && value)
+        {
+            MainWindow.IsOpen = false;
+        }
+    }
+
     public void Dispose()
     {
         PluginInterface.UiBuilder.Draw -= WindowSystem.Draw;
         PluginInterface.UiBuilder.OpenConfigUi -= ToggleConfigUi;
         PluginInterface.UiBuilder.OpenMainUi -= ToggleMainUi;
+        Condition.ConditionChange -= OnAreaChange;
         ClientState.Logout -= OnLogout;
 
         WindowSystem.RemoveAllWindows();
