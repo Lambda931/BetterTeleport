@@ -92,7 +92,7 @@ public sealed class BetterTeleport : IDalamudPlugin
         if (atk == null)
             return;
 
-        atk->Close(true);
+        //atk->Close(true);
         teleportWindowOpen = !teleportWindowOpen;
         MainWindow.IsOpen = teleportWindowOpen;
     }
