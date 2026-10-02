@@ -108,8 +108,7 @@ public partial class MainWindow
                 {
                     ImGui.PushID($"##{selectedTab}");
                     PushTabStyle();
-                    float iconScale = 1.275f;
-                    if (ImGui.ImageButton(textureSheet.Handle, new Vector2(iconProperties.Width * iconScale, iconProperties.Height * iconScale), new Vector2(iconProperties.U0, iconProperties.V0), new Vector2(iconProperties.U1, iconProperties.V1)))
+                    if (ImGui.ImageButton(textureSheet.Handle, new Vector2(ResolutionScaling(iconProperties.Width * tabIconScale), ResolutionScaling(iconProperties.Height * tabIconScale)), new Vector2(iconProperties.U0, iconProperties.V0), new Vector2(iconProperties.U1, iconProperties.V1)))
                     {
                         currentTab = selectedTab;
                         currentContentDropdownItem = "";

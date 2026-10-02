@@ -19,23 +19,20 @@ public partial class MainWindow : Window, IDisposable
     string currentContentDropdownItem = "";
     string[] contentDropdownitems = { "Market Boards", "Summoning Bells", "Allied Societies", "Custom Deliveries",
                                         "Deep Dungeons", "Restoration Content", "Relic and Field Operations", "Limited Jobs" };
-    
+
+    private float tabIconScale = 1.5f;
+
     private bool resetScrollbar;
 
     private int colourChannels;
 
     private List<uint> unlockedIds;
 
-    private static readonly Vector2 ReferenceWindowSize = new(715f, 730f);
-
     public MainWindow(BetterTeleport plugin) : base("Teleport Menu", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
     {
-        Vector2 scaledSize = GetScaledWindowSize();
-        SizeConstraints = new WindowSizeConstraints
-        {
-            MinimumSize = scaledSize,
-            MaximumSize = scaledSize
-        };
+        SetScaledWindowSize();
+        CreateTableFont();
+        CreateGilFont();
         this.plugin = plugin;
     }
 
@@ -58,18 +55,24 @@ public partial class MainWindow : Window, IDisposable
 
     public override void Draw()
     {
-        float scale = GetScale();
-        ImGui.SetWindowFontScale(scale * 1.2f);
+        float fontScale = GetFontScale();
+        ImGui.SetWindowFontScale(fontScale);
         try
         {
             var TextureSheet = Icons.ConvertToTextureWrap(BetterTeleport.TeleportTexture);
 
             //Draw Tabs
-            if (ImGui.Button("All", new Vector2(62, 31)))
+            if (TableFont != null)
             {
-                currentTab = Tab.All;
-                currentContentDropdownItem = "";
-                resetScrollbar = true;
+                using (TableFont.Push())
+                {
+                    if (ImGui.Button("All", new Vector2(ResolutionScaling(100), ResolutionScaling(37))))
+                    {
+                        currentTab = Tab.All;
+                        currentContentDropdownItem = "";
+                        resetScrollbar = true;
+                    }
+                }
             }
             ImGui.SameLine();
 
@@ -96,7 +99,7 @@ public partial class MainWindow : Window, IDisposable
                     if (ResidentialTexture.TryGetWrap(out var ResidentialIcon, out Exception? ResidentialException))
                     {
                         PushTabStyle();
-                        var iconScale = new Vector2(28, 28) * 1.15f; 
+                        var iconScale = new Vector2(ResolutionScaling(25.5f), ResolutionScaling(25.5f)) * tabIconScale; 
                         if (ImGui.ImageButton(ResidentialIcon.Handle, iconScale))
                         {
                             currentTab = Tab.Residential;
@@ -128,7 +131,7 @@ public partial class MainWindow : Window, IDisposable
                 var FavouritesIconData = GetIconProperties(TextureSheet, IconData.ULDLibrary.FavouritesTabIcon);
                 ImGui.PushID($"{Tab.Favourites}");
                 PushTabStyle();
-                if (ImGui.ImageButton(TextureSheet.Handle, new Vector2(FavouritesIconData.Width * 1.275f, FavouritesIconData.Height * 1.275f), new Vector2(FavouritesIconData.U0, FavouritesIconData.V0), new Vector2(FavouritesIconData.U1, FavouritesIconData.V1)))
+                if (ImGui.ImageButton(TextureSheet.Handle, new Vector2(ResolutionScaling(FavouritesIconData.Width * tabIconScale), ResolutionScaling(FavouritesIconData.Height * tabIconScale)), new Vector2(FavouritesIconData.U0, FavouritesIconData.V0), new Vector2(FavouritesIconData.U1, FavouritesIconData.V1)))
                 {
                     LocationManager.GetFavouriteLocations();
                     currentTab = Tab.Favourites;
@@ -163,21 +166,18 @@ public partial class MainWindow : Window, IDisposable
             ImGui.SameLine();
 
             //Draw Gil
-            string playerGil = TeleportManager.GetPlayerGil().ToString("N0");
-            float gilTextWidth = ImGui.CalcTextSize(playerGil).X;
-            ImGui.SameLine(ImGui.GetWindowContentRegionMax().X - (gilTextWidth + 42));
-            ImGui.Text(playerGil);
+            DrawGilText();
             ImGui.SameLine();
             var GilIcon = Icons.GetTextureFromIconID(IconData.IconLibrary.GilIcon);
             if (GilIcon.TryGetWrap(out var wrap, out Exception? exception))
             {
                 ApplyOffset(-5, 0);
-                ImGui.Image(wrap.Handle, new Vector2(32, 32));
+                ImGui.Image(wrap.Handle, new Vector2(ResolutionScaling(40), ResolutionScaling(40)));
             }
             ImGui.Spacing();
 
             //Draw Content Dropdown
-            ImGui.SetNextItemWidth(220);
+            ImGui.SetNextItemWidth(ResolutionScaling(220));
             if (ImGui.BeginCombo("Filter by Content", currentContentDropdownItem))
             {
                 foreach (var item in contentDropdownitems)
@@ -199,8 +199,8 @@ public partial class MainWindow : Window, IDisposable
                 ImGui.EndCombo();
             }
 
-            ImGui.SameLine(ImGui.GetWindowContentRegionMax().X - 75);
-            if (ImGui.Button("Settings"))
+            ImGui.SameLine(ImGui.GetWindowContentRegionMax().X - ResolutionScaling(80));
+            if (ImGui.Button("Settings", new Vector2(ResolutionScaling(75), ResolutionScaling(30))))
             {
                 plugin.ToggleConfigUi();
             }
@@ -215,15 +215,16 @@ public partial class MainWindow : Window, IDisposable
                     BetterTeleport.Log.Information("child failed");
                     return;
                 }
+                float scale = GetBaseScale();
                 ImGui.PushStyleVar(ImGuiStyleVar.CellPadding, new Vector2(4f, 3f) * scale);
                 if (ImGui.BeginTable("Teleport", 7, ImGuiTableFlags.BordersOuter | ImGuiTableFlags.SizingStretchProp))
                 {
                     ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthStretch, 0.0001f);
-                    ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthStretch, 0.08f);
-                    ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthStretch, 0.111f);
+                    ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthStretch, 0.13f);
+                    ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthStretch, 0.15f);
                     ImGui.TableSetupColumn("Area", ImGuiTableColumnFlags.WidthStretch, 1.5f);
                     ImGui.TableSetupColumn("Aetheryte", ImGuiTableColumnFlags.WidthStretch, 1.5f);
-                    ImGui.TableSetupColumn("Content", ImGuiTableColumnFlags.WidthStretch, 0.9f);
+                    ImGui.TableSetupColumn("Content", ImGuiTableColumnFlags.WidthStretch, 1.1f);
                     ImGui.TableSetupColumn("Fee", ImGuiTableColumnFlags.WidthStretch, 0.4f);
                     ImGui.TableHeadersRow();
 
@@ -353,9 +354,9 @@ public partial class MainWindow : Window, IDisposable
                     if (starIconRef != null)
                     {
                         var starIconData = Icons.ULDSprite(teleportTexture, starIconRef.X, starIconRef.Y, starIconRef.Width, starIconRef.Height);
-                        ApplyOffset(0, ResolutionScaling(2));
+                        ApplyOffset(0, ResolutionScaling(-2f));
                         ImGui.PushID($"##{i}");
-                        ImGui.Image(teleportTexture.Handle, new Vector2(ResolutionScaling(starIconData.Width), ResolutionScaling(starIconData.Height)), new Vector2(starIconData.U0, starIconData.V0), new Vector2(starIconData.U1, starIconData.V1));
+                        ImGui.Image(teleportTexture.Handle, new Vector2(ResolutionScaling(starIconData.Width * 1.4f), ResolutionScaling(starIconData.Height * 1.4f)), new Vector2(starIconData.U0, starIconData.V0), new Vector2(starIconData.U1, starIconData.V1));
                     }
                 }
 
@@ -363,18 +364,18 @@ public partial class MainWindow : Window, IDisposable
                 var locationData = Icons.GetLocationIconData(i);
                 if (locationData != null)
                 {
-                    ApplyOffset(0, ResolutionScaling(2));
+                    ApplyOffset(0, ResolutionScaling(-1.5f));
                     ImGui.PushID($"##{i}");
                     var locationUVs = Icons.ULDSprite(Icons.ConvertToTextureWrap(BetterTeleport.TeleportTexture), locationData.X, locationData.Y, locationData.Width, locationData.Height);
-                    ImGui.Image(teleportTexture.Handle, new Vector2(ResolutionScaling(locationUVs.Width), ResolutionScaling(locationUVs.Height)), new Vector2(locationUVs.U0, locationUVs.V0), new Vector2(locationUVs.U1, locationUVs.V1));
+                    ImGui.Image(teleportTexture.Handle, new Vector2(ResolutionScaling(locationUVs.Width) * 1.4f, ResolutionScaling(locationUVs.Height) * 1.4f), new Vector2(locationUVs.U0, locationUVs.V0), new Vector2(locationUVs.U1, locationUVs.V1));
 
                 }
 
                 ImGui.TableSetColumnIndex(3);
-                DrawScaledText(Aetheryte.AetheryteRegion(i).ToString(), rowHeight);
+                DrawRowAlignedText(Aetheryte.AetheryteRegion(i).ToString(), rowHeight);
 
                 ImGui.TableSetColumnIndex(4);
-                DrawScaledText(Aetheryte.AetheryteName(i).ToString(), rowHeight);
+                DrawRowAlignedText(Aetheryte.AetheryteName(i).ToString(), rowHeight);
 
                 ImGui.TableSetColumnIndex(5);
                 if (ContentManager.Content.TryGetValue(i, out var entries))
@@ -387,7 +388,7 @@ public partial class MainWindow : Window, IDisposable
                         {
                             if (FilterContentByCategory(entry) == true)
                             {
-                                float scale = GetScale();
+                                float scale = GetBaseScale();
                                 var texture = Icons.GetTextureFromIconID(entry.IconID);
                                 if (texture.TryGetWrap(out var wrap, out Exception? exception))
                                 {
@@ -412,7 +413,7 @@ public partial class MainWindow : Window, IDisposable
                     }
                 }
                 ImGui.TableSetColumnIndex(6);
-                DrawScaledText(Aetheryte.AetheryteCost(i).ToString("N0") + $"{(char)SeIconChar.Gil}", rowHeight);
+                DrawRowAlignedText(Aetheryte.AetheryteCost(i).ToString("N0") + $"{(char)SeIconChar.Gil}", rowHeight);
 
                 if (selected)
                 {
@@ -435,31 +436,31 @@ public partial class MainWindow : Window, IDisposable
 
             // Selectable row
             ImGui.TableSetColumnIndex(0);
-            bool selected = ImGui.Selectable($"##estate_{info.AetheryteId}_{info.SubIndex}", false, ImGuiSelectableFlags.SpanAllColumns, new Vector2(825, 25f));
+            bool selected = ImGui.Selectable($"##estate_{info.AetheryteId}_{info.SubIndex}", false, ImGuiSelectableFlags.SpanAllColumns, new Vector2(0, ResolutionScaling(25)));
 
             // Icon column
             ImGui.TableSetColumnIndex(2);
             var locationData = IconData.ULDLibrary.MiscLocationTableIcon;
             if (locationData != null)
             {
-                ApplyOffset(0, ResolutionScaling(2));
+                ApplyOffset(0, ResolutionScaling(-1.5f));
                 ImGui.PushID($"icon_{info.AetheryteId}_{info.SubIndex}");
                 var locationUVs = Icons.ULDSprite(teleportTexture, locationData.X, locationData.Y, locationData.Width, locationData.Height);
-                ImGui.Image(teleportTexture.Handle, new Vector2(ResolutionScaling(locationUVs.Width), ResolutionScaling(locationUVs.Height)), new Vector2(locationUVs.U0, locationUVs.V0), new Vector2(locationUVs.U1, locationUVs.V1));
+                ImGui.Image(teleportTexture.Handle, new Vector2(ResolutionScaling(locationUVs.Width * 1.4f), ResolutionScaling(locationUVs.Height * 1.4f)), new Vector2(locationUVs.U0, locationUVs.V0), new Vector2(locationUVs.U1, locationUVs.V1));
                 ImGui.PopID();
             }
 
             // Region column
             ImGui.TableSetColumnIndex(3);
-            DrawScaledText(Aetheryte.AetheryteRegion((uint)info.AetheryteId).ToString(), rowHeight);
+            DrawRowAlignedText(Aetheryte.AetheryteRegion((uint)info.AetheryteId).ToString(), rowHeight);
 
             // Estate type column
             ImGui.TableSetColumnIndex(4);
-            DrawScaledText(estateType, rowHeight);
+            DrawRowAlignedText(estateType, rowHeight);
 
             // Gil cost column
             ImGui.TableSetColumnIndex(6);
-            DrawScaledText(info.GilCost.ToString("N0") + $"{(char)SeIconChar.Gil}", rowHeight);
+            DrawRowAlignedText(info.GilCost.ToString("N0") + $"{(char)SeIconChar.Gil}", rowHeight);
 
             // Teleport on click
             if (selected)
@@ -468,33 +469,6 @@ public partial class MainWindow : Window, IDisposable
                 plugin.ToggleMainUi();
             }
         }
-    }
-    private Vector2 GetScaledWindowSize()
-    {
-        float scale = GetScale();
-        Vector2 windowSize = ReferenceWindowSize * scale;
-        if (windowSize.X < 572)
-            windowSize.X = 572;
-        if (windowSize.Y < 584)
-            windowSize.Y = 584;
-        return windowSize;
-    }
-    private float GetScale()
-    {
-        return ImGui.GetIO().DisplaySize.Y / 1440f;
-    }
-
-    private void DrawScaledText(string text, float rowHeight)
-    {
-        float textHeight = ImGui.GetTextLineHeight();
-        float paddingY = ImGui.GetStyle().CellPadding.Y;
-
-        float availableHeight = (rowHeight - (paddingY * 2)) / 1.2f;
-        float offsetY = ((availableHeight - textHeight) * 0.5f);
-
-        ImGui.SetCursorPosY(ImGui.GetCursorPosY() + offsetY);
-
-        ImGui.Text(text);
     }
 
     private void SetupTeleport(uint id)
@@ -513,13 +487,6 @@ public partial class MainWindow : Window, IDisposable
         ImGui.SetCursorPosY(y + yOffset);
     }
 
-    private float ResolutionScaling(float value)
-    {
-        float scale = GetScale();
-        float scaledValue = value * scale;
-        return scaledValue;
-    }
-
     public override void OnClose()
     {
         currentContentDropdownItem = "";
@@ -535,5 +502,9 @@ public partial class MainWindow : Window, IDisposable
         resetScrollbar = true;
     }
 
-    public void Dispose() { }
+    public void Dispose() 
+    {
+        TableFont?.Dispose();
+        TableFont = null;
+    }
 }

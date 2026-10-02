@@ -35,14 +35,6 @@ public partial class MainWindow
         var tableClipMax = drawList.GetClipRectMax();
         drawList.PushClipRect(tableClipMin, tableClipMax, true);
 
-        //drawList.AddImage(bgImage.Handle, new Vector2(0, 0), new Vector2(0, 0));
-
-        /*drawList.AddRectFilled(
-            start,
-            new Vector2(start.X + fullWidth, start.Y + totalHeight),
-            ImGui.GetColorU32(bgColor)
-        );*/
-
         drawList.AddText(
             new Vector2(start.X + 6, start.Y + paddingY),
             ImGui.GetColorU32(textColor),
