@@ -14,13 +14,13 @@
 			"Teleport"
 		],
 		"InternalName": "BetterTeleport",
-		"AssemblyVersion": "0.0.0.7",
+		"AssemblyVersion": "0.0.0.8",
 		"DalamudApiLevel": 15,
 		"ApplicableVersion": "any",
 		"Changelog": "Pre-release version. Updates will be frequent",
 
-			"DownloadLinkInstall": "https://github.com/Lambda931/BetterTeleport/releases/download/v0.0.7-alpha/BetterTeleport.zip",
-			"DownloadLinkUpdate": "https://github.com/Lambda931/BetterTeleport/releases/download/v0.0.7-alpha/BetterTeleport.zip"
+			"DownloadLinkInstall": "https://github.com/Lambda931/BetterTeleport/releases/download/v0.0.8-alpha/BetterTeleport.zip",
+			"DownloadLinkUpdate": "https://github.com/Lambda931/BetterTeleport/releases/download/v0.0.8-alpha/BetterTeleport.zip"
 	}
 ]
 
