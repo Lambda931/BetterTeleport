@@ -16,6 +16,9 @@ public partial class MainWindow
 
     private float GetBaseScale()
     {
+        float displayHeight = ImGui.GetIO().DisplaySize.Y;
+        if (displayHeight <= 0)
+            return 1f;
         return ImGui.GetIO().DisplaySize.Y / 1440f;
     }
     private float MinScale(float baseValue)
@@ -46,6 +49,7 @@ public partial class MainWindow
 
     private void SetScaledWindowSize()
     {
+        BetterTeleport.Log.Debug("SetScaledWindowSize called");
         Vector2 scaledSize = GetScaledWindowSize();
         SizeConstraints = new WindowSizeConstraints
         {

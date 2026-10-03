@@ -30,7 +30,6 @@ public partial class MainWindow : Window, IDisposable
 
     public MainWindow(BetterTeleport plugin) : base("Teleport Menu", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
     {
-        SetScaledWindowSize();
         CreateTableFont();
         CreateGilFont();
         this.plugin = plugin;
@@ -497,6 +496,7 @@ public partial class MainWindow : Window, IDisposable
 
     public override void OnOpen()
     {
+        SetScaledWindowSize();
         base.OnOpen();
         currentTab = Tab.All;
         resetScrollbar = true;
