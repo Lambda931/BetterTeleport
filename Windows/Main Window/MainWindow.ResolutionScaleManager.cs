@@ -23,7 +23,7 @@ public partial class MainWindow
     }
     private float MinScale(float baseValue)
     {
-        float minScaleValue = baseValue * 0.8f;
+        float minScaleValue = baseValue * 0.7f;
         return minScaleValue;
     }
 
@@ -95,7 +95,7 @@ public partial class MainWindow
             float textHeight = ImGui.GetTextLineHeight();
             float paddingY = ImGui.GetStyle().CellPadding.Y;
 
-            float availableHeight = (rowHeight - (paddingY * 2)) / 1.4f;
+            float availableHeight = (ResolutionScaling(rowHeight) - (paddingY * 2)) / 1.4f;
             float offsetY = (availableHeight - textHeight) * 0.5f;
 
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() + offsetY);

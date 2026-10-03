@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute(@"Replaces the teleport menu with a new window that aims to keep the original feel while adding new features. The new menu includes content tracking for all locations, a drop-down menu to filter by content, and the introduction of two new location tabs named Independent Nations and Beyond the Source to replace the Other tab.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.0.0.9")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.0.0.9+31582e61b545ed1b7ea8209e0ef2be97af401b8f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.0.0.9+1a283fec5f41c8ff4882a0d2639d343e1abaca53")]
 [assembly: System.Reflection.AssemblyProductAttribute("BetterTeleport")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BetterTeleport")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.0.0.9")]

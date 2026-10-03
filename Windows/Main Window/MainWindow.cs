@@ -218,13 +218,13 @@ public partial class MainWindow : Window, IDisposable
                 ImGui.PushStyleVar(ImGuiStyleVar.CellPadding, new Vector2(4f, 3f) * scale);
                 if (ImGui.BeginTable("Teleport", 7, ImGuiTableFlags.BordersOuter | ImGuiTableFlags.SizingStretchProp))
                 {
-                    ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthStretch, 0.0001f);
-                    ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthStretch, 0.13f);
-                    ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthStretch, 0.15f);
-                    ImGui.TableSetupColumn("Area", ImGuiTableColumnFlags.WidthStretch, 1.5f);
-                    ImGui.TableSetupColumn("Aetheryte", ImGuiTableColumnFlags.WidthStretch, 1.5f);
-                    ImGui.TableSetupColumn("Content", ImGuiTableColumnFlags.WidthStretch, 1.1f);
-                    ImGui.TableSetupColumn("Fee", ImGuiTableColumnFlags.WidthStretch, 0.4f);
+                    ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthStretch, ResolutionScaling(0.0001f));
+                    ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthStretch, ResolutionScaling(0.13f));
+                    ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthStretch, ResolutionScaling(0.15f));
+                    ImGui.TableSetupColumn("Area", ImGuiTableColumnFlags.WidthStretch, ResolutionScaling(1.5f));
+                    ImGui.TableSetupColumn("Aetheryte", ImGuiTableColumnFlags.WidthStretch, ResolutionScaling(1.5f));
+                    ImGui.TableSetupColumn("Content", ImGuiTableColumnFlags.WidthStretch, ResolutionScaling(1.1f));
+                    ImGui.TableSetupColumn("Fee", ImGuiTableColumnFlags.WidthStretch, ResolutionScaling(0.4f));
                     ImGui.TableHeadersRow();
 
                     if (currentTab == Tab.All || currentTab == Tab.Residential)
@@ -393,7 +393,7 @@ public partial class MainWindow : Window, IDisposable
                                 {
                                     var offset = entry.IconOffset * scale;
                                     ImGui.SetCursorPos(start + offset + nextIconSpacing);
-                                    ImGui.Image(wrap.Handle, entry.IconSize * scale);
+                                    ImGui.Image(wrap.Handle, new Vector2(ResolutionScaling(entry.IconSize.X), ResolutionScaling(entry.IconSize.Y)));
                                     ImGui.SetCursorPos(start + offset + nextIconSpacing);
                                 }
 
